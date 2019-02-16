@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
 public class RestoreHealth : Effect
 {
 	// public float currentDuration;

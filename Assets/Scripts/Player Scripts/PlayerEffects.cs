@@ -18,8 +18,10 @@ public class PlayerEffects : MonoBehaviour
 	{
 		for(int x = effects.Count - 1; x >= 0; --x)
 		{
+			//Debug.Log("ticking " + effects[x]);
 			if(effects[x].Tick(Time.deltaTime, this))
 			{
+				Debug.Log("removing at index " + x);
 				effects.RemoveAt(x);
 			}
 		}

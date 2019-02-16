@@ -6,6 +6,7 @@ using UnityEditor;
 public class RecipeCreator : EditorWindow
 {
     private Mixture toCreate;
+	private Ingredient newIngredient;
     
     [MenuItem("Window/RecipeCreator")]
     public static void Init()
@@ -26,7 +27,24 @@ public class RecipeCreator : EditorWindow
 		}
 		else
 		{
-            toCreate.name = EditorGUILayout.DelayedTextField("Name:", toCreate.name);
+            toCreate.name = EditorGUILayout.TextField("Name:", toCreate.name);
+
+			EditorGUILayout.BeginHorizontal();
+			newIngredient = EditorGUILayout.ObjectField(newIngredient, typeof(Ingredient), false) as Ingredient;
+			if(GUILayout.Button("Add"))
+			{
+				toCreate.ingredients.Add(newIngredient);
+				newIngredient = null;
+			}
+			EditorGUILayout.EndHorizontal();
+
+			EditorGUILayout.LabelField("Current Ingredients");
+			EditorGUI.indentLevel++;
+			foreach(Ingredient i in toCreate.ingredients)
+			{
+				EditorGUILayout.LabelField(i.name);
+			}
+			EditorGUI.indentLevel++;
 
             if(GUILayout.Button("Create") && toCreate != null)
 			{

@@ -6,6 +6,17 @@ public class CookingPot : MonoBehaviour
 {
     public Mixture currentMixture;
 
+	private List<GameObject> currentlyInside;
+	private List<InGameIngredient> toCheck;
+
+	void Awake()
+	{
+		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
+		toCheck = new List<InGameIngredient>();
+		currentlyInside = new List<GameObject>();
+		this.enabled = false;
+	}
+
     public void Cook()
     {
 
@@ -15,8 +26,10 @@ public class CookingPot : MonoBehaviour
     {
         i.transform.position = Vector2.one * 9999;
         InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
-        if(i != null && currentMixture.AddIngredient(ingredient))
+        if(ingredient != null && currentMixture.AddIngredient(ingredient))
         {
+			Debug.Log("Successfully added " + ingredient.name);
+			currentlyInside.Add(i);
             //nothing?
         }
         else
@@ -27,15 +40,48 @@ public class CookingPot : MonoBehaviour
 
     public void DropItem(GameObject i)
     {
+		i.transform.position = transform.position + Vector3.right * 3;
         //should drop the item in such a way as it flies away from the pot and doesn't get readded
     }
 
     public void Empty()
     {
-        foreach(InGameIngredient i in currentMixture.ingredients)
+        foreach(GameObject g in currentlyInside)
         {
-            DropItem(i.gameObject);
+            DropItem(g);
         }
-        currentMixture.ingredients = new List<InGameIngredient>();
+        currentMixture.ingredients = new List<Ingredient>();
+		currentlyInside = new List<GameObject>();
     }
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.gameObject.CompareTag("Ingredient"))
+		{
+			this.enabled = true;
+			toCheck.Add(col.gameObject.GetComponent<InGameIngredient>());
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col)
+    {
+		if(col.gameObject.CompareTag("Ingredient"))
+		{
+			toCheck.Remove(col.gameObject.GetComponent<InGameIngredient>());
+		}
+	}
+	void Update()
+	{
+		foreach(InGameIngredient i in toCheck)
+		{
+			if(!i.isHeld)
+			{
+				Add(i.gameObject);
+			}
+		}
+		if(toCheck.Count <= 0)
+		{
+			this.enabled = false;
+		}
+	}
 }

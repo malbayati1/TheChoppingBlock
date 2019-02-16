@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Mixture : ScriptableObject
 {
-    public List<InGameIngredient> ingredients = new List<InGameIngredient>();
+    public List<Ingredient> ingredients = new List<Ingredient>();
     public void OrderSelf()
     {
-        ingredients.Sort(delegate (InGameIngredient in1, InGameIngredient in2) { return in1.ingredientData.ID - in2.ingredientData.ID; });
+        ingredients.Sort(delegate (Ingredient in1, Ingredient in2) { return in1.ID - in2.ID; });
     }
     public bool AddIngredient(InGameIngredient i)
     {
-        return false;
+		//List<InGameIngredient> current = new List<InGameIngredient>(ingredients);
+		ingredients.Add(i.ingredientData);
+        return true;
         //checks if the recipe is valid, if so add to the array, otherwise return false
     }
 }

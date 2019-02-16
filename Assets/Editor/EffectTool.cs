@@ -21,7 +21,7 @@ public class EffectTool : EditorWindow
 			List<string> alreadyCreatedAssets = new List<string>();
 			foreach(string s in effectPaths)
 			{
-				alreadyCreatedAssets.Add(  ((Effect)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(Effect))).name   );
+				alreadyCreatedAssets.Add(((Effect)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(Effect))).name);
 			}
 
 			string[] allEffectsScriptsNames = AssetDatabase.FindAssets("", new [] {"Assets/ScriptableAssets/Effects"});

@@ -30,4 +30,10 @@ public abstract class Effect : ScriptableObject
         }
 		return false;
     }
+
+	public override string ToString()
+	{
+		string ret = string.Format("name:{0}, pot:{1}, dur:{2}/{3}", this.GetType().Name, potency, currentDuration, maxDuration);
+		return ret;
+	} 
 }
