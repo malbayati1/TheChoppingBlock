@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Class that I'm using to keep track of player statistics and modifiers
+//simplifies adding additive and multiplicative buffs, so they should stack nicely
+
+
 [System.Serializable]
 public class Stat
 {
+	//USE ME TO ACCESS CURRENT FINAL VALUE
+	//SHOULD BE KEPT UPDATED AS BONUSES ARE ADDED AND REMOVED
     public float value;
 
     private float baseValue;

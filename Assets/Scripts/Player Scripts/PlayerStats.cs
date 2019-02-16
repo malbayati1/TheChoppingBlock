@@ -13,6 +13,8 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public Stat health;
     [HideInInspector] public Stat maxHealth;
 
+	//Just used to set stat values in the inspector
+	//Should decide if we want the player health stuff done in here
     void OnValidate()
     {
         //Debug.Log("updating the baseValue from " + movementSpeed.value + " to " + movementSpeedInspector);

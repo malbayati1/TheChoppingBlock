@@ -14,6 +14,9 @@ public class PlayerEffects : MonoBehaviour
 		stats = GetComponent<PlayerStats>();
 	}
 
+
+	//every frame we update all of the currently applied effects
+	//Effect handles its ticking and OnRemoval effect
 	void Update()
 	{
 		for(int x = effects.Count - 1; x >= 0; --x)
@@ -27,6 +30,7 @@ public class PlayerEffects : MonoBehaviour
 		}
 	}
 
+	//Adds an effect and applies any immediate effects
 	public void AddEffect(Effect e)
 	{
 		if(!e.OnApply(this))

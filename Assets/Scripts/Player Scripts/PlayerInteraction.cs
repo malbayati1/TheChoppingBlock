@@ -37,11 +37,14 @@ public class PlayerInteraction : MonoBehaviour
 		}
     }
 
+	//will need to be updated
+	//Porbably want the item to be offset from the player in the direction they are facing
 	void UpdateHoldablePosition()
 	{
 		heldItem.transform.position = transform.position;
 	}
 
+	//Called when the item is used or dropped
 	void ClearFields()
 	{
 		heldItem = null;

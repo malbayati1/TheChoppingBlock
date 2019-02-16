@@ -13,6 +13,8 @@ public class RecipeManager : Singleton<RecipeManager>
         //load our asset database into the dictionary
     }
 
+	//trys to get a value by sorting our mixtures and hashing them into the dictionary
+	//if we fail we return a default
     public Ingredient GetResult(Mixture m)
     {
         Ingredient ret;

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Represents the actual object in the scene of the ingredient
+
 public class InGameIngredient : HoldableItem
 {
-	public Ingredient ingredientData;
+	public Ingredient ingredientData; //holds an asset of an ingredient
 
 	private SpriteRenderer sprite;
 
@@ -29,5 +31,4 @@ public class InGameIngredient : HoldableItem
 	{
 		base.Drop(from);
 	}
-
 }

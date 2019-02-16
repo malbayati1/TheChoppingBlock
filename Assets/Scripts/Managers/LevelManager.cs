@@ -37,6 +37,7 @@ public class LevelManager : Singleton<LevelManager>
         SpawnIngredients(s);
     }
 
+	//called when the seasons change
     void DespawnIngredients()
     {
         for(int x = spawnedObjects.Count - 1; x >= 0; x--)
@@ -50,7 +51,7 @@ public class LevelManager : Singleton<LevelManager>
     
     void SpawnIngredients(Season s)
     {
-        //spawn ingredients based on the season, and the rarit table
+        //spawn ingredients based on the season, and the rarity table
         //probably need to determine where to spawn the objects
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TEMP CLASS THAT WILL BE UPDATED WHEN WE DECIDE ON WHAT KIND OF CAMERA WE WANT
+
 public class CameraController : MonoBehaviour
 {
     public GameObject toFollow;
