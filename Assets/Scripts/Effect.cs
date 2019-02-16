@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Effect", menuName = "ScriptableAssets/Effect", order = 1)]
 public abstract class Effect : ScriptableObject
 {
     public float currentDuration;
     public float maxDuration;
+	public float potency = 1;
 
-    public abstract void OnApply();
-    public abstract void OnRemove();
-    public virtual void Tick(float deltaTime)
+	//returns true if it should be destroyed (one shot effects/duration 0)
+    public virtual bool OnApply(PlayerEffects p)
+	{
+		if(maxDuration <= 0)
+		{
+			return true;
+		}
+		return false;
+	}
+    public abstract void OnRemove(PlayerEffects p);
+	
+	//returns true when it should be destroyed
+    public virtual bool Tick(float deltaTime, PlayerEffects p)
     {
         currentDuration -= deltaTime;
         if(currentDuration <= 0)
         {
-            OnRemove();
-            Destroy(this);
+            OnRemove(p);
+            return true;
         }
+		return false;
     }
 }

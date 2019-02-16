@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PlayerEffects : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public PlayerStats stats;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private List<Effect> effects;
+
+	void Awake()
+	{
+		stats = GetComponent<PlayerStats>();
+	}
+
+	void Update()
+	{
+		for(int x = effects.Count; x >= 0; --x)
+		{
+			if(effects[x].Tick(Time.deltaTime, this))
+			{
+				effects.RemoveAt(x);
+			}
+		}
+	}
+
+	public void AddEffect(Effect e)
+	{
+		effects.Add(e);
+	}
 }

@@ -14,7 +14,7 @@ public class CookingPot : MonoBehaviour
     public void Add(GameObject i)
     {
         i.transform.position = Vector2.one * 9999;
-        Ingredient ingredient = i.GetComponent<Ingredient>();
+        InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
         if(i != null && currentMixture.AddIngredient(ingredient))
         {
             //nothing?
@@ -32,10 +32,10 @@ public class CookingPot : MonoBehaviour
 
     public void Empty()
     {
-        foreach(Ingredient i in currentMixture.ingredients)
+        foreach(InGameIngredient i in currentMixture.ingredients)
         {
             DropItem(i.gameObject);
         }
-        currentMixture.ingredients = new List<Ingredient>();
+        currentMixture.ingredients = new List<InGameIngredient>();
     }
 }
