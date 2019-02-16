@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerStats stats;
+    private Rigidbody2D rigidbody;
 
-    void Start()
+    void Awake()
     {
         stats = GetComponent<PlayerStats>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
+        rigidbody.velocity = new Vector2(moveHorizontal, moveVertical).normalized * stats.movementSpeed.value;
     }
 }
