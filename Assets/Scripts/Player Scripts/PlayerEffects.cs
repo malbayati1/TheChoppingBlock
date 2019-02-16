@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerEffects : MonoBehaviour
 {
-	public PlayerStats stats;
+	[HideInInspector] public PlayerStats stats;
 
     private List<Effect> effects;
 
 	void Awake()
 	{
+		effects = new List<Effect>();
 		stats = GetComponent<PlayerStats>();
 	}
 
 	void Update()
 	{
-		for(int x = effects.Count; x >= 0; --x)
+		for(int x = effects.Count - 1; x >= 0; --x)
 		{
 			if(effects[x].Tick(Time.deltaTime, this))
 			{
@@ -26,6 +27,9 @@ public class PlayerEffects : MonoBehaviour
 
 	public void AddEffect(Effect e)
 	{
-		effects.Add(e);
+		if(!e.OnApply(this))
+		{
+			effects.Add(e);
+		}
 	}
 }

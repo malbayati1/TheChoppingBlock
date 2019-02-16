@@ -27,4 +27,13 @@ public class InGameIngredient : MonoBehaviour, IHoldable
 	{
 
 	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.gameObject.CompareTag("Player"))
+		{
+			Debug.Log("collide with player");
+			col.gameObject.GetComponent<PlayerEffects>().AddEffect(ingredientData.effect);
+		}
+	}
 }

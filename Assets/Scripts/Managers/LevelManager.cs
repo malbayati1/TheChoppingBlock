@@ -39,7 +39,7 @@ public class LevelManager : Singleton<LevelManager>
 
     void DespawnIngredients()
     {
-        for(int x = spawnedObjects.Count; x >= 0; x--)
+        for(int x = spawnedObjects.Count - 1; x >= 0; x--)
         {
             if(!spawnedObjects[x].GetComponent<Ingredient>().isPreserved)
             {

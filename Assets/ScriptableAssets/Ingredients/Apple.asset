@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Apple
   ID: 0
   sprite: {fileID: 21300000, guid: fc1cc9781427f5f4dadebc67010e2c2b, type: 3}
-  effect: {fileID: 0}
+  effect: {fileID: 11400000, guid: 784f93de607c44f469ff42085493a2d2, type: 2}
   potency: 1
   duration: 0
   rarity: 0

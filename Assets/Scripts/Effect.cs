@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Effect", menuName = "ScriptableAssets/Effect", order = 1)]
 public abstract class Effect : ScriptableObject
 {
     public float currentDuration;

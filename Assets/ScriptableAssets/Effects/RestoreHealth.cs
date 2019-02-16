@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Effect", menuName = "ScriptableAssets/Effect", order = 1)]
+[CreateAssetMenu]
 public class RestoreHealth : Effect
 {
 	// public float currentDuration;
@@ -11,6 +11,7 @@ public class RestoreHealth : Effect
 
     public override bool OnApply(PlayerEffects p)
 	{
+		Debug.Log("APPLYING RESTORE HEALTH");
 		p.stats.health.SetBaseValue(p.stats.health.value += potency);
 		return base.OnApply(p);
 	}
