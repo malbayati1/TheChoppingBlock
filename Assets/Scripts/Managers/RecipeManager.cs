@@ -10,11 +10,18 @@ public class RecipeManager : Singleton<RecipeManager>
 
     void Start()
     {
+		recipes = new Dictionary<Mixture, GameObject>();
 		string[] allRecipes = AssetDatabase.FindAssets("t:Mixture", new [] {"Assets/ScriptableAssets/Recipes"});
 		foreach(string s in allRecipes)
 		{
 			Mixture m = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(s), typeof(Mixture)) as Mixture;
-			Debug.Log(AssetDatabase.GUIDToAssetPath(s));
+			m = Object.Instantiate(m) as Mixture;
+			m.OrderSelf();
+			GameObject temp = m.result;
+			m.result = null;
+			Debug.Log(m.GetHashCode());
+			recipes[m] = temp;
+			//recipes.Add(m, temp);
 		}
         //load our asset database into the dictionary
     }
@@ -23,6 +30,9 @@ public class RecipeManager : Singleton<RecipeManager>
 	//if we fail we return a default
     public GameObject GetResult(Mixture m)
     {
+		m.OrderSelf();
+		Debug.Log(m);
+		Debug.Log(m.GetHashCode());
         GameObject ret;
         if(recipes.TryGetValue(m, out ret))
         {

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+	public delegate void InputDelegate();
+    public event InputDelegate useEvent = delegate {};
+	public event InputDelegate dropEvent = delegate {};
+
 	private GameObject heldItem;
 	private HoldableItem heldItemInteraction;
 
@@ -27,13 +31,16 @@ public class PlayerInteraction : MonoBehaviour
 				heldItemInteraction.Drop(gameObject);
 				ClearFields();
 			}
+			return;
 		}
 		
 		if(Input.GetButtonDown("Use"))
 		{
+			useEvent();
 		}
 		if(Input.GetButtonDown("Drop"))
 		{
+			dropEvent();
 		}
     }
 
@@ -54,7 +61,7 @@ public class PlayerInteraction : MonoBehaviour
 	//return true if you can hold something
 	public bool TryToPickUp(GameObject g, HoldableItem i)
 	{
-		Debug.Log("trying to pickup a " + g.name);
+		//Debug.Log("trying to pickup a " + g.name);
 		if(heldItem == null)
 		{
 			heldItem = g;

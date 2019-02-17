@@ -27,23 +27,11 @@ public class IngredientCreator : EditorWindow
 		else
 		{
 			toCreate.name = EditorGUILayout.TextField("Name:", toCreate.name);
-
-			// EditorGUILayout.BeginHorizontal();
-			// newIngredient = EditorGUILayout.ObjectField(newIngredient, typeof(Ingredient), false) as Ingredient;
-			// if(GUILayout.Button("Add"))
-			// {
-			// 	toCreate.ingredients.Add(newIngredient);
-			// 	newIngredient = null;
-			// }
-			// EditorGUILayout.EndHorizontal();
-
-			// EditorGUILayout.LabelField("Current Ingredients");
-			// EditorGUI.indentLevel++;
-			// foreach(Ingredient i in toCreate.ingredients)
-			// {
-			// 	EditorGUILayout.LabelField(i.name);
-			// }
-			// EditorGUI.indentLevel++;
+			toCreate.ID = EditorGUILayout.IntField("ID:", toCreate.ID);
+			toCreate.effect = EditorGUILayout.ObjectField(toCreate.effect, typeof(Effect), false) as Effect;
+			toCreate.potency = EditorGUILayout.FloatField("Potency:", toCreate.potency);
+			toCreate.duration = EditorGUILayout.FloatField("Duration:", toCreate.duration);
+			toCreate.rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity:", toCreate.rarity);
 
 			if(GUILayout.Button("Create") && toCreate != null)
 			{

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class CookingPot : MonoBehaviour
@@ -10,8 +9,6 @@ public class CookingPot : MonoBehaviour
 
 	private List<GameObject> currentlyInside;
 	private List<GameObject> toCheck;
-	private Mutex addingMutex;
-	private bool addedThisFrame;
 
 	void Awake()
 	{
@@ -24,7 +21,12 @@ public class CookingPot : MonoBehaviour
 	//call when you want the pot to combine ingredient
     public void Cook()
     {
-		
+		if(currentMixture.ingredients.Count == 0) //can't cook with nothing inside
+		{
+			return;
+		}
+		Debug.Log("trying to cook");
+		GameObject spawn = Instantiate(RecipeManager.instance.GetResult(currentMixture), transform.position + Vector3.up * 2, Quaternion.identity);
     }
 
     public void Add(GameObject i)
@@ -73,9 +75,12 @@ public class CookingPot : MonoBehaviour
 			}
 			if(!toCheck.Contains(parent))
 			{
-				Debug.Log("ADDING " + col.name);
 				toCheck.Add(parent);
 			}
+		}
+		if(col.gameObject.CompareTag("Player"))
+		{
+			col.gameObject.GetComponent<PlayerInteraction>().useEvent += Cook;
 		}
 	}
 
@@ -88,8 +93,11 @@ public class CookingPot : MonoBehaviour
 			{
 				parent = parent.transform.parent.gameObject;
 			}
-			Debug.Log("REMOVING");
 			toCheck.Remove(parent);
+		}
+		if(col.gameObject.CompareTag("Player"))
+		{
+			col.gameObject.GetComponent<PlayerInteraction>().useEvent -= Cook;
 		}
 	}
 
@@ -99,13 +107,15 @@ public class CookingPot : MonoBehaviour
 	{
 		for(int x = toCheck.Count - 1; x >= 0; --x)
 		{
-			Debug.Log("checking " + toCheck[x].gameObject.name);
-			if(!toCheck[x].GetComponent<InGameIngredient>().isHeld)
+			if(toCheck == null)
+			{
+				toCheck.RemoveAt(x);
+			}
+			else if(!toCheck[x].GetComponent<InGameIngredient>().isHeld)
 			{
 				Add(toCheck[x].gameObject);
 			}
 		}
-		Debug.Log("____________");
 		if(toCheck.Count <= 0)
 		{
 			this.enabled = false;
