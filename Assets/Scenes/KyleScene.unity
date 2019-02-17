@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 609821143}
   - component: {fileID: 609821147}
   - component: {fileID: 609821148}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,10 +235,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedObj: {fileID: 849836595}
-  upVelo: 2
-  hopTime: 0.3
+  upVelo: 4
   lerpAmount: 0.9
-  minHopHeight: 0.1
+  groundedCheckRadius: 0.5
+  groundedCheckOffsetDown: 0.6
+  groundedCheckLM:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!1 &791870233
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +372,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849836595}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

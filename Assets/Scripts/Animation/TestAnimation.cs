@@ -6,14 +6,12 @@ public class TestAnimation : MonoBehaviour
 {
     public GameObject trackedObj;
     public float upVelo;
-    public float hopTime;
     public float lerpAmount;
-    public float minHopHeight;
+    public float groundedCheckRadius;
+    public float groundedCheckOffsetDown;
+    public LayerMask groundedCheckLM;
 
-    private Vector2 changeDueToLerp = new Vector2();
     private Rigidbody rb;
-    private Coroutine runningHop;
-    private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +23,20 @@ public class TestAnimation : MonoBehaviour
     void Update()
     {
         bool isGivingInput = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
-        Vector2 lerpThisFrame = new Vector2(
-            Mathf.LerpUnclamped(trackedObj.transform.position.x, transform.position.x, lerpAmount),
-            Mathf.LerpUnclamped(trackedObj.transform.position.z, transform.position.z, lerpAmount)
-            );
-        if(isGivingInput && timer <= 0 && minHopHeight > transform.position.y)
+        bool isGrounded = Physics.OverlapSphere(
+                transform.position + Vector3.down * groundedCheckOffsetDown,
+                groundedCheckRadius,
+                groundedCheckLM).Length > 0;
+
+        if (isGivingInput && isGrounded)
         {
+            //cause a hop upwards
             rb.velocity = Vector3.up * upVelo;
-            timer = hopTime;
         }
-        changeDueToLerp = lerpThisFrame;
+        //lerp x and z position of this model to the player, leave y alone so that way hops can do everything to that
         transform.position = new Vector3(
-            lerpThisFrame[0],
+            Mathf.LerpUnclamped(trackedObj.transform.position.x, transform.position.x, lerpAmount),
             transform.position.y,
-            lerpThisFrame[1]);
-        timer -= Time.deltaTime;
-        if (timer < 0)
-            timer = 0;
+            Mathf.LerpUnclamped(trackedObj.transform.position.z, transform.position.z, lerpAmount));
     }
 }
