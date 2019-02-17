@@ -8,7 +8,7 @@ public class Ingredient : ScriptableObject
 {
 	public string name;
 	public int ID;
-	public Sprite sprite;
+	//public Sprite sprite;
     [SerializeField] public Effect effect;
     public float potency = 1;
     public float duration;   

@@ -6,6 +6,8 @@ using UnityEngine;
 public class Mixture : ScriptableObject
 {
     public List<Ingredient> ingredients = new List<Ingredient>();
+	public GameObject result;
+	
     public void OrderSelf()
     {
         ingredients.Sort(delegate (Ingredient in1, Ingredient in2) { return in1.ID - in2.ID; });

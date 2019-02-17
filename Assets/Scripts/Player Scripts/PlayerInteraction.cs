@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
 	private GameObject heldItem;
-	private IHoldable heldItemInteraction;
+	private HoldableItem heldItemInteraction;
 
     void Start()
     {
@@ -38,10 +38,10 @@ public class PlayerInteraction : MonoBehaviour
     }
 
 	//will need to be updated
-	//Porbably want the item to be offset from the player in the direction they are facing
+	//Probably want the item to be offset from the player in the direction they are facing
 	void UpdateHoldablePosition()
 	{
-		heldItem.transform.position = transform.position;
+		heldItemInteraction.gameObject.transform.position = transform.position + CameraController.instance.forwardDirection.normalized;
 	}
 
 	//Called when the item is used or dropped
@@ -52,7 +52,7 @@ public class PlayerInteraction : MonoBehaviour
 	}
 
 	//return true if you can hold something
-	public bool TryToPickUp(GameObject g, IHoldable i)
+	public bool TryToPickUp(GameObject g, HoldableItem i)
 	{
 		Debug.Log("trying to pickup a " + g.name);
 		if(heldItem == null)

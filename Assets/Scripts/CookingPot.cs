@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class CookingPot : MonoBehaviour
@@ -8,12 +9,14 @@ public class CookingPot : MonoBehaviour
     public Mixture currentMixture;
 
 	private List<GameObject> currentlyInside;
-	private List<InGameIngredient> toCheck;
+	private List<GameObject> toCheck;
+	private Mutex addingMutex;
+	private bool addedThisFrame;
 
 	void Awake()
 	{
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
-		toCheck = new List<InGameIngredient>();
+		toCheck = new List<GameObject>();
 		currentlyInside = new List<GameObject>();
 		this.enabled = false;
 	}
@@ -21,11 +24,12 @@ public class CookingPot : MonoBehaviour
 	//call when you want the pot to combine ingredient
     public void Cook()
     {
-
+		
     }
 
     public void Add(GameObject i)
     {
+		toCheck.Remove(i);
         i.transform.position = Vector2.one * 9999; //brings ingredients out of the way while they're inside
         InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
         if(ingredient != null && currentMixture.AddIngredient(ingredient))
@@ -57,20 +61,35 @@ public class CookingPot : MonoBehaviour
 		currentlyInside = new List<GameObject>();
     }
 
-	void OnTriggerEnter2D(Collider2D col)
+	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.CompareTag("Ingredient"))
 		{
 			this.enabled = true;
-			toCheck.Add(col.gameObject.GetComponent<InGameIngredient>());
+			GameObject parent = col.gameObject;
+			while(parent.transform.parent != null)
+			{
+				parent = parent.transform.parent.gameObject;
+			}
+			if(!toCheck.Contains(parent))
+			{
+				Debug.Log("ADDING " + col.name);
+				toCheck.Add(parent);
+			}
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D col)
+	void OnTriggerExit(Collider col)
     {
 		if(col.gameObject.CompareTag("Ingredient"))
 		{
-			toCheck.Remove(col.gameObject.GetComponent<InGameIngredient>());
+			GameObject parent = col.gameObject;
+			while(parent.transform.parent != null)
+			{
+				parent = parent.transform.parent.gameObject;
+			}
+			Debug.Log("REMOVING");
+			toCheck.Remove(parent);
 		}
 	}
 
@@ -78,13 +97,15 @@ public class CookingPot : MonoBehaviour
 	//for example if the player enters while holding it, then drops it
 	void Update()
 	{
-		foreach(InGameIngredient i in toCheck)
+		for(int x = toCheck.Count - 1; x >= 0; --x)
 		{
-			if(!i.isHeld)
+			Debug.Log("checking " + toCheck[x].gameObject.name);
+			if(!toCheck[x].GetComponent<InGameIngredient>().isHeld)
 			{
-				Add(i.gameObject);
+				Add(toCheck[x].gameObject);
 			}
 		}
+		Debug.Log("____________");
 		if(toCheck.Count <= 0)
 		{
 			this.enabled = false;
