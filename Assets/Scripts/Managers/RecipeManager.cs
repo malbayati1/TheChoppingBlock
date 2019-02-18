@@ -19,7 +19,7 @@ public class RecipeManager : Singleton<RecipeManager>
 			m.OrderSelf();
 			GameObject temp = m.result;
 			m.result = null;
-			Debug.Log(m.GetHashCode());
+			//Debug.Log(m.GetHashCode());
 			recipes[m] = temp;
 			//recipes.Add(m, temp);
 		}
@@ -31,8 +31,8 @@ public class RecipeManager : Singleton<RecipeManager>
     public GameObject GetResult(Mixture m)
     {
 		m.OrderSelf();
-		Debug.Log(m);
-		Debug.Log(m.GetHashCode());
+		//Debug.Log(m);
+		//Debug.Log(m.GetHashCode());
         GameObject ret;
         if(recipes.TryGetValue(m, out ret))
         {

@@ -27,6 +27,7 @@ public class CookingPot : MonoBehaviour
 		}
 		Debug.Log("trying to cook");
 		GameObject spawn = Instantiate(RecipeManager.instance.GetResult(currentMixture), transform.position + Vector3.up * 2, Quaternion.identity);
+		spawn.GetComponent<InGameIngredient>().isHeld = true;
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
 		foreach(GameObject g in currentlyInside)
 		{
@@ -81,13 +82,15 @@ public class CookingPot : MonoBehaviour
 			this.enabled = true;
 			if(!toCheck.Contains(parent))
 			{
-				Debug.Log("adding toCheck " + parent.name);
+				//Debug.Log("adding toCheck " + parent.name);
 				toCheck.Add(parent);
 			}
 		}
 		if(parent.CompareTag("Player"))
 		{
-			parent.GetComponent<PlayerInteraction>().useEvent += Cook;
+			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
+			p.useEvent += Cook;
+			p.dropEvent += Empty;
 		}
 	}
 
@@ -104,7 +107,9 @@ public class CookingPot : MonoBehaviour
 		}
 		if(parent.CompareTag("Player"))
 		{
-			parent.GetComponent<PlayerInteraction>().useEvent -= Cook;
+			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
+			p.useEvent -= Cook;
+			p.dropEvent -= Empty;
 		}
 	}
 
@@ -114,7 +119,7 @@ public class CookingPot : MonoBehaviour
 	{
 		for(int x = toCheck.Count - 1; x >= 0; --x)
 		{
-			Debug.Log("checking " + toCheck[x].name);
+			//Debug.Log("checking " + toCheck[x].name);
 			if(toCheck[x] == null)
 			{
 				toCheck.RemoveAt(x);
