@@ -27,6 +27,12 @@ public class CookingPot : MonoBehaviour
 		}
 		Debug.Log("trying to cook");
 		GameObject spawn = Instantiate(RecipeManager.instance.GetResult(currentMixture), transform.position + Vector3.up * 2, Quaternion.identity);
+		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
+		foreach(GameObject g in currentlyInside)
+		{
+			Destroy(g);
+		}
+		currentlyInside = new List<GameObject>();
     }
 
     public void Add(GameObject i)
