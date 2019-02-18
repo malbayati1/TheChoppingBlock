@@ -2098,6 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatingPlayer: {fileID: 1628764836}
+  maxDistanceFromAnimatingPayer: 10
 --- !u!54 &1726389248
 Rigidbody:
   m_ObjectHideFlags: 0

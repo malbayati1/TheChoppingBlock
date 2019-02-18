@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject animatingPlayer;
+    public float maxDistanceFromAnimatingPayer;
     private PlayerStats stats;
     private Rigidbody rb;
 
@@ -31,5 +32,10 @@ public class PlayerMovement : MonoBehaviour
             transform.position.x,
             animatingPlayer.transform.position.y,
             transform.position.z);
+        //teleport the focus back to the player if the focus gets unreasonably far away
+        if(Vector3.Distance(transform.position, animatingPlayer.transform.position) > maxDistanceFromAnimatingPayer)
+        {
+            transform.position = animatingPlayer.transform.position;
+        }
     }
 }
