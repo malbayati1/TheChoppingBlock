@@ -7,6 +7,7 @@ public class TestAnimation : MonoBehaviour
     public GameObject trackedObj;
     public float upVelo;
     public float lerpAmount;
+    public float maxSpeed;
     public float groundedCheckRadius;
     public float groundedCheckOffsetDown;
     public LayerMask groundedCheckLM;
@@ -33,10 +34,16 @@ public class TestAnimation : MonoBehaviour
             //cause a hop upwards
             rb.velocity = Vector3.up * upVelo;
         }
+        Vector2 newXZPos = new Vector2(Mathf.LerpUnclamped(trackedObj.transform.position.x, transform.position.x,
+            lerpAmount), Mathf.LerpUnclamped(trackedObj.transform.position.z, transform.position.z, lerpAmount));
+        Vector2 oldXZPos = new Vector2(transform.position.x, transform.position.z);
+        float maxPositionChangeAllowedThisFrame = maxSpeed * Time.deltaTime;
+        Vector2 positionChange = Vector2.ClampMagnitude(newXZPos - oldXZPos, maxPositionChangeAllowedThisFrame);
         //lerp x and z position of this model to the player, leave y alone so that way hops can do everything to that
         transform.position = new Vector3(
-            Mathf.LerpUnclamped(trackedObj.transform.position.x, transform.position.x, lerpAmount),
+            oldXZPos[0] + positionChange[0],
             transform.position.y,
-            Mathf.LerpUnclamped(trackedObj.transform.position.z, transform.position.z, lerpAmount));
+            oldXZPos[1] + positionChange[1]
+            );
     }
 }
