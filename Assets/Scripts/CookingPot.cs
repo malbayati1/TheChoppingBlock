@@ -71,39 +71,40 @@ public class CookingPot : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
-		if(col.gameObject.CompareTag("Ingredient"))
+		GameObject parent = col.gameObject;
+		while(parent.transform.parent != null)
+		{
+			parent = parent.transform.parent.gameObject;
+		}
+		if(parent.CompareTag("Ingredient"))
 		{
 			this.enabled = true;
-			GameObject parent = col.gameObject;
-			while(parent.transform.parent != null)
-			{
-				parent = parent.transform.parent.gameObject;
-			}
 			if(!toCheck.Contains(parent))
 			{
+				Debug.Log("adding toCheck " + parent.name);
 				toCheck.Add(parent);
 			}
 		}
-		if(col.gameObject.CompareTag("Player"))
+		if(parent.CompareTag("Player"))
 		{
-			col.gameObject.GetComponent<PlayerInteraction>().useEvent += Cook;
+			parent.GetComponent<PlayerInteraction>().useEvent += Cook;
 		}
 	}
 
 	void OnTriggerExit(Collider col)
     {
-		if(col.gameObject.CompareTag("Ingredient"))
+		GameObject parent = col.gameObject;
+		while(parent.transform.parent != null)
 		{
-			GameObject parent = col.gameObject;
-			while(parent.transform.parent != null)
-			{
-				parent = parent.transform.parent.gameObject;
-			}
+			parent = parent.transform.parent.gameObject;
+		}
+		if(parent.CompareTag("Ingredient"))
+		{
 			toCheck.Remove(parent);
 		}
-		if(col.gameObject.CompareTag("Player"))
+		if(parent.CompareTag("Player"))
 		{
-			col.gameObject.GetComponent<PlayerInteraction>().useEvent -= Cook;
+			parent.GetComponent<PlayerInteraction>().useEvent -= Cook;
 		}
 	}
 
@@ -113,13 +114,14 @@ public class CookingPot : MonoBehaviour
 	{
 		for(int x = toCheck.Count - 1; x >= 0; --x)
 		{
-			if(toCheck == null)
+			Debug.Log("checking " + toCheck[x].name);
+			if(toCheck[x] == null)
 			{
 				toCheck.RemoveAt(x);
 			}
 			else if(!toCheck[x].GetComponent<InGameIngredient>().isHeld)
 			{
-				Add(toCheck[x].gameObject);
+				Add(toCheck[x]);
 			}
 		}
 		if(toCheck.Count <= 0)
