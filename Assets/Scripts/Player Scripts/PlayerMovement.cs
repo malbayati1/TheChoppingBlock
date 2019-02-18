@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerStats stats;
-    private Rigidbody rigidbody;
+    public PlayerStats stats;
+    private Rigidbody rb;
 
 	private Vector3 movementDirection;
 
     void Awake()
     {
-        stats = GetComponent<PlayerStats>();
-        rigidbody = GetComponent<Rigidbody>();
+        //stats = GetComponent<PlayerStats>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -20,6 +20,6 @@ public class PlayerMovement : MonoBehaviour
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 		movementDirection = moveVertical * CameraController.instance.forwardDirection + moveHorizontal * CameraController.instance.rightDirection;
-        rigidbody.velocity = movementDirection.normalized * stats.movementSpeed.value;
+        rb.velocity = movementDirection.normalized * stats.movementSpeed.value;
     }
 }
