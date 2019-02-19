@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//TEMP CLASS THAT WILL BE UPDATED WHEN WE DECIDE ON WHAT KIND OF CAMERA WE WANT
-
 public class CameraController : Singleton<CameraController>
 {
     public GameObject toFollow;
@@ -21,7 +19,7 @@ public class CameraController : Singleton<CameraController>
 	private float height;
 	private float currentRotationDegrees;
 
-    void Start()
+    void OnValidate()
     {
 		offset = new Vector3(cameraDistance * Mathf.Cos(cameraAngle * Mathf.Deg2Rad), cameraDistance * Mathf.Sin(cameraAngle * Mathf.Deg2Rad), 0);	
 		height = offset[1];
@@ -31,7 +29,7 @@ public class CameraController : Singleton<CameraController>
 
 	void LateUpdate()
 	{
-		transform.position = Vector3.Lerp(transform.position, toFollow.transform.position + offset, lerpFactor);
+		UpdatePosition(true);
 		float cameraRotation = Input.GetAxisRaw("CameraRotation");
 		if(cameraRotation != 0)
 		{
@@ -40,7 +38,12 @@ public class CameraController : Singleton<CameraController>
 		}
 	}
 
-	void UpdateRotationAndOffset()
+	public void UpdatePosition(bool lerp)
+	{
+		transform.position = Vector3.Lerp(transform.position, toFollow.transform.position + offset, (lerp) ? lerpFactor : 1);
+	}
+
+	public void UpdateRotationAndOffset()
 	{
 		Quaternion temp = new Quaternion();
 		temp.eulerAngles = new Vector3(cameraAngle, 270 - currentRotationDegrees, 0);
