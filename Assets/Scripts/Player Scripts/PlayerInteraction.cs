@@ -76,6 +76,8 @@ public class PlayerInteraction : MonoBehaviour
 			timer += Time.deltaTime;
 			if(!Input.GetButton(button))
 			{
+				progressBar.SetActive(false);
+				performingAction = false;
 				yield break;
 			}
 			progressBarImage.fillAmount = timer / interactionTime;
