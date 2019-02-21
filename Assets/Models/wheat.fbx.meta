@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 788dd0df1fe676e4aa726102b9f58d02
+guid: 8f4014cf2a6e5234d90b97f49ad6e40a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Empty
-    100004: Vert.002
     400000: //RootNode
-    400002: Empty
-    400004: Vert.002
     2100000: Material.001
-    2300000: Vert.002
-    2300002: //RootNode
-    3300000: Vert.002
-    3300002: //RootNode
-    4300000: Vert.002
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -46,12 +40,12 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.8
+    globalScale: 0.3
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     importCameras: 0
     importLights: 0
     swapUVChannels: 0
