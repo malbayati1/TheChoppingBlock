@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +30,17 @@ public class SeasonManager : Singleton<SeasonManager>
     }
 
     void ChangeSeason()
-    {
+	{
         currentSeason++;
+		if((int)currentSeason == Enum.GetNames(typeof(Season)).Length)
+		{
+			currentSeason = 0;
+		}
         seasonChangeEvent(currentSeason);
     }
+
+	public Season GetCurrentSeason()
+	{
+		return currentSeason;
+	}
 }
