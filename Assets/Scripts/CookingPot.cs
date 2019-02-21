@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CookingPot : MonoBehaviour
 {
+	public GameObject topOfSlotLocation;
+
+	public float addTime;
+	public float dropTime;
+	public float spitOutRadius = 4f;
+
 	//our current ingredients
-    public Mixture currentMixture;
+    [HideInInspector] public Mixture currentMixture;
 
 	private List<GameObject> currentlyInside;
-	private List<GameObject> toCheck;
+	[SerializeField]private List<GameObject> toCheck;
 
 	void Awake()
 	{
@@ -28,6 +34,7 @@ public class CookingPot : MonoBehaviour
 		Debug.Log("trying to cook");
 		GameObject spawn = Instantiate(RecipeManager.instance.GetResult(currentMixture), transform.position + Vector3.up * 2, Quaternion.identity);
 		spawn.GetComponent<InGameIngredient>().isHeld = true;
+		DropItem(spawn);
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
 		foreach(GameObject g in currentlyInside)
 		{
@@ -39,13 +46,16 @@ public class CookingPot : MonoBehaviour
     public void Add(GameObject i)
     {
 		toCheck.Remove(i);
-        i.transform.position = Vector2.one * 9999; //brings ingredients out of the way while they're inside
-        InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
+		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
+
+		Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
+		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
+        StartCoroutine(MoveIngredient(i, addTime, i.transform.position, topOfSlotLocation.transform.position, controlPosition, true));
+        
         if(ingredient != null && currentMixture.AddIngredient(ingredient))
         {
 			Debug.Log("Successfully added " + ingredient.name);
 			currentlyInside.Add(i);
-            //nothing?
         }
         else
         {
@@ -53,22 +63,50 @@ public class CookingPot : MonoBehaviour
         }
     }
 
-    public void DropItem(GameObject i)
+	public void Empty()
     {
-		i.transform.position = transform.position + Vector3.right * 3; //temp
-        //should drop the item in such a way as it flies away from the pot and doesn't get readded
-		//needs a coroutine probably to make it look nice
-    }
-
-    public void Empty()
-    {
-        foreach(GameObject g in currentlyInside)
+        for(int x = currentlyInside.Count - 1; x >= 0; --x)
         {
-            DropItem(g);
+            DropItem(currentlyInside[x]);
         }
         currentMixture.ingredients = new List<Ingredient>();
 		currentlyInside = new List<GameObject>();
     }
+
+	public void DropItem(GameObject i)
+    {
+		toCheck.Remove(i);
+		Vector3 end = Random.insideUnitSphere;
+		end.Set(end.x, 0, end.z);
+		end.Normalize();
+		end *= spitOutRadius;
+		end += transform.position;
+		Vector3 controlPosition = (transform.position + end) / 2;
+		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
+        StartCoroutine(MoveIngredient(i, dropTime ,transform.position, end, controlPosition, false));
+    }
+
+   
+
+	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink)
+	{		
+		i.GetComponent<InGameIngredient>().isHeld = true;
+		float timer = 0;
+		float t;
+		while(timer < moveTime)
+		{
+			timer += Time.deltaTime;
+			t = timer / moveTime;
+			//B E Z I E R C U R V E S don't ask how this works I don't know
+			i.transform.position = (1 - t) * (1 - t) * startPosition + 2 * (1 - t) * t * controlPosition + t * t * endPosition;
+			//shrink the scale if bool is set, otherwise just set it as 1
+			i.transform.localScale = Vector3.one * ((shrink) ?  1 - t : 1);
+			yield return null;
+		}
+		i.GetComponent<InGameIngredient>().isHeld = false;
+	}
+
+    
 
 	void OnTriggerEnter(Collider col)
 	{
@@ -79,10 +117,11 @@ public class CookingPot : MonoBehaviour
 		}
 		if(parent.CompareTag("Ingredient"))
 		{
+			//Debug.Log("adding toCheck " + parent.name);
 			this.enabled = true;
 			if(!toCheck.Contains(parent))
 			{
-				//Debug.Log("adding toCheck " + parent.name);
+				Debug.Log("adding toCheck " + parent.name);
 				toCheck.Add(parent);
 			}
 		}
@@ -103,6 +142,7 @@ public class CookingPot : MonoBehaviour
 		}
 		if(parent.CompareTag("Ingredient"))
 		{
+			Debug.Log("removing toCheck " + parent.name);
 			toCheck.Remove(parent);
 		}
 		if(parent.CompareTag("Player"))
@@ -124,7 +164,7 @@ public class CookingPot : MonoBehaviour
 			{
 				toCheck.RemoveAt(x);
 			}
-			else if(!toCheck[x].GetComponent<InGameIngredient>().isHeld)
+			else if(!toCheck[x].GetComponent<InGameIngredient>().isHeld && !currentlyInside.Contains(toCheck[x]))
 			{
 				Add(toCheck[x]);
 			}
