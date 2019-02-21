@@ -86,8 +86,6 @@ public class CookingPot : MonoBehaviour
         StartCoroutine(MoveIngredient(i, dropTime ,transform.position, end, controlPosition, false));
     }
 
-   
-
 	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink)
 	{		
 		i.GetComponent<InGameIngredient>().isHeld = true;
@@ -121,7 +119,7 @@ public class CookingPot : MonoBehaviour
 			this.enabled = true;
 			if(!toCheck.Contains(parent))
 			{
-				Debug.Log("adding toCheck " + parent.name);
+				//Debug.Log("adding toCheck " + parent.name);
 				toCheck.Add(parent);
 			}
 		}
@@ -142,7 +140,7 @@ public class CookingPot : MonoBehaviour
 		}
 		if(parent.CompareTag("Ingredient"))
 		{
-			Debug.Log("removing toCheck " + parent.name);
+			//Debug.Log("removing toCheck " + parent.name);
 			toCheck.Remove(parent);
 		}
 		if(parent.CompareTag("Player"))

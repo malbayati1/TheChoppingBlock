@@ -2296,6 +2296,16 @@ PrefabInstance:
       propertyPath: spitOutRadius
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 859363606920771876, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: addTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 859363606920771876, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: dropTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2873170872794446571, guid: 14bfb1447dff39f499e1e86a78f70fe5,
         type: 3}
       propertyPath: m_LocalPosition.y
