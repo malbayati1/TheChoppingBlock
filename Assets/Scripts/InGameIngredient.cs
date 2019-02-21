@@ -8,12 +8,23 @@ public class InGameIngredient : HoldableItem
 {
 	public Ingredient ingredientData; //holds an asset of an ingredient
 
+	private float rotationDegreesPerSecond = 180f;
+
 	void Awake()
 	{
 		ingredientData = Object.Instantiate(ingredientData) as Ingredient;
 		ingredientData.effect = Object.Instantiate(ingredientData.effect) as Effect;
 		ingredientData.effect.maxDuration = ingredientData.duration;
 		ingredientData.effect.currentDuration = ingredientData.duration;
+	}
+
+	void Update()
+	{
+		if(isHeld)
+		{
+			return;
+		}
+		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}
 
     public override void Use(GameObject user)
