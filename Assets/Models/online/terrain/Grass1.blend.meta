@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 472e104d619473c4da6e2087c360c35c
+guid: e57b81d4667306a4683da0f22533365c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: Material_001
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Icosphere_004
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_001
-    second: {fileID: 2100000, guid: fda917bd5ff27d448b3b5ad2898cc186, type: 2}
+    second: {fileID: 2100000, guid: 93b7e9b6a3cda8043b6feae1207e5837, type: 2}
   materials:
     importMaterials: 0
     materialName: 0
@@ -47,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -68,7 +68,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.2
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

@@ -60,12 +60,8 @@ public class BaseMovement : MonoBehaviour
     protected IEnumerator loseControlUntilGrounded()
     {
         canMove = false;
-
-        while (!animatingCharacter.GetComponent<AnimatedMover>().IsGrounded())
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
+		AnimatedMover animatedMover = animatingCharacter.GetComponent<AnimatedMover>();
+		yield return new WaitUntil( () => animatedMover.IsGrounded());
         canMove = true;
     }
 }

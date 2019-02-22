@@ -19,6 +19,14 @@ public class CameraController : Singleton<CameraController>
 	private float height;
 	private float currentRotationDegrees;
 
+	void Start()
+	{
+		if(toFollow == null)
+		{
+			toFollow = GameObject.FindWithTag("Player");
+		}
+	}
+
     void OnValidate()
     {
 		offset = new Vector3(cameraDistance * Mathf.Cos(cameraAngle * Mathf.Deg2Rad), cameraDistance * Mathf.Sin(cameraAngle * Mathf.Deg2Rad), 0);	
