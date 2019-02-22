@@ -105,7 +105,7 @@ public class PlayerInteraction : MonoBehaviour
     //Probably want the item to be offset from the player in the direction they are facing
     void UpdateHoldablePosition()
     {
-        heldItemInteraction.gameObject.transform.position = transform.position + CameraController.instance.forwardDirection.normalized;
+        heldItemInteraction.gameObject.transform.position = transform.position + transform.forward;
     }
 
     //Called when the item is used or dropped
