@@ -1,27 +1,22 @@
 fileFormatVersion: 2
-guid: f41332772550c5e45bfcdb0fca07de6c
+guid: a34704f7224680f4cae3fb4ae4cf84f7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Camera
-    100002: Cylinder.002
-    100004: Sun
-    100006: Sun.001
-    100008: //RootNode
-    400000: Camera
-    400002: Cylinder.002
-    400004: Sun
-    400006: Sun.001
-    400008: //RootNode
-    2000000: Camera
-    2100000: Tree
-    2100002: Leaves
-    2300000: Cylinder.002
-    3300000: Cylinder.002
-    4300000: Cylinder.002
-    10800000: Sun
-    10800002: Sun.001
-  externalObjects: {}
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Material_002
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Icosphere
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002
+    second: {fileID: 2100000, guid: fda917bd5ff27d448b3b5ad2898cc186, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -74,7 +69,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -101,7 +96,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
