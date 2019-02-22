@@ -6,11 +6,9 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float movementSpeedInspector;
     [SerializeField] private float strengthInspector;
-    [SerializeField] private float healthInspector;
     [SerializeField] private float maxHealthInspector;
     [HideInInspector] public Stat movementSpeed;
     [HideInInspector] public Stat strength;
-    [HideInInspector] public Stat health;
     [HideInInspector] public Stat maxHealth;
 
 	//Just used to set stat values in the inspector
@@ -20,9 +18,10 @@ public class PlayerStats : MonoBehaviour
         //Debug.Log("updating the baseValue from " + movementSpeed.value + " to " + movementSpeedInspector);
         movementSpeed.SetBaseValue(movementSpeedInspector);
         strength.SetBaseValue(strengthInspector);
-        health.SetBaseValue(healthInspector);
         maxHealth.SetBaseValue(maxHealthInspector);
     }
+
+    
 
     // public void TakeDamage(int delta)
     // {
@@ -39,8 +38,4 @@ public class PlayerStats : MonoBehaviour
     //     health = (health > maxHealth) ? maxHealth : health;
     // }
 
-    void Die()
-    {
-        //DIE
-    }
 }

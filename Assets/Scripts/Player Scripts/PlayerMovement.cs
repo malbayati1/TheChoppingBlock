@@ -2,40 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : BaseMovement
 {
-    public GameObject animatingPlayer;
-    public float maxDistanceFromAnimatingPayer;
     private PlayerStats stats;
-    private Rigidbody rb;
 
-	private Vector3 movementDirection;
-
-    void Awake()
+    // Start because some things are not  ready by Awake
+    void Start()
     {
-        stats = animatingPlayer.GetComponent<PlayerStats>();
-        rb = GetComponent<Rigidbody>();
+        stats = animatingCharacter.GetComponent<PlayerStats>();
     }
 
     void Update()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
-		movementDirection = moveVertical * CameraController.instance.forwardDirection + moveHorizontal * CameraController.instance.rightDirection;
-        rb.velocity = movementDirection.normalized * stats.movementSpeed.value;
-        //this assignment is to work well with being a focus for animation
-        //the position of this object is lerped to constantly by the animating thing so its important that
-        //to avoid walking through walls, this focus exists at roughly the same height as the player animator so
-        //that this object collides with things the player would collide with
-        //so focus cannot schloop through walls and let the player follow.
-        transform.position = new Vector3(
-            transform.position.x,
-            animatingPlayer.transform.position.y,
-            transform.position.z);
-        //teleport the focus back to the player if the focus gets unreasonably far away
-        if(Vector3.Distance(transform.position, animatingPlayer.transform.position) > maxDistanceFromAnimatingPayer)
-        {
-            transform.position = animatingPlayer.transform.position;
-        }
+        Debug.Log("Heh? "+ moveHorizontal + " hm " +moveVertical);
+		Move(moveHorizontal, moveVertical);
+    }
+
+    public override void Move(float xInput, float zInput)
+    {
+        base.Move(xInput, zInput);
+        Debug.Log(rb.velocity);
+        rb.velocity *= stats.movementSpeed.value;
     }
 }

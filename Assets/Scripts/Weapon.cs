@@ -8,6 +8,10 @@ public class Weapon : HoldableItem
 {
 	public Vector3 heldPositionOffset = new Vector3(0f, 0f, -.5f);
 	public Vector3 heldRotationOffset = new Vector3(-90f, 180f, 0f);
+
+	public float knockbackModifier = 1f;
+
+	public int damageModifier = 1;
 	
 	private float rotationDegreesPerSecond = 180f;
 
@@ -41,5 +45,24 @@ public class Weapon : HoldableItem
     public override void Drop(GameObject from)
 	{
 		base.Drop(from);
+	}
+
+	protected override void OnTriggerEnter(Collider col)
+    {
+		base.OnTriggerEnter(col);
+
+		if (isHeld  && col.gameObject.CompareTag("Enemy"))
+		{
+			Unit unit = col.gameObject.GetComponent<Unit>();
+			if (unit != null)
+			{
+				PlayerStats stats = heldBy.GetComponent<PlayerStats>();
+				int damage = Mathf.RoundToInt(stats.strength.value) * damageModifier;
+				float knockback = knockbackModifier * stats.strength.value;
+				Vector3 direction = transform.forward.normalized;
+
+				unit.GetHit(damage, direction, knockback);
+			}
+		}
 	}
 }

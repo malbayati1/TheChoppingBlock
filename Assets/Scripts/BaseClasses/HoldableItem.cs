@@ -10,6 +10,8 @@ public class HoldableItem : MonoBehaviour, IHoldable
 
     private bool canBePickedUp;
 
+    protected GameObject heldBy;
+
     protected virtual void Start()
     {
         canBePickedUp = true;
@@ -28,11 +30,12 @@ public class HoldableItem : MonoBehaviour, IHoldable
     IEnumerator PickupCooldown()
     {
         isHeld = false;
+        heldBy = null;
         yield return new WaitForSeconds(PICKUPCOOLDOWN);
         canBePickedUp = true;
     }
 
-    void OnTriggerEnter(Collider col)
+    protected virtual void OnTriggerEnter(Collider col)
     {
         //Debug.Log("entering");
         if (canBePickedUp && col.gameObject.CompareTag("Player"))
@@ -41,6 +44,7 @@ public class HoldableItem : MonoBehaviour, IHoldable
             {
                 canBePickedUp = false;
                 isHeld = true;
+                heldBy = col.gameObject;
             }
         }
     }

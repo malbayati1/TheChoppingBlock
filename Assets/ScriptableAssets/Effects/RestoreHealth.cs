@@ -11,7 +11,7 @@ public class RestoreHealth : Effect
     public override bool OnApply(PlayerEffects p)
 	{
 		Debug.Log("APPLYING RESTORE HEALTH");
-		p.stats.health.SetBaseValue(p.stats.health.value += potency);
+//		p.stats.health.SetBaseValue(p.stats.health.value += potency);
 		return base.OnApply(p);
 	}
     public override void OnRemove(PlayerEffects p)
