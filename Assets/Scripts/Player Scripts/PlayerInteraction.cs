@@ -106,6 +106,7 @@ public class PlayerInteraction : MonoBehaviour
     void UpdateHoldablePosition()
     {
         heldItemInteraction.gameObject.transform.position = transform.position + transform.forward;
+        heldItemInteraction.gameObject.transform.rotation = transform.rotation;
     }
 
     //Called when the item is used or dropped

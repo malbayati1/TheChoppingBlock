@@ -152,7 +152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topOfSlotLocation: {fileID: 2920020210772530839}
+  addTime: 0
+  dropTime: 0
+  spitOutRadius: 4
   currentMixture: {fileID: 0}
+  toCheck: []
 --- !u!54 &859363606920771877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,7 +183,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3.95
+  m_Radius: 4.2
   m_Height: 5.06
   m_Direction: 1
   m_Center: {x: 0, y: 0.4, z: 0}
