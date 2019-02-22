@@ -16,14 +16,14 @@ public class PlayerMovement : BaseMovement
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
-        Debug.Log("Heh? "+ moveHorizontal + " hm " +moveVertical);
+        //Debug.Log("Heh? "+ moveHorizontal + " hm " +moveVertical);
 		Move(moveHorizontal, moveVertical);
     }
 
     public override void Move(float xInput, float zInput)
     {
         base.Move(xInput, zInput);
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
         rb.velocity *= stats.movementSpeed.value;
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SeasonUI : MonoBehaviour
+public class SeasonUI : SeasonalObject
 {
     public Sprite summerSprite;
 	public Sprite springSprite;
@@ -22,17 +22,6 @@ public class SeasonUI : MonoBehaviour
 		seasonImage = transform.Find("SeasonIcon").gameObject.GetComponent<Image>();
 		seasonText = transform.Find("SeasonText").gameObject.GetComponent<Text>();
 		seasonTimerText = transform.Find("TimerText").gameObject.GetComponent<Text>();
-		//HandleSeasonChange(SeasonManager.instance.GetCurrentSeason());
-	}
-
-    void OnEnable()
-    {
-        SeasonManager.instance.seasonChangeEvent += HandleSeasonChange;
-    }
-
-	void OnDisable()
-	{
-		SeasonManager.instance.seasonChangeEvent -= HandleSeasonChange;
 	}
 
 	void Update()
@@ -41,39 +30,35 @@ public class SeasonUI : MonoBehaviour
 		seasonTimerText.text = (localTimer >= 10) ? string.Format("{0}:{1:D2}", (int)localTimer / 60, (int)localTimer % 60)  : string.Format("{0:F2}", localTimer);
 	}
 
-	void HandleSeasonChange(Season s)
+	public override void HandleSeasonChange(Season s)
 	{
 		localTimer = SeasonManager.instance.seasonTimer;
-		switch(s)
-		{
-			case Season.Spring:
-			{
-				seasonImage.sprite = springSprite;
-				seasonText.text = "Spring";
-			} break;
+		base.HandleSeasonChange(s);
+	}
 
-			case Season.Summer:
-			{
-				seasonImage.sprite = summerSprite;
-				seasonText.text = "Summer";
-			} break;
+	protected override void Spring()
+	{
+		UpdateUI(springSprite, "Spring");
+	}
 
-			case Season.Fall:
-			{
-				seasonImage.sprite = fallSprite;
-				seasonText.text = "Fall";
-			} break;
+	protected override void Summer()
+	{
+		UpdateUI(summerSprite, "Summer");
+	}
 
-			case Season.Winter:
-			{
-				seasonImage.sprite = winterSprite;
-				seasonText.text = "Winter";
-			} break;
+	protected override void Fall()
+	{
+		UpdateUI(fallSprite, "Fall");
+	}
 
-			default:
-			{
+	protected override void Winter()
+	{
+		UpdateUI(winterSprite, "Winter");
+	}
 
-			} break;
-		}
+	void UpdateUI(Sprite s, string t)
+	{
+		seasonImage.sprite = s;
+		seasonText.text = t;
 	}
 }
