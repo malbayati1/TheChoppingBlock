@@ -45,5 +45,12 @@ public class TestAnimation : MonoBehaviour
             transform.position.y,
             oldXZPos[1] + positionChange[1]
             );
+        //update rotation to face towards the focus at all times
+        Quaternion newRot = new Quaternion();
+        Vector2 diffFromTracked = new Vector2(
+            transform.position.x - trackedObj.transform.position.x,
+            transform.position.z - trackedObj.transform.position.z);
+        newRot.eulerAngles = new Vector3(0, Mathf.Rad2Deg * Mathf.Atan2(diffFromTracked.x, diffFromTracked.y) + 180, 0);
+        transform.rotation = newRot;
     }
 }
