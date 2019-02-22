@@ -4,8 +4,6 @@ using UnityEngine;
 
 public interface IHoldable
 {
-	//WE ALWAYS ASSUME THAT THIS CONSUMES THE ITEM
-	//they should be bools if not
-    void Use(GameObject user);
+    bool Use(GameObject user);
     void Drop(GameObject droppedBy);
 }

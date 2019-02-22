@@ -4,44 +4,44 @@ using UnityEngine;
 
 public class HoldableItem : MonoBehaviour, IHoldable
 {
-	private const float PICKUPCOOLDOWN = 3f;
+    private const float PICKUPCOOLDOWN = 3f;
 
-	public bool isHeld;
+    public bool isHeld;
 
-	private bool canBePickedUp;
+    private bool canBePickedUp;
 
-	protected virtual void Start()
-	{
-		canBePickedUp = true;
-	}
-
-	public virtual void Use(GameObject user)
-	{
-
-	}
-
-	public virtual void Drop(GameObject droppedBy)
-	{
-		StartCoroutine(PickupCooldown());
-	}
-
-	IEnumerator PickupCooldown()
-	{
-		isHeld = false;
-		yield return new WaitForSeconds(PICKUPCOOLDOWN);
-		canBePickedUp = true;
-	}
-
-	void OnTriggerEnter(Collider col)
+    protected virtual void Start()
     {
-		//Debug.Log("entering");
-		if(canBePickedUp && col.gameObject.CompareTag("Player"))
-		{
-			if(col.gameObject.GetComponent<PlayerInteraction>().TryToPickUp(gameObject, this))
-			{
-				canBePickedUp = false;
-				isHeld = true;
-			}			
-		}
-	}
+        canBePickedUp = true;
+    }
+
+    public virtual bool Use(GameObject user)
+    {
+			return true;
+    }
+
+    public virtual void Drop(GameObject droppedBy)
+    {
+        StartCoroutine(PickupCooldown());
+    }
+
+    IEnumerator PickupCooldown()
+    {
+        isHeld = false;
+        yield return new WaitForSeconds(PICKUPCOOLDOWN);
+        canBePickedUp = true;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        //Debug.Log("entering");
+        if (canBePickedUp && col.gameObject.CompareTag("Player"))
+        {
+            if (col.gameObject.GetComponent<PlayerInteraction>().TryToPickUp(gameObject, this))
+            {
+                canBePickedUp = false;
+                isHeld = true;
+            }
+        }
+    }
 }

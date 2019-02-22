@@ -27,10 +27,11 @@ public class InGameIngredient : HoldableItem
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}
 
-    public override void Use(GameObject user)
+    public override bool Use(GameObject user)
 	{
 		user.GetComponent<PlayerEffects>().AddEffect(ingredientData.effect);
 		Destroy(gameObject);
+		return true;
 	}
 
     public override void Drop(GameObject from)

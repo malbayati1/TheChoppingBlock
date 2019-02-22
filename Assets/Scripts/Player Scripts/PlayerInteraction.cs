@@ -36,8 +36,10 @@ public class PlayerInteraction : MonoBehaviour
             UpdateHoldablePosition();
             if (Input.GetButtonDown("Use"))
             {
-                heldItemInteraction.Use(gameObject);
-                ClearFields();
+                if (heldItemInteraction.Use(gameObject))
+                {
+                    ClearFields();
+                }
             }
             else if (Input.GetButtonDown("Drop"))
             {
