@@ -40,7 +40,9 @@ public class CameraController : Singleton<CameraController>
 
 	public void UpdatePosition(bool lerp)
 	{
-		transform.position = Vector3.Lerp(transform.position, toFollow.transform.position + offset, (lerp) ? lerpFactor : 1);
+		Vector3 targetPosition =  toFollow.transform.position + offset;
+		targetPosition.y = offset.y;
+		transform.position = Vector3.Lerp(transform.position, targetPosition, (lerp) ? lerpFactor : 1);
 	}
 
 	public void UpdateRotationAndOffset()
