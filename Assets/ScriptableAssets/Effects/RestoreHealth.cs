@@ -14,8 +14,4 @@ public class RestoreHealth : Effect
 //		p.stats.health.SetBaseValue(p.stats.health.value += potency);
 		return base.OnApply(p);
 	}
-    public override void OnRemove(PlayerEffects p)
-	{
-
-	}
 }

@@ -16,6 +16,7 @@ public class InGameIngredient : HoldableItem
 		ingredientData.effect = Object.Instantiate(ingredientData.effect) as Effect;
 		ingredientData.effect.maxDuration = ingredientData.duration;
 		ingredientData.effect.currentDuration = ingredientData.duration;
+		ingredientData.effect.potency = ingredientData.potency;
 	}
 
 	void Update()

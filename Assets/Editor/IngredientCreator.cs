@@ -28,7 +28,7 @@ public class IngredientCreator : EditorWindow
 		{
 			toCreate.name = EditorGUILayout.TextField("Name:", toCreate.name);
 			toCreate.effect = EditorGUILayout.ObjectField(toCreate.effect, typeof(Effect), false) as Effect;
-			toCreate.potency = EditorGUILayout.FloatField("Potency:", toCreate.potency);
+			toCreate.potency = EditorGUILayout.IntField("Potency:", toCreate.potency);
 			toCreate.duration = EditorGUILayout.FloatField("Duration:", toCreate.duration);
 			toCreate.rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity:", toCreate.rarity);
 

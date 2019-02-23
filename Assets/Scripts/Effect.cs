@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class Effect : ScriptableObject
 {
-    public float currentDuration;
-    public float maxDuration;
-	public float potency = 1;
+    [HideInInspector] public float currentDuration;
+    [HideInInspector] public float maxDuration;
+	[HideInInspector] public int potency;
 
 	//returns true if it should be destroyed (one shot effects/duration 0)
     public virtual bool OnApply(PlayerEffects p)
@@ -17,7 +17,10 @@ public abstract class Effect : ScriptableObject
 		}
 		return false;
 	}
-    public abstract void OnRemove(PlayerEffects p);
+    public virtual void OnRemove(PlayerEffects p)
+	{
+
+	}
 	
 	//returns true when it should be destroyed
     public virtual bool Tick(float deltaTime, PlayerEffects p)

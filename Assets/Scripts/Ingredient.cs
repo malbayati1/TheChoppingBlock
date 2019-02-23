@@ -9,7 +9,7 @@ public class Ingredient : ScriptableObject
 	public string name;
 	public int ID;
     [SerializeField] public Effect effect;
-    public float potency = 1;
+    public int potency;
     public float duration;   
     public Rarity rarity;
     [HideInInspector] public bool isPreserved = false;
