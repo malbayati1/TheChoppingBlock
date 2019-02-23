@@ -18,18 +18,30 @@ public class SeasonalTree : SeasonalObject
 
 	protected override void Spring()
 	{
-		meshRenderer.material = springMat;
+		StartCoroutine(ChangeColor(springMat));
 	}
 	protected override void Summer()
 	{
-		meshRenderer.material = summerMat;
+		StartCoroutine(ChangeColor(summerMat));
 	}
 	protected override void Fall()
 	{
-		meshRenderer.material = fallMat;
+		StartCoroutine(ChangeColor(fallMat));
 	}
 	protected override void Winter()
 	{
-		meshRenderer.material = winterMat;
+		StartCoroutine(ChangeColor(winterMat));
+	}
+
+	IEnumerator ChangeColor(Material mat)
+	{
+		meshRenderer.material = mat;
+		float timer = 0;
+		while(timer < 3f)
+		{
+			timer += Time.deltaTime;
+			meshRenderer.material.SetFloat("_BlendAmt", timer / 3f);
+			yield return null;
+		}
 	}
 }

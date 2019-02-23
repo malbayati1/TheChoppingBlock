@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &4940994344482244334
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434300343416806854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: a34704f7224680f4cae3fb4ae4cf84f7, type: 3}
 --- !u!114 &1765396830364651928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   springMat: {fileID: 2100000, guid: fda917bd5ff27d448b3b5ad2898cc186, type: 2}
-  summerMat: {fileID: 2100000, guid: fda917bd5ff27d448b3b5ad2898cc186, type: 2}
+  summerMat: {fileID: 2100000, guid: da16dc5d76650944dbaa1b70be409f33, type: 2}
   fallMat: {fileID: 2100000, guid: dc78f69fcdb78ad4bb7bec1e8f025245, type: 2}
   winterMat: {fileID: 2100000, guid: a90f79a84b9ea1a438caecc2bbcffbc9, type: 2}
 --- !u!1 &4478754491867099776

@@ -27,6 +27,11 @@ public class SeasonManager : Singleton<SeasonManager>
     {
         timer += Time.deltaTime; 
         seasonTimer -= Time.deltaTime;
+        if(seasonTimer <= 0)
+        {
+            seasonTimer = 7f;
+            ChangeSeason();
+        }
     }
 
     void ChangeSeason()
