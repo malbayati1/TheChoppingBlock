@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff6895171f24c044aa008bca1aa95c1f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - springMat: {fileID: 2100000, guid: 5d10d43f82aaed0479cc9f4447f8c6bb, type: 2}
+  - summerMat: {fileID: 2100000, guid: 6309c799868c7cd49beded533bfd25f5, type: 2}
+  - fallMat: {fileID: 2100000, guid: d10f46c02a08cc94c98b9d7a15192c71, type: 2}
+  - winterMat: {fileID: 2100000, guid: 0b0ee7a0175bb8546807a362dac75c29, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

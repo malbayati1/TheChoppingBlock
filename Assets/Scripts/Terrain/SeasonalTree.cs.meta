@@ -3,7 +3,11 @@ guid: 7ce232e28f21b764f879c9f50bca082d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - springMat: {fileID: 2100000, guid: fda917bd5ff27d448b3b5ad2898cc186, type: 2}
+  - summerMat: {fileID: 2100000, guid: da16dc5d76650944dbaa1b70be409f33, type: 2}
+  - fallMat: {fileID: 2100000, guid: dc78f69fcdb78ad4bb7bec1e8f025245, type: 2}
+  - winterMat: {fileID: 2100000, guid: a90f79a84b9ea1a438caecc2bbcffbc9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
