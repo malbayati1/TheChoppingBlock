@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c1aaa8fb07d4a074c9d5bb49a253fccc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c1aaa8fb07d4a074c9d5bb49a253fccc, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c1aaa8fb07d4a074c9d5bb49a253fccc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.37607214

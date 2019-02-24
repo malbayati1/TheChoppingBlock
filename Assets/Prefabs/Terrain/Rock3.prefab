@@ -31,6 +31,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &3633386693036859623
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640517067833604252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
 --- !u!114 &5198914306381698724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,20 +61,6 @@ MonoBehaviour:
   summerMat: {fileID: 2100000, guid: 6309c799868c7cd49beded533bfd25f5, type: 2}
   fallMat: {fileID: 2100000, guid: d10f46c02a08cc94c98b9d7a15192c71, type: 2}
   winterMat: {fileID: 2100000, guid: 0b0ee7a0175bb8546807a362dac75c29, type: 2}
---- !u!64 &3633386693036859623
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640517067833604252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
 --- !u!1001 &7640517067833507388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
       propertyPath: m_Name
       value: Rock3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 46d68037bf74f3843bec42afdc8ecbb6, type: 3}
       propertyPath: m_LocalPosition.x
