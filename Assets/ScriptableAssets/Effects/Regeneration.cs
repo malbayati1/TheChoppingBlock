@@ -11,14 +11,12 @@ public class Regeneration : Effect
 	private float timePerHeal;
 	private float timer;
 	private int remainderHeal;
-	private Health hp;
 
 	public override bool OnApply(PlayerEffects p)
 	{
 		timePerHeal = maxDuration / potency;
 		timer = 0;
 		remainderHeal = (int)potency;
-		hp = p.gameObject.GetComponent<Health>();
 		return base.OnApply(p);
 	}
 
@@ -30,7 +28,7 @@ public class Regeneration : Effect
 			--remainderHeal;
 			timer = 0;
 			Debug.Log("healing 1");
-			hp.Heal(1);
+			p.stats.health.Heal(1);
 		}
 		return base.Tick(deltaTime, p);
 	}
@@ -38,6 +36,6 @@ public class Regeneration : Effect
 	public override void OnRemove(PlayerEffects p)
 	{
 		Debug.Log("healing " + remainderHeal);
-		hp.Heal(remainderHeal);
+		p.stats.health.Heal(remainderHeal);
 	}
 }

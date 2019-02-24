@@ -13,7 +13,7 @@ public class BaseMovement : MonoBehaviour
 
     protected AnimatedMover mover;
 
-    void Awake()
+    protected virtual void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         mover = GetComponentInChildren<AnimatedMover>();

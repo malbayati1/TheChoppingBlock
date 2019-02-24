@@ -38,14 +38,14 @@ public class Unit : MonoBehaviour
             return;
         }
 
-        health.Damage(damage);
-
         Vector2 horizontalKnockback = (new Vector2(hitDirection.x, hitDirection.z)).normalized * knockbackBase.x;
 
         Vector3 fullKnockback = new Vector3(horizontalKnockback.x, knockbackBase.y * knockbackModifier, horizontalKnockback.y);
 
         movement.Push(fullKnockback);
 
-        StartCoroutine(hitCooldown());        
+        StartCoroutine(hitCooldown());      
+
+		health.Damage(damage);  
     }
 }

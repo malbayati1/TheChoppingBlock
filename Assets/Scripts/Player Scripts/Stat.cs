@@ -12,7 +12,17 @@ public class Stat
 {
 	//USE ME TO ACCESS CURRENT FINAL VALUE
 	//SHOULD BE KEPT UPDATED AS BONUSES ARE ADDED AND REMOVED
-    public float value;
+    public float Value
+	{
+		get
+		{
+			return _value;
+		}
+	}
+	private float _value;
+
+	public delegate void StatChangeDelegate(float value);
+	public event StatChangeDelegate statChangeEvent = delegate {};
 
     private float baseValue;
     private List<float> multiplicativeModifiers = new List<float>();
@@ -29,7 +39,8 @@ public class Stat
         {
             finalResult *= f;
         }
-        value = finalResult;
+        _value = finalResult;
+		statChangeEvent(_value);
     }
 
     public void SetBaseValue(float f)

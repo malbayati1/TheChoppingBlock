@@ -28,7 +28,7 @@ public class AnimatedMover : MonoBehaviour
         }
         else if (IsGrounded())
         {
-            Debug.Log("hmm");
+            //Debug.Log("hmm");
             //cause a hop upwards
             rb.velocity = Vector3.up * upVelo;
         }  

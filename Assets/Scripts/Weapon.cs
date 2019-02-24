@@ -57,8 +57,8 @@ public class Weapon : HoldableItem
 			if (unit != null)
 			{
 				PlayerStats stats = heldBy.GetComponent<PlayerStats>();
-				int damage = Mathf.RoundToInt(stats.strength.value) * damageModifier;
-				float knockback = knockbackModifier * stats.strength.value;
+				int damage = Mathf.RoundToInt(stats.strength.Value) * damageModifier;
+				float knockback = knockbackModifier * stats.strength.Value;
 				Vector3 direction = transform.forward.normalized;
 
 				unit.GetHit(damage, direction, knockback);

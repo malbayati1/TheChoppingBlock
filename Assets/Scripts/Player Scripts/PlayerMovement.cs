@@ -6,11 +6,26 @@ public class PlayerMovement : BaseMovement
 {
     private PlayerStats stats;
 
-    // Start because some things are not  ready by Awake
-    void Start()
+    protected override void Awake()
     {
+		base.Awake();
         stats = GetComponent<PlayerStats>();
     }
+
+	void Start()
+	{
+		SetMoveSpeed(stats.movementSpeed.Value);
+	}
+
+	void OnEnable()
+	{
+		stats.movementSpeed.statChangeEvent += SetMoveSpeed;
+	}
+
+	void OnDisable()
+	{
+		stats.movementSpeed.statChangeEvent -= SetMoveSpeed;
+	}
 
     void Update()
     {
@@ -28,4 +43,9 @@ public class PlayerMovement : BaseMovement
         //zInput *= stats.movementSpeed.value;
         base.Move(xInput, zInput);
     }
+
+	void SetMoveSpeed(float speed)
+	{
+		navMeshAgent.speed = speed;
+	}
 }

@@ -17,6 +17,6 @@ public class BaseEnemy : Unit
     void Update()
     {
         //transform.LookAt(player.transform, Vector3.up);
-        GetComponent<BaseMovement>().Move(player.transform.position);
+        movement.Move(player.transform.position);
     }
 }

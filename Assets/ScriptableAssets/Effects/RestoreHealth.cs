@@ -10,8 +10,8 @@ public class RestoreHealth : Effect
 
     public override bool OnApply(PlayerEffects p)
 	{
-		Debug.Log("APPLYING RESTORE HEALTH");
-//		p.stats.health.SetBaseValue(p.stats.health.value += potency);
+		//Debug.Log("APPLYING RESTORE HEALTH");
+		p.stats.health.Heal(potency);
 		return base.OnApply(p);
 	}
 }
