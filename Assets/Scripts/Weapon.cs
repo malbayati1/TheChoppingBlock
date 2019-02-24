@@ -53,7 +53,7 @@ public class Weapon : HoldableItem
 
 		if (isHeld  && col.gameObject.CompareTag("Enemy"))
 		{
-			Unit unit = col.gameObject.GetComponent<Unit>();
+			Unit unit = col.transform.parent.gameObject.GetComponent<Unit>();
 			if (unit != null)
 			{
 				PlayerStats stats = heldBy.GetComponent<PlayerStats>();

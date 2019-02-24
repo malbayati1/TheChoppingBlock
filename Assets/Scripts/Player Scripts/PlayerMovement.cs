@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
+
 public class PlayerMovement : BaseMovement
 {
     private PlayerStats stats;
@@ -9,21 +9,23 @@ public class PlayerMovement : BaseMovement
     // Start because some things are not  ready by Awake
     void Start()
     {
-        stats = animatingCharacter.GetComponent<PlayerStats>();
+        stats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
-        //Debug.Log("Heh? "+ moveHorizontal + " hm " +moveVertical);
-		Move(moveHorizontal, moveVertical);
+        
+        Vector2 moveInput = new Vector2(moveHorizontal, moveVertical).normalized;
+
+		Move(moveInput.x, moveInput.y);
     }
 
     public override void Move(float xInput, float zInput)
     {
+        //xInput *= stats.movementSpeed.value;
+        //zInput *= stats.movementSpeed.value;
         base.Move(xInput, zInput);
-        //Debug.Log(rb.velocity);
-        rb.velocity *= stats.movementSpeed.value;
     }
 }

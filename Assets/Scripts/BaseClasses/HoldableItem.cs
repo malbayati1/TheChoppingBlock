@@ -40,11 +40,11 @@ public class HoldableItem : MonoBehaviour, IHoldable
         //Debug.Log("entering");
         if (canBePickedUp && col.gameObject.CompareTag("Player"))
         {
-            if (col.gameObject.GetComponent<PlayerInteraction>().TryToPickUp(gameObject, this))
+            if (col.transform.parent.GetComponent<PlayerInteraction>().TryToPickUp(gameObject, this))
             {
                 canBePickedUp = false;
                 isHeld = true;
-                heldBy = col.gameObject;
+                heldBy = col.transform.parent.gameObject;
             }
         }
     }

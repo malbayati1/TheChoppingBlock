@@ -11,22 +11,17 @@ public class Unit : MonoBehaviour
 
     public float hitImmunityCoolDown = 1.5f;
 
-    public GameObject moveTargetPrefab;
-
     [HideInInspector] public Health health;
 
-    protected GameObject moveTarget;
-
     protected bool canBeHit = true;
+
+    protected BaseMovement movement;
 
     protected virtual void Awake()
     {
         health = GetComponent<Health>();
 
-        moveTarget = GameObject.Instantiate(moveTargetPrefab);
-        moveTarget.GetComponent<BaseMovement>().animatingCharacter = gameObject;
-
-        GetComponent<AnimatedMover>().trackedObj = moveTarget;
+        movement = GetComponent<BaseMovement>();
     }
 
     protected virtual IEnumerator hitCooldown()
@@ -49,7 +44,7 @@ public class Unit : MonoBehaviour
 
         Vector3 fullKnockback = new Vector3(horizontalKnockback.x, knockbackBase.y * knockbackModifier, horizontalKnockback.y);
 
-        moveTarget.GetComponent<BaseMovement>().Push(fullKnockback);
+        movement.Push(fullKnockback);
 
         StartCoroutine(hitCooldown());        
     }

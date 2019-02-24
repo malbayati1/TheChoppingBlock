@@ -1,58 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
 public class BaseMovement : MonoBehaviour
 {
-    [HideInInspector]
-    public GameObject animatingCharacter;
-    public float maxDistanceFromAnimatingCharacter;
-    protected Rigidbody rb;
-
     protected bool canMove = true;
 
 	protected Vector3 movementDirection;
 
+    protected NavMeshAgent navMeshAgent;
+
+    protected AnimatedMover mover;
+
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        mover = GetComponentInChildren<AnimatedMover>();
     }
 
     public virtual void Move(float xInput, float zInput)
     {
+        if (xInput != 0 || zInput !=0)
+        {
+            Vector3 delta = new Vector3(xInput, 0f, zInput);
+            Move(transform.position + delta, delta); 
+        }
+    }
+
+    public virtual void Move(Vector3 target, Vector3 delta = new Vector3())
+    {
         if (!canMove)
         {
-            Debug.Log("Nope");
-            animatingCharacter.GetComponent<AnimatedMover>().Move(0f, 0f);
             return;
         }
-
-        float moveHorizontal = xInput;
-        float moveVertical = zInput;
-		movementDirection = moveVertical * CameraController.instance.forwardDirection + moveHorizontal * CameraController.instance.rightDirection;
-        rb.velocity = movementDirection.normalized;
-        //this assignment is to work well with being a focus for animation
-        //the position of this object is lerped to constantly by the animating thing so its important that
-        //to avoid walking through walls, this focus exists at roughly the same height as the player animator so
-        //that this object collides with things the player would collide with
-        //so focus cannot schloop through walls and let the player follow.
-        transform.position = new Vector3(
-            transform.position.x,
-            animatingCharacter.transform.position.y,
-            transform.position.z);
-        //teleport the focus back to the player if the focus gets unreasonably far away
-        if(Vector3.Distance(transform.position, animatingCharacter.transform.position) > maxDistanceFromAnimatingCharacter)
-        {
-            transform.position = animatingCharacter.transform.position;
-        }
-
-        animatingCharacter.GetComponent<AnimatedMover>().Move(xInput, zInput);
+        target.y = transform.position.y;
+        transform.LookAt(target, Vector3.up);
+        navMeshAgent.destination = target;
+        mover.Move(delta.x, delta.z);
     }
 
     public void Push(Vector3 impulse)
     {
-        rb.AddForce(impulse);
+        navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+
+        mover.Move(0f, 0f, impulse.y);
 
         StartCoroutine(loseControlUntilGrounded());
     }
@@ -60,8 +52,12 @@ public class BaseMovement : MonoBehaviour
     protected IEnumerator loseControlUntilGrounded()
     {
         canMove = false;
-		AnimatedMover animatedMover = animatingCharacter.GetComponent<AnimatedMover>();
-		yield return new WaitUntil( () => animatedMover.IsGrounded());
+		yield return new WaitUntil(() => IsGrounded());
         canMove = true;
+    }
+
+    protected bool IsGrounded()
+    {
+        return mover.IsGrounded();
     }
 }
