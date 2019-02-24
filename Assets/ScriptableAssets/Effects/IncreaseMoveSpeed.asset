@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23b371867448a4e962f7ea4bbf3330, type: 3}
   m_Name: IncreaseMoveSpeed
   m_EditorClassIdentifier: 
+  description: Increase Movement Speed
   currentDuration: 0
   maxDuration: 0
   potency: 1

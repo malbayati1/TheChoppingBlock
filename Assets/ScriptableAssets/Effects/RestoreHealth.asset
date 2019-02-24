@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e8e25c349cc784cb80276f40a7733b, type: 3}
   m_Name: RestoreHealth
   m_EditorClassIdentifier: 
+  description: Restore Health
   currentDuration: 0
   maxDuration: 0
   potency: 1

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Effect : ScriptableObject
 {
+	public string description;
     [HideInInspector] public float currentDuration;
     [HideInInspector] public float maxDuration;
 	[HideInInspector] public int potency;

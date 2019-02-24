@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e19ae30ee8ff7b48bd064f7d40570cd, type: 3}
   m_Name: Regeneration
   m_EditorClassIdentifier: 
+  description: Regenerate Health
   currentDuration: 0
   maxDuration: 0
   potency: 1
