@@ -13,10 +13,13 @@ public class BaseMovement : MonoBehaviour
 
     protected AnimatedMover mover;
 
+    protected Unit unit;
+
     protected virtual void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         mover = GetComponentInChildren<AnimatedMover>();
+        unit = GetComponent<Unit>();
     }
 
     public virtual void Move(float xInput, float zInput)
@@ -25,6 +28,10 @@ public class BaseMovement : MonoBehaviour
         {
             Vector3 delta = new Vector3(xInput, 0f, zInput);
             Move(transform.position + delta, delta); 
+        }
+        else
+        {
+            navMeshAgent.destination = transform.position;
         }
     }
 
@@ -42,17 +49,21 @@ public class BaseMovement : MonoBehaviour
 
     public void Push(Vector3 impulse)
     {
-        navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+        impulse *= 2f;
+        //navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+        float time = unit.hitImmunityCoolDown;
+        //mover.Move(0f, 0f, impulse.y);
+        iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + new Vector3(impulse.x, 0f, impulse.z), "easeType", "easeOutExpo", "time", time));
+        iTween.MoveBy(gameObject, iTween.Hash("y",  impulse.y, "easeType", "easeOutExpo", "time", time * 2/3));
+        iTween.MoveBy(gameObject, iTween.Hash("y",  -impulse.y, "easeType", "easeInExpo", "time", time * 1/3, "delay", time * 2/3));
 
-        mover.Move(0f, 0f, impulse.y);
-
-        StartCoroutine(loseControlUntilGrounded());
+        StartCoroutine(loseControlForSeconds(time));
     }
 
-    protected IEnumerator loseControlUntilGrounded()
+    protected IEnumerator loseControlForSeconds(float delay)
     {
         canMove = false;
-		yield return new WaitUntil(() => IsGrounded());
+		yield return new WaitForSeconds(delay);
         canMove = true;
     }
 
