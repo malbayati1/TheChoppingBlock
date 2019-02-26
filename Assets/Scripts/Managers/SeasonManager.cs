@@ -15,11 +15,13 @@ public class SeasonManager : Singleton<SeasonManager>
 
     private float timer;    //MA 2/21: timer will continue until the game ends.
                             //Used to see how long player lasts. May need to change to mintues
+    private float resetTimer;   //Keeps track of the original timer
     private Season currentSeason;
 
     void Start()
     {
         currentSeason = Season.Spring;
+        resetTimer = timer;
     }
 
     // Muhammad 2/21/2019: Changed the timer
@@ -27,6 +29,11 @@ public class SeasonManager : Singleton<SeasonManager>
     {
         timer += Time.deltaTime; 
         seasonTimer -= Time.deltaTime;
+
+        if(timer <= 0)
+        {
+            timer = resetTimer;
+        }
     }
 
     void ChangeSeason()
