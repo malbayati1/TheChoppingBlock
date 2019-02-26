@@ -30,7 +30,7 @@ public class RecipeCreator : EditorWindow
             toCreate.name = EditorGUILayout.TextField("Name:", toCreate.name);
 
 			EditorGUILayout.BeginHorizontal();
-			newIngredient = EditorGUILayout.ObjectField(newIngredient, typeof(Ingredient), false) as Ingredient;
+			newIngredient = EditorGUILayout.ObjectField("New Ingredient:", newIngredient, typeof(Ingredient), false) as Ingredient;
 			if(GUILayout.Button("Add"))
 			{
 				toCreate.ingredients.Add(newIngredient);
@@ -44,7 +44,9 @@ public class RecipeCreator : EditorWindow
 			{
 				EditorGUILayout.LabelField(i.name);
 			}
-			EditorGUI.indentLevel++;
+			EditorGUI.indentLevel--;
+
+			toCreate.result = EditorGUILayout.ObjectField("Result Prefab:", toCreate.result, typeof(GameObject), false) as GameObject;
 
             if(GUILayout.Button("Create") && toCreate != null)
 			{

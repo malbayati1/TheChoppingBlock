@@ -754,8 +754,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.64278764, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 8.736483, y: 11.348078, z: 0}
+  m_LocalRotation: {x: 0.6087614, y: 0, z: 0, w: 0.7933533}
+  m_LocalPosition: {x: 7, y: 12.083733, z: -3.2378266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -774,12 +774,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toFollow: {fileID: 1011041074}
-  cameraDistance: 10
-  cameraAngle: 80
+  cameraDistance: 12.51
+  cameraAngle: 75
   lerpFactor: 1
   rotationDegreesPerSecond: 0
-  forwardDirection: {x: -0, y: -0, z: 1.7364823}
-  rightDirection: {x: 1.7364823, y: -0, z: 0}
+  forwardDirection: {x: -0, y: -0, z: 3.2378266}
+  rightDirection: {x: 3.2378266, y: -0, z: 0}
 --- !u!1001 &569994920
 PrefabInstance:
   m_ObjectHideFlags: 0
