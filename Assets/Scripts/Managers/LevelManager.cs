@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum Rarity { Common, Uncommon, Rare };
 
@@ -11,6 +12,7 @@ public class LevelManager : Singleton<LevelManager>
     public List<GameObject> springIngredients;
     public List<GameObject> fallIngredients;
     public List<GameObject> winterIngredients;
+    private List<GameObject> seasonalIngredients;   // MA 2/25: This will be used later to determine which season it is
 
     public float[] rarityTable = new float[Enum.GetNames(typeof(Rarity)).Length];
 
@@ -51,7 +53,30 @@ public class LevelManager : Singleton<LevelManager>
     
     void SpawnIngredients(Season s)
     {
-        //spawn ingredients based on the season, and the rarity table
-        //probably need to determine where to spawn the objects
+        // MA 2/25: Assign the seasonalIngredients to one of the other lists of ingredients
+        switch(s)
+        {
+            case Season.Summer:
+                seasonalIngredients = summerIngredients;
+                break;
+            case Season.Fall:
+                seasonalIngredients = fallIngredients;
+                break;
+            case Season.Winter:
+                seasonalIngredients = winterIngredients;
+                break;
+            case Season.Spring:
+                seasonalIngredients = springIngredients;
+                break;
+            default:
+                seasonalIngredients = summerIngredients;
+                break;
+        }
+
+        // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
+        for(int i = 0; i < seasonalIngredients.Count; i++)
+        {
+            Instantiate(seasonalIngredients[i], new Vector3(Random.Range(0.0f, 50f), 0, Random.Range(0.0f, 50f)), Quaternion.identity);
+        }
     }
 }
