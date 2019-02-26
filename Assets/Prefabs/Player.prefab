@@ -84,12 +84,7 @@ MonoBehaviour:
   movementSpeedInspector: 6
   strengthInspector: 1
   maxHealthInspector: 10
-  movementSpeed:
-    value: 6
-  strength:
-    value: 1
-  maxHealth:
-    value: 10
+  health: {fileID: 0}
 --- !u!114 &4000268747280595573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d91f0b84830d3f4e84882084fff0627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectTextPrefab: {fileID: 0}
+  effectTextLocation: {fileID: 0}
+  effectTextHUD: {fileID: 0}
   stats: {fileID: 0}
 --- !u!114 &4000268747280595572
 MonoBehaviour:
@@ -146,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackBase: {x: 2, y: 1}
-  hitImmunityCoolDown: 1.5
+  hitImmunityCoolDown: 0.5
   health: {fileID: 0}
 --- !u!114 &1628764837
 MonoBehaviour:
@@ -171,7 +169,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.55
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 1000
   avoidancePriority: 0
   m_AngularSpeed: 120
   m_StoppingDistance: 0

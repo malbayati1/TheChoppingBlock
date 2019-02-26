@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     // or enemies that are resistant to knockback (Vector2(0,0))
     public Vector2 knockbackBase;
 
-    public float hitImmunityCoolDown = 1.5f;
+    public float hitImmunityCoolDown = .5f;
 
     [HideInInspector] public Health health;
 
