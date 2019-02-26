@@ -21,7 +21,7 @@ public class SeasonManager : Singleton<SeasonManager>
     void Start()
     {
         currentSeason = Season.Spring;
-        resetTimer = timer;
+        resetTimer = seasonTimer;
     }
 
     // Muhammad 2/21/2019: Changed the timer
@@ -30,9 +30,10 @@ public class SeasonManager : Singleton<SeasonManager>
         timer += Time.deltaTime; 
         seasonTimer -= Time.deltaTime;
 
-        if(timer <= 0)
+        if(seasonTimer <= 0)
         {
-            timer = resetTimer;
+            seasonTimer = resetTimer;
+            ChangeSeason();
         }
     }
 
