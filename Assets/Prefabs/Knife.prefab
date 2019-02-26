@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835349202066927855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -6.79}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 950694812958700256}
@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  heldPositionOffset: {x: 0, y: 0, z: -0.5}
+  heldPositionOffset: {x: 0, y: 1, z: -0.5}
   heldRotationOffset: {x: -90, y: 180, z: 0}
+  knockbackModifier: 1
+  damageModifier: 1
 --- !u!54 &835349202066927848
 Rigidbody:
   m_ObjectHideFlags: 0
