@@ -27,7 +27,14 @@ public class SeasonUI : SeasonalObject
 	void Update()
 	{
 		localTimer -= Time.deltaTime;
-		seasonTimerText.text = (localTimer >= 10) ? string.Format("{0}:{1:D2}", (int)localTimer / 60, (int)localTimer % 60)  : string.Format("{0:F2}", localTimer);
+		if(localTimer >= 10)
+		{
+			seasonTimerText.text = string.Format("{0}:{1:D2}", (int)localTimer / 60, (int)localTimer % 60);
+		}
+		else
+		{
+			seasonTimerText.text = (localTimer > 0) ? string.Format("{0:F2}", localTimer) : "0.00";
+		}
 	}
 
 	public override void HandleSeasonChange(Season s)
