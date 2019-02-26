@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
+	public GameObject heldItemLocation;
     public GameObject progressBar;
     public Image progressBarImage;
     public Text progressBarText;
@@ -107,7 +108,7 @@ public class PlayerInteraction : MonoBehaviour
     //Probably want the item to be offset from the player in the direction they are facing
     void UpdateHoldablePosition()
     {
-        heldItemInteraction.gameObject.transform.position = transform.position + transform.forward;
+        heldItemInteraction.gameObject.transform.position = heldItemLocation.transform.position;
         heldItemInteraction.gameObject.transform.rotation = transform.rotation;
     }
 

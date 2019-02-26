@@ -33,6 +33,7 @@ public class CameraController : Singleton<CameraController>
         height = offset[1];
         radius = Mathf.Sqrt(offset[0] * offset[0] + offset[2] * offset[2]);
         UpdateRotationAndOffset();
+		UpdatePosition(false);
     }
 
     void LateUpdate()
