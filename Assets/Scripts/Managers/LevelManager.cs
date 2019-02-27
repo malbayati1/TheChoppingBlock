@@ -78,7 +78,12 @@ public class LevelManager : Singleton<LevelManager>
         // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
         for(int i = 0; i < seasonalIngredients.Count; i++)
         {
-            spawnedObjects.Add(Instantiate(seasonalIngredients[i], new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f)), Quaternion.identity));
+            Vector3 spawnPostion = new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f));
+            while(spawnPostion.magnitude < 5)
+            {
+                spawnPostion = new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f));
+            }
+            spawnedObjects.Add(Instantiate(seasonalIngredients[i], spawnPostion, Quaternion.identity));
 
         }
     }
