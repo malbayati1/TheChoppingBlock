@@ -21,6 +21,7 @@ public class LevelManager : Singleton<LevelManager>
     void Start()
     {
         spawnedObjects = new List<GameObject>();
+        SpawnIngredients(SeasonManager.instance.GetCurrentSeason());
     }
 
     void OnEnable()
@@ -44,10 +45,11 @@ public class LevelManager : Singleton<LevelManager>
     {
         for(int x = spawnedObjects.Count - 1; x >= 0; x--)
         {
-            if(!spawnedObjects[x].GetComponent<Ingredient>().isPreserved)
-            {
-                Destroy(spawnedObjects[x]);
-            }
+            //if(!spawnedObjects[x].GetComponent<Ingredient>().isPreserved)
+            //{
+                Destroy(spawnedObjects[x]); // MA 2/26/19: The if statement is causing an exception
+                                            // Will resolve laters
+            //}
         }
     }
     
@@ -76,7 +78,8 @@ public class LevelManager : Singleton<LevelManager>
         // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
         for(int i = 0; i < seasonalIngredients.Count; i++)
         {
-            Instantiate(seasonalIngredients[i], new Vector3(Random.Range(0.0f, 50f), 0, Random.Range(0.0f, 50f)), Quaternion.identity);
+            spawnedObjects.Add(Instantiate(seasonalIngredients[i], new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f)), Quaternion.identity));
+
         }
     }
 }
