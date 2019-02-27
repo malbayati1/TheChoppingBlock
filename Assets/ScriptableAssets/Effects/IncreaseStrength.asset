@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad821885f34cf04448265b44f68a0dcd, type: 3}
   m_Name: IncreaseStrength
   m_EditorClassIdentifier: 
-  description: 
+  description: Strength Up
   currentDuration: 0
   maxDuration: 0
   potency: 0
