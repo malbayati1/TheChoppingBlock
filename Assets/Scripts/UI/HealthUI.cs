@@ -46,13 +46,13 @@ public class HealthUI : MonoBehaviour
 
 	void UpdateUI(float value)
 	{
-		Debug.Log("update float " + value);
+		//Debug.Log("update float " + value);
 		UpdateUI((int)value);
 	}
 
 	void UpdateUI(int value)
 	{
-		Debug.Log("update int");
+		//Debug.Log("update int");
 		currentHealth = playerHealth.health;
 		maxHealth = playerHealth.maxHealth;
 		//Debug.Log(currentHealth + "/" + maxHealth);

@@ -39,7 +39,7 @@ public class PlayerEffects : MonoBehaviour
 	{
 		GameObject effectText = Instantiate(effectTextPrefab, Vector3.zero, Quaternion.identity, effectTextHUD.transform);
 		EffectTextUI text = effectText.GetComponent<EffectTextUI>();
-		text.effectTextBaseLocation = effectTextLocation;
+		text.effectTextBaseLocation = effectTextLocation.transform.position;
 		text.axis = CameraController.instance.gameObject.transform.up;
 		text.SetText(e.description);
 		if(!e.OnApply(this))

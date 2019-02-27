@@ -35,6 +35,30 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
+	void OnEnable()
+	{
+		if(playerStats)
+		{
+			playerStats.maxHealth.statChangeEvent += ValidateHealth;
+		}
+	}
+
+	void OnDisable()
+	{
+		if(playerStats)
+		{
+			playerStats.maxHealth.statChangeEvent -= ValidateHealth;
+		}
+	}
+
+	void ValidateHealth(float value) //needs to take a value to subscribe to the stat cahgne event
+	{
+		if(health > maxHealth)
+		{
+			health = maxHealth;
+		}
+	}
+
     public virtual void Damage(int amount)
     {
 		Debug.Log("taking " + amount + " damage!");

@@ -48,9 +48,9 @@ public class RecipeCreator : EditorWindow
 
 			toCreate.result = EditorGUILayout.ObjectField("Result Prefab:", toCreate.result, typeof(GameObject), false) as GameObject;
 
-			toCreate.useOverrides = EditorGUILayout.Toggle("Use Overrides?", toCreate.useOverrides);
-			toCreate.overridePotency = EditorGUILayout.IntField("OverridePotency:", toCreate.overridePotency);
-			toCreate.overrideDuration= EditorGUILayout.FloatField("OverrideDuration:", toCreate.overrideDuration);
+			// toCreate.useOverrides = EditorGUILayout.Toggle("Use Overrides?", toCreate.useOverrides);
+			// toCreate.overridePotency = EditorGUILayout.IntField("OverridePotency:", toCreate.overridePotency); REVISIT OVERRIDES LATER
+			// toCreate.overrideDuration= EditorGUILayout.FloatField("OverrideDuration:", toCreate.overrideDuration);
 
             if(GUILayout.Button("Create") && toCreate != null)
 			{

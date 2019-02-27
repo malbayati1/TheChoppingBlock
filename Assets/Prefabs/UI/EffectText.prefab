@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8119e5f9b52f64eb3f21a0ded2994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 1.5
   timeAlive: 3
-  effectTextBaseLocation: {fileID: 0}
+  effectTextBaseLocation: {x: 0, y: 0, z: 0}
   axis: {x: 0, y: 0, z: 0}

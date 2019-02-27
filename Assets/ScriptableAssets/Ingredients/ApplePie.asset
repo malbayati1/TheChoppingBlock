@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
   m_Name: ApplePie
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: 784f93de607c44f469ff42085493a2d2, type: 2}
+  effectData:
+  - potency: 8
+    duration: 0
   name: ApplePie
   ID: 3
-  effect: {fileID: 11400000, guid: 784f93de607c44f469ff42085493a2d2, type: 2}
-  potency: 20
-  duration: 0
   rarity: 2
   isPreserved: 0

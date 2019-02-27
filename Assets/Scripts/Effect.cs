@@ -6,8 +6,8 @@ public abstract class Effect : ScriptableObject
 {
 	public string description;
     [HideInInspector] public float currentDuration;
-    [HideInInspector] public float maxDuration;
-	[HideInInspector] public int potency;
+	public float maxDuration;
+	public int potency;
 
 	//returns true if it should be destroyed (one shot effects/duration 0)
     public virtual bool OnApply(PlayerEffects p)
@@ -16,6 +16,7 @@ public abstract class Effect : ScriptableObject
 		{
 			return true;
 		}
+		currentDuration = maxDuration;
 		return false;
 	}
     public virtual void OnRemove(PlayerEffects p)
@@ -40,4 +41,20 @@ public abstract class Effect : ScriptableObject
 		string ret = string.Format("name:{0}, pot:{1}, dur:{2}/{3}", this.GetType().Name, potency, currentDuration, maxDuration);
 		return ret;
 	} 
+}
+
+[System.Serializable]
+public class EffectData
+{
+	public int potency;
+	public float duration;
+	public EffectData(int p, float d)
+	{
+		potency = p;
+		duration = d;
+	}
+	public EffectData()
+	{
+
+	}
 }

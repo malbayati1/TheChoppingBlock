@@ -38,12 +38,12 @@ public class RecipeManager : Singleton<RecipeManager>
         if(recipes.TryGetValue(m, out ret))
         {
 			GameObject temp = Instantiate(ret, Vector3.one * 9999, Quaternion.identity);
-			if(m.useOverrides)
-			{
-				InGameIngredient ingredient = temp.GetComponent<InGameIngredient>();
-				ingredient.ingredientData.potency = m.overridePotency;
-				ingredient.ingredientData.duration = m.overrideDuration;
-			}
+			// if(m.useOverrides)
+			// {
+			// 	InGameIngredient ingredient = temp.GetComponent<InGameIngredient>();
+			// 	ingredient.ingredientData.potency = m.overridePotency;
+			// 	ingredient.ingredientData.duration = m.overrideDuration;
+			// } COME BACK TO OVERRIDES LATER IF NEEDED
             return temp;
         }
         else
