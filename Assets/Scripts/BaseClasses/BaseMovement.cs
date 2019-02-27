@@ -33,6 +33,11 @@ public class BaseMovement : MonoBehaviour
         {
             navMeshAgent.destination = transform.position;
         }
+
+        if (transform.position.y < -1 || mover.transform.position.y < -1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void Move(Vector3 target, Vector3 delta = new Vector3())
