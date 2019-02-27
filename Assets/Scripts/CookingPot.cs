@@ -102,6 +102,7 @@ public class CookingPot : MonoBehaviour
 			i.transform.localScale = Vector3.one * ((shrink) ?  1 - t : 1);
 			yield return null;
 		}
+		i.transform.position = new Vector3(i.transform.position.x, 0, i.transform.position.z);
 		i.GetComponent<InGameIngredient>().isHeld = false;
 	}
 
