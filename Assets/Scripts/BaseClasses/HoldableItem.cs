@@ -24,6 +24,7 @@ public class HoldableItem : MonoBehaviour, IHoldable
 
     public virtual void Drop(GameObject droppedBy)
     {
+		this.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         StartCoroutine(PickupCooldown());
     }
 
