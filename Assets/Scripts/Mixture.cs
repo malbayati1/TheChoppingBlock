@@ -7,6 +7,10 @@ public class Mixture : ScriptableObject
 {
     public List<Ingredient> ingredients = new List<Ingredient>();
 	public GameObject result;
+
+	public bool useOverrides;
+	public int overridePotency;
+	public float overrideDuration;
 	
     public void OrderSelf()
     {

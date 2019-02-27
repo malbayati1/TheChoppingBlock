@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8762065900455879440}
   m_Layer: 0
   m_Name: Carrot
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  ingredientData: {fileID: 0}
+  ingredientData: {fileID: 11400000, guid: 800fb51da9ef420449e6bd6ce57854bf, type: 2}
 --- !u!1001 &3546297374687375092
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adf16de40dc968840b08638e4e4d17de, type: 3}
-  m_Name: Super Apple Pie
+  m_Name: Carrot Cake
   m_EditorClassIdentifier: 
   ingredients:
-  - {fileID: 11400000, guid: 75dda3ab7b364454c89dfc8e0f2e69d9, type: 2}
-  - {fileID: 11400000, guid: 75dda3ab7b364454c89dfc8e0f2e69d9, type: 2}
-  - {fileID: 11400000, guid: 75dda3ab7b364454c89dfc8e0f2e69d9, type: 2}
-  result: {fileID: 8281285681749627017, guid: cae67bdca8845d444b221fca92e84631, type: 3}
-  useOverrides: 1
-  overridePotency: 5
+  - {fileID: 11400000, guid: 800fb51da9ef420449e6bd6ce57854bf, type: 2}
+  - {fileID: 11400000, guid: 67707f3799e3fb84d87815888ed53f7c, type: 2}
+  result: {fileID: 1434879354610048797, guid: 970665a06a6f1e349908f4fc0cd076eb, type: 3}
+  useOverrides: 0
+  overridePotency: 0
   overrideDuration: 0

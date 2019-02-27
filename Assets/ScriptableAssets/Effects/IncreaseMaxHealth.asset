@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
-  m_Name: ApplePie
+  m_Script: {fileID: 11500000, guid: a7d601b1da3ff5c45b879c21d2591000, type: 3}
+  m_Name: IncreaseMaxHealth
   m_EditorClassIdentifier: 
-  name: ApplePie
-  ID: 3
-  effect: {fileID: 11400000, guid: 784f93de607c44f469ff42085493a2d2, type: 2}
-  potency: 20
-  duration: 0
-  rarity: 2
-  isPreserved: 0
+  description: 
+  currentDuration: 0
+  maxDuration: 0
+  potency: 0

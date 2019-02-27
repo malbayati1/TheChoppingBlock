@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HealthUI : MonoBehaviour
 {
-    public GameObject emptyHealthPrefab;
+	public GameObject emptyHealthPrefab;
 	public GameObject halfHealthPrefab;
 	public GameObject fullHealthPrefab;
 	public GameObject holder;
 
 	private GameObject player;
 	private Health playerHealth;
+	private PlayerStats playerStats;
 	private int currentHealth;
 	private int maxHealth;
 
@@ -18,44 +19,55 @@ public class HealthUI : MonoBehaviour
 	{
 		player = GameObject.FindWithTag("Player");
 		playerHealth = player.GetComponent<Health>();
-		maxHealth = currentHealth = playerHealth.maxHealth;
+		playerStats = player.GetComponent<PlayerStats>();
+		maxHealth = currentHealth = (int)playerStats.maxHealth.Value;
 		playerHealth.changeEvent += UpdateUI;
+		playerStats.maxHealth.statChangeEvent += UpdateUI;
 	}
 
 	void OnDisable()
 	{
 		playerHealth.changeEvent -= UpdateUI;
+		playerStats.maxHealth.statChangeEvent += UpdateUI;
 	}
 
-    void Start()
-    {
+	void Start()
+	{
 		UpdateUI(0);
-    }
+	}
 
-	// void Update()
-	// {
-	// 	if(Input.GetKeyDown(KeyCode.K))
-	// 	{
-	// 		UpdateUI(-1);
-	// 	}
-	// }
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.M))
+		{
+			playerHealth.Damage(1);
+		}
+	}
 
-    void UpdateUI(int value)
-    {
-		currentHealth += value;
+	void UpdateUI(float value)
+	{
+		Debug.Log("update float " + value);
+		UpdateUI((int)value);
+	}
+
+	void UpdateUI(int value)
+	{
+		Debug.Log("update int");
+		currentHealth = playerHealth.health;
+		maxHealth = playerHealth.maxHealth;
 		//Debug.Log(currentHealth + "/" + maxHealth);
-		foreach(Transform child in holder.transform)
+		foreach (Transform child in holder.transform)
 		{
 			Destroy(child.gameObject);
 		}
-		for(int x = 0; x < maxHealth; x += 2)
+		for (int x = 0; x < maxHealth; x += 2)
 		{
-			if((currentHealth - x) / 2f == 0.5f)
+			if ((currentHealth - x) / 2f == 0.5f)
 			{
 				//Debug.Log(string.Format("x:{0} = HALF", x));
 				Instantiate(halfHealthPrefab, Vector3.zero, Quaternion.identity, holder.transform);
 			}
-			else if(currentHealth > x)
+			else if (currentHealth > x)
 			{
 				//Debug.Log(string.Format("x:{0} = FULL", x));
 				Instantiate(fullHealthPrefab, Vector3.zero, Quaternion.identity, holder.transform);
@@ -66,5 +78,5 @@ public class HealthUI : MonoBehaviour
 				Instantiate(emptyHealthPrefab, Vector3.zero, Quaternion.identity, holder.transform);
 			}
 		}
-    }
+	}
 }

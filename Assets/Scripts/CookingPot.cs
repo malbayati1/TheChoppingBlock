@@ -32,7 +32,8 @@ public class CookingPot : MonoBehaviour
 			return;
 		}
 		Debug.Log("trying to cook");
-		GameObject spawn = Instantiate(RecipeManager.instance.GetResult(currentMixture), transform.position + Vector3.up * 2, Quaternion.identity);
+		GameObject spawn = RecipeManager.instance.GetResult(currentMixture);
+		spawn.transform.position = transform.position + Vector3.up * 2;
 		spawn.GetComponent<InGameIngredient>().isHeld = true;
 		DropItem(spawn);
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;

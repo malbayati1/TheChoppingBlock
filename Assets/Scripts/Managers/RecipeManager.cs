@@ -30,17 +30,25 @@ public class RecipeManager : Singleton<RecipeManager>
 	//if we fail we return a default
     public GameObject GetResult(Mixture m)
     {
+		
 		m.OrderSelf();
 		//Debug.Log(m);
 		//Debug.Log(m.GetHashCode());
         GameObject ret;
         if(recipes.TryGetValue(m, out ret))
         {
-            return ret;
+			GameObject temp = Instantiate(ret, Vector3.one * 9999, Quaternion.identity);
+			if(m.useOverrides)
+			{
+				InGameIngredient ingredient = temp.GetComponent<InGameIngredient>();
+				ingredient.ingredientData.potency = m.overridePotency;
+				ingredient.ingredientData.duration = m.overrideDuration;
+			}
+            return temp;
         }
         else
         {
-            return defaultResult;
+            return Instantiate(defaultResult, Vector3.one * 9999, Quaternion.identity);
         }
     }
 }

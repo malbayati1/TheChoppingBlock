@@ -63,6 +63,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &6049526597209731864
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088144619103224276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 90e64d836daf4ad4bbf670216a57bedf, type: 3}
 --- !u!1001 &9088144619103258484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 90e64d836daf4ad4bbf670216a57bedf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 90e64d836daf4ad4bbf670216a57bedf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -120,6 +134,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90e64d836daf4ad4bbf670216a57bedf, type: 3}
+--- !u!1 &9088144619103224276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 90e64d836daf4ad4bbf670216a57bedf,
+    type: 3}
+  m_PrefabInstance: {fileID: 9088144619103258484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9088144619102871028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 90e64d836daf4ad4bbf670216a57bedf,
