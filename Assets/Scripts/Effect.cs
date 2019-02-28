@@ -42,19 +42,3 @@ public abstract class Effect : ScriptableObject
 		return ret;
 	} 
 }
-
-[System.Serializable]
-public class EffectData
-{
-	public int potency;
-	public float duration;
-	public EffectData(int p, float d)
-	{
-		potency = p;
-		duration = d;
-	}
-	public EffectData()
-	{
-
-	}
-}
