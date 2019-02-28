@@ -195,11 +195,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 859363606920771876, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: cookingUI
+      value: 
+      objectReference: {fileID: 1972071227603251290}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14bfb1447dff39f499e1e86a78f70fe5, type: 3}
 --- !u!4 &2379179269939675207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 859363606920771931, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3092170111932659996}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1972071227603251290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3582521145466554694, guid: 14bfb1447dff39f499e1e86a78f70fe5,
     type: 3}
   m_PrefabInstance: {fileID: 3092170111932659996}
   m_PrefabAsset: {fileID: 0}

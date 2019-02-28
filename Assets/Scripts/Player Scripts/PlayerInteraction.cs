@@ -85,7 +85,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             progressBarImage.fillAmount = timer / interactionTime;
             progressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarLocation.transform.position);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         f();
         progressBar.SetActive(false);
