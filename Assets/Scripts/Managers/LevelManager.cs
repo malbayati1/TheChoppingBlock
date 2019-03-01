@@ -16,7 +16,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public float[] rarityTable = new float[Enum.GetNames(typeof(Rarity)).Length];
 
-    private List<GameObject> spawnedObjects;
+    [SerializeField]private List<GameObject> spawnedObjects;
 
     void Start()
     {
@@ -43,13 +43,23 @@ public class LevelManager : Singleton<LevelManager>
 	//called when the seasons change
     void DespawnIngredients()
     {
+		InGameIngredient ing;
         for(int x = spawnedObjects.Count - 1; x >= 0; x--)
         {
-            //if(!spawnedObjects[x].GetComponent<Ingredient>().isPreserved)
-            //{
-                Destroy(spawnedObjects[x]); // MA 2/26/19: The if statement is causing an exception
+            if(spawnedObjects[x] != null)
+            {
+				ing = spawnedObjects[x].GetComponent<InGameIngredient>();
+				if(!ing.isHeld && !ing.ingredientData.isPreserved)
+				{
+					// Debug.Log("killing " + spawnedObjects[x].name);
+                	Destroy(spawnedObjects[x]); // MA 2/26/19: The if statement is causing an exception
                                             // Will resolve laters
-            //}
+				}
+            }
+			else
+			{
+				spawnedObjects.RemoveAt(x);
+			}
         }
     }
     
@@ -74,7 +84,6 @@ public class LevelManager : Singleton<LevelManager>
                 seasonalIngredients = summerIngredients;
                 break;
         }
-
         // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
         for(int i = 0; i < seasonalIngredients.Count; i++)
         {

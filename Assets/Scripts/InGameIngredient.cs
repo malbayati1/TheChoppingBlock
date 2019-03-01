@@ -31,10 +31,8 @@ public class InGameIngredient : HoldableItem
 	{
 		if(isHeld)
 		{
-			ingredientData.isPreserved = true;
 			return;
 		}
-		ingredientData.isPreserved = false;
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}
 

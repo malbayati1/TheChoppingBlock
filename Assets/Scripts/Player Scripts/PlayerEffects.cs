@@ -8,6 +8,9 @@ public class PlayerEffects : MonoBehaviour
 	public GameObject effectTextLocation;
 	public GameObject effectTextHUD;
 
+	public delegate void EffectAddedDelegate(Effect e);
+	public event EffectAddedDelegate effectAddedEvent = delegate { };
+
 	[HideInInspector] public PlayerStats stats;
 
     private List<Effect> effects;
@@ -45,6 +48,7 @@ public class PlayerEffects : MonoBehaviour
 		if(!e.OnApply(this))
 		{
 			effects.Add(e);
+			effectAddedEvent(e);
 		}
 	}
 }

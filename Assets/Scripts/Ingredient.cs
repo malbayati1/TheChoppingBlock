@@ -15,7 +15,8 @@ public class Ingredient : ScriptableObject
 	public string name;
 	public int ID; 
     public Rarity rarity;
-    [HideInInspector] public bool isPreserved = false;
+    [HideInInspector]
+	public bool isPreserved = false;
 
 	public override string ToString()
 	{

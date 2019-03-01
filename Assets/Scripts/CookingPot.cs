@@ -52,6 +52,7 @@ public class CookingPot : MonoBehaviour
 		toCheck.Remove(i);
 		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
 		ingredient.ingredientData.isPreserved = true;
+		Debug.Log("Setting preserved " + i.name + " true");
 
 		Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
 		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
@@ -90,6 +91,7 @@ public class CookingPot : MonoBehaviour
 		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
         StartCoroutine(MoveIngredient(i, dropTime ,transform.position, end, controlPosition, false));
 		i.GetComponent<InGameIngredient>().ingredientData.isPreserved = false;
+		Debug.Log("Setting preserved " + i.name + " false");
     }
 
 	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink)
