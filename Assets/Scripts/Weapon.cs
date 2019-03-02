@@ -26,13 +26,13 @@ public class Weapon : HoldableItem
 	{
 		if(isHeld)
 		{
-			//modelChild.transform.localPosition = heldPositionOffset;
+			modelChild.transform.localPosition = heldPositionOffset;
 			Quaternion rotationOffset = new Quaternion();
 			rotationOffset.eulerAngles = heldRotationOffset;
 			modelChild.transform.localRotation = rotationOffset;
 			return;
 		}
-		//modelChild.transform.localPosition = new Vector3();
+		modelChild.transform.localPosition = new Vector3(0, 0.5f, 0);
 		modelChild.transform.localRotation = new Quaternion();
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}
