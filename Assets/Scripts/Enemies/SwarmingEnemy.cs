@@ -20,6 +20,7 @@ public class SwarmingEnemy : Unit
 
     private GameObject player;
 	private bool waiting;
+	private Vector3 spawnPoint;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class SwarmingEnemy : Unit
 		}
 		GetComponent<NavMeshAgent>().speed = preSwarmSpeed;
 		waiting = false;
+		spawnPoint = transform.position;
     }
     
     // Update is called once per frame
@@ -51,12 +53,14 @@ public class SwarmingEnemy : Unit
 				CheckIfSwarmCreated();
 				if(swarmCreated)
 				{
+					Debug.Log("setting speed");
 					GetComponent<NavMeshAgent>().speed = swarmSpeed;
 				}
 			}
 			else
 			{
 				swarmLeader = this;
+				movement.Move(spawnPoint);
 			}
 		}
 		else
@@ -74,6 +78,7 @@ public class SwarmingEnemy : Unit
 				foreach(SwarmingEnemy se in partOfSwarm)
 				{
 					se.swarmCreated = true;
+					GetComponent<NavMeshAgent>().speed = swarmSpeed;
 				}
 				swarmCreated = true;
 			}
