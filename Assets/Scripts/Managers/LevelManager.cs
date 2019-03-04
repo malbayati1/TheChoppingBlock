@@ -2,17 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public enum Rarity { Common, Uncommon, Rare };
 
 public class LevelManager : Singleton<LevelManager>
 {
+    private GameObject navMesh;
     public List<GameObject> summerIngredients;
     public List<GameObject> springIngredients;
     public List<GameObject> fallIngredients;
     public List<GameObject> winterIngredients;
     private List<GameObject> seasonalIngredients;   // MA 2/25: This will be used later to determine which season it is
+    private GameObject floor;
 
     public float[] rarityTable = new float[Enum.GetNames(typeof(Rarity)).Length];
 
@@ -20,6 +23,7 @@ public class LevelManager : Singleton<LevelManager>
 
     void Start()
     {
+        floor = GameObject.Find("NavMesh");
         spawnedObjects = new List<GameObject>();
         SpawnIngredients(SeasonManager.instance.GetCurrentSeason());
     }
@@ -87,12 +91,30 @@ public class LevelManager : Singleton<LevelManager>
         // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
         for(int i = 0; i < seasonalIngredients.Count; i++)
         {
-            Vector3 spawnPostion = new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f));
-            while(spawnPostion.magnitude < 5)
+            NavMeshHit hit;
+            NavMesh.SamplePosition(new Vector3(Random.Range(-20f, 20f), 0, Random.Range(-20f, 20f)), out hit, 2.0f, NavMesh.AllAreas);
+            Vector3 spawnPosition = hit.position;   // Position to the nearest point on the mesh of the specified point
+            if (spawnPosition.magnitude < 5)    // if spawning in position of pot, readjust x and z
             {
-                spawnPostion = new Vector3(Random.Range(-15f, 15f), 0, Random.Range(-15f, 15f));
+                if(spawnPosition.x < 0)
+                {
+                    spawnPosition.x -= 5.5f - spawnPosition.magnitude;
+                }
+                else
+                {
+                    spawnPosition.x += 5.5f - spawnPosition.magnitude;
+                }
+                if(spawnPosition.z < 0)
+                {
+                    spawnPosition.z -= 5.5f - spawnPosition.magnitude;
+                }
+                else
+                {
+                    spawnPosition.z += 5.5f - spawnPosition.magnitude;
+                }
             }
-            spawnedObjects.Add(Instantiate(seasonalIngredients[i], spawnPostion, Quaternion.identity));
+            
+            spawnedObjects.Add(Instantiate(seasonalIngredients[i], spawnPosition, Quaternion.identity));
 
         }
     }
