@@ -49,7 +49,7 @@ public class BaseMovement : MonoBehaviour
         target.y = transform.position.y;
         transform.LookAt(target, Vector3.up);
         navMeshAgent.destination = target;
-        mover.Move(delta.x, delta.z);
+        mover.Move();
     }
 
     public void Push(Vector3 impulse)
@@ -59,8 +59,8 @@ public class BaseMovement : MonoBehaviour
         float time = unit.hitImmunityCoolDown;
         //mover.Move(0f, 0f, impulse.y);
         iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + new Vector3(impulse.x, 0f, impulse.z), "easeType", "easeOutExpo", "time", time));
-        iTween.MoveBy(gameObject, iTween.Hash("y",  impulse.y, "easeType", "easeOutExpo", "time", time * 2/3));
-        iTween.MoveBy(gameObject, iTween.Hash("y",  -impulse.y, "easeType", "easeInExpo", "time", time * 1/3, "delay", time * 2/3));
+        
+        StartCoroutine(mover.Arc(impulse.y, time));
 
         StartCoroutine(loseControlForSeconds(time));
     }
