@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2954571142262698988
+--- !u!1 &8223810283010784868
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2954571142262698514}
-  - component: {fileID: 2954571142262698515}
+  - component: {fileID: 8223810283010785178}
+  - component: {fileID: 8223810283010784869}
   m_Layer: 0
-  m_Name: SpiderSpawner
+  m_Name: IslandSwarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2954571142262698514
+--- !u!4 &8223810283010785178
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954571142262698988}
+  m_GameObject: {fileID: 8223810283010784868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,28 +31,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2954571142262698515
+--- !u!114 &8223810283010784869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954571142262698988}
+  m_GameObject: {fileID: 8223810283010784868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f87c6cf2fc2c0544a5bdca7f9876753, type: 3}
+  m_Script: {fileID: 11500000, guid: 611f11fac84185046a1f19310676ca56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawnPrefab: {fileID: 2879231923488143871, guid: ae46c6f61d7493f45acaf2a4dc868798,
+  enemyPrefab: {fileID: 8212301485538502766, guid: fda8b57477bab394d9639a3063868753,
     type: 3}
   timeBetweenSpawns: 5
-  numSpawnsAllowedActive: 2
+  numSpawnsAllowedActive: 10
   spawnLocations:
-  - {x: 0, y: 0, z: -88}
-  - {x: 0, y: 0, z: 88}
-  - {x: 88, y: 0, z: 0}
-  - {x: -88, y: 0, z: 0}
-  - {x: -72, y: 0, z: 72}
-  - {x: 72, y: 0, z: -72}
   - {x: 72, y: 0, z: 72}
-  - {x: -72, y: 0, z: -72}
+  - {x: 88, y: 0, z: 88}
+  - {x: 88, y: 0, z: 72}
+  - {x: 72, y: 0, z: 88}
