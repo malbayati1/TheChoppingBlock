@@ -11,6 +11,8 @@ public class SwarmingEnemy : Unit
 	public float swarmSpeed;
 	public bool swarmCreated;
 
+    public int framesBetweenUpdates = 1;
+
 	public List<SwarmingEnemy> partOfSwarm;
 
 	private const int SWARMAMOUNT = 5;
@@ -38,6 +40,8 @@ public class SwarmingEnemy : Unit
     // Update is called once per frame
     void Update()
     {
+        if (Time.frameCount % framesBetweenUpdates != 0)
+            return;
 		if(!swarmCreated)
 		{
 			if(swarmLeader != null)
