@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SwarmEnemySpawner : MonoBehaviour
 {
@@ -41,7 +42,17 @@ public class SwarmEnemySpawner : MonoBehaviour
 			return;
 		}
 		int index = emptyIndices[Random.Range(0, emptyIndices.Count)];
-		activeEnemies[index] = Instantiate(enemyPrefab, spawnLocations[index], Quaternion.identity);
+		NavMeshHit hit;
+		if(NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 1.0f, NavMesh.AllAreas))
+		{ 
+			activeEnemies[index] = Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+		}
+		else
+		{
+			NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 300.0f, NavMesh.AllAreas);
+			activeEnemies[index] = Instantiate(enemyPrefab, hit.position, Quaternion.identity);
+		}
+		
 	}
 
 	List<int> FindEmptyIndices()
