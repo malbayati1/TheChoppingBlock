@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Text))]
 public class TutorialDialogue : MonoBehaviour
 {
@@ -10,6 +11,19 @@ public class TutorialDialogue : MonoBehaviour
     private List<string> dialouge = new List<string>();
     private List<float> delay = new List<float>();
     private bool finishedMakingPie = false;
+    private RecipeManager rm;
+
+
+    void OnEnable()
+    {
+        
+        RecipeManager.instance.onCook += checkFinishPie;
+    }
+
+    void OnDisable()
+    {
+        RecipeManager.instance.onCook -= checkFinishPie;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +52,7 @@ public class TutorialDialogue : MonoBehaviour
         }
         StartCoroutine(textCrawl(dialouge[2]));
         yield return new WaitForSeconds(delay[2]);
+        SceneManager.LoadScene("PlayTest", LoadSceneMode.Single);
         Debug.Log("End of Dialogue.");
         yield return null;
     }
@@ -51,9 +66,26 @@ public class TutorialDialogue : MonoBehaviour
         }
         yield return null;
     }
-
-    public void finishPie()
+    private IEnumerator moveDoor()
     {
+        Debug.Log("asrdthgsfgd");
+        GameObject door = GameObject.Find("Cube (6)");
+        //GameObject handle = GameObject.Find("Cube(9)");
+        while(door.transform.localPosition.x < 0.3f)
+        {
+            door.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
+            //handle.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
+    public void checkFinishPie(Ingredient toTest)
+    {
+        Debug.Log(toTest.ID);
+        if(toTest.ID == 3)
+        {
+            finishedMakingPie = true;
+            StartCoroutine(moveDoor());
+        }
     }
 }
