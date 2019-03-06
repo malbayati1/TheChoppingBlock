@@ -92,7 +92,7 @@ public class LevelManager : Singleton<LevelManager>
         for(int i = 0; i < seasonalIngredients.Count; i++)
         {
             NavMeshHit hit;
-            NavMesh.SamplePosition(new Vector3(Random.Range(-20f, 20f), 0, Random.Range(-20f, 20f)), out hit, 2.0f, NavMesh.AllAreas);
+            NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 40.0f, NavMesh.AllAreas);
             Vector3 spawnPosition = hit.position;   // Position to the nearest point on the mesh of the specified point
             if (spawnPosition.magnitude < 5)    // if spawning in position of pot, readjust x and z
             {

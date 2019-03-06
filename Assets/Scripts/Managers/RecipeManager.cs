@@ -8,6 +8,10 @@ public class RecipeManager : Singleton<RecipeManager>
 	public RecipeList recipeList;
 
     private Dictionary<Mixture, GameObject> recipes;
+    public delegate void CookEvent(Ingredient createdFood);
+    public event CookEvent onCook = delegate { };
+
+
 
     void Start()
     {
@@ -52,6 +56,7 @@ public class RecipeManager : Singleton<RecipeManager>
         if(recipes.TryGetValue(m, out ret))
         {
 			GameObject temp = Instantiate(ret, Vector3.one * 9999, Quaternion.identity);
+            onCook(temp.GetComponent<InGameIngredient>().ingredientData);
 			// if(m.useOverrides)
 			// {
 			// 	InGameIngredient ingredient = temp.GetComponent<InGameIngredient>();
@@ -62,7 +67,9 @@ public class RecipeManager : Singleton<RecipeManager>
         }
         else
         {
-            return Instantiate(defaultResult, Vector3.one * 9999, Quaternion.identity);
+            GameObject temp =  Instantiate(defaultResult, Vector3.one * 9999, Quaternion.identity);
+            onCook(temp.GetComponent<InGameIngredient>().ingredientData);
+            return temp;
         }
     }
 }
