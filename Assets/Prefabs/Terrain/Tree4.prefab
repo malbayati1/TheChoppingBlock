@@ -4745,7 +4745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
       propertyPath: m_NavMeshLayer
