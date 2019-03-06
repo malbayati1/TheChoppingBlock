@@ -46,13 +46,13 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8212301485538502766, guid: fda8b57477bab394d9639a3063868753,
     type: 3}
   timeBetweenSpawns: 5
-  numSpawnsAllowedActive: 7
+  numSpawnsAllowedActive: 5
   spawnLocations:
-  - {x: 22, y: 0, z: 0}
-  - {x: -22, y: 0, z: 0}
-  - {x: 0, y: 0, z: 22}
-  - {x: 0, y: 0, z: -22}
-  - {x: 18, y: 0, z: 18}
-  - {x: 18, y: 0, z: -18}
-  - {x: -18, y: 0, z: 18}
-  - {x: -18, y: 0, z: -18}
+  - {x: 88, y: 0, z: 0}
+  - {x: -88, y: 0, z: 0}
+  - {x: 0, y: 0, z: 88}
+  - {x: 0, y: 0, z: -88}
+  - {x: 72, y: 0, z: 72}
+  - {x: 72, y: 0, z: -72}
+  - {x: -72, y: 0, z: 72}
+  - {x: -72, y: 0, z: -72}
