@@ -8,6 +8,9 @@ public class PlayerEffects : MonoBehaviour
 	public GameObject effectTextLocation;
 	public GameObject effectTextHUD;
 
+	public delegate void EffectAddedDelegate(Effect e);
+	public event EffectAddedDelegate effectAddedEvent = delegate { };
+
 	[HideInInspector] public PlayerStats stats;
 
     private List<Effect> effects;
@@ -39,12 +42,13 @@ public class PlayerEffects : MonoBehaviour
 	{
 		GameObject effectText = Instantiate(effectTextPrefab, Vector3.zero, Quaternion.identity, effectTextHUD.transform);
 		EffectTextUI text = effectText.GetComponent<EffectTextUI>();
-		text.effectTextBaseLocation = effectTextLocation;
+		text.effectTextBaseLocation = effectTextLocation.transform.position;
 		text.axis = CameraController.instance.gameObject.transform.up;
 		text.SetText(e.description);
 		if(!e.OnApply(this))
 		{
 			effects.Add(e);
+			effectAddedEvent(e);
 		}
 	}
 }

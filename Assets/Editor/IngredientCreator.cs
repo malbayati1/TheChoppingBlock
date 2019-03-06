@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -6,6 +7,9 @@ using UnityEditor;
 public class IngredientCreator : EditorWindow
 {
 	private Ingredient toCreate;
+	private Effect toAdd;
+	private int tempPotency;
+	private float tempDuration;
 	
 	[MenuItem("Window/IngredientCreator")]
 	public static void Init()
@@ -27,10 +31,31 @@ public class IngredientCreator : EditorWindow
 		else
 		{
 			toCreate.name = EditorGUILayout.TextField("Name:", toCreate.name);
-			toCreate.effect = EditorGUILayout.ObjectField(toCreate.effect, typeof(Effect), false) as Effect;
-			toCreate.potency = EditorGUILayout.IntField("Potency:", toCreate.potency);
-			toCreate.duration = EditorGUILayout.FloatField("Duration:", toCreate.duration);
 			toCreate.rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity:", toCreate.rarity);
+			toAdd = EditorGUILayout.ObjectField(toAdd, typeof(Effect), false) as Effect;
+			tempDuration = EditorGUILayout.FloatField("Duration:", tempDuration);
+			tempPotency = EditorGUILayout.IntField("Potency:", tempPotency);
+			if(GUILayout.Button("Add Effect"))
+			{
+				toCreate.effects.Add(toAdd);
+				toCreate.effectData.Add(new EffectData(tempPotency, tempDuration));
+				tempDuration = tempPotency = 0;
+				toAdd = null;
+			}
+			EditorGUILayout.LabelField("Effects:");
+			EditorGUI.indentLevel++;
+			if(toCreate.effects.Count == 0)
+			{
+				EditorGUILayout.LabelField("Empty");
+			}
+			foreach(Effect e in toCreate.effects)
+			{
+				EditorGUILayout.LabelField(e.GetType().Name);
+				EditorGUILayout.LabelField("Duration:"+e.maxDuration);
+				EditorGUILayout.LabelField("Potency:"+e.potency);
+			}
+			EditorGUI.indentLevel--;
+			
 
 			// if(GUILayout.Button("Test"))
 			// {

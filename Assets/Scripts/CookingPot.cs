@@ -5,6 +5,7 @@ using UnityEngine;
 public class CookingPot : MonoBehaviour
 {
 	public GameObject topOfSlotLocation;
+	public GameObject cookingUI;
 
 	public float addTime;
 	public float dropTime;
@@ -16,12 +17,14 @@ public class CookingPot : MonoBehaviour
 	private List<GameObject> currentlyInside;
 	[SerializeField]private List<GameObject> toCheck;
 
+	private Camera cam;
+
 	void Awake()
 	{
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
 		toCheck = new List<GameObject>();
 		currentlyInside = new List<GameObject>();
-		this.enabled = false;
+		cam = Camera.main;
 	}
 
 	//call when you want the pot to combine ingredient
@@ -48,6 +51,8 @@ public class CookingPot : MonoBehaviour
     {
 		toCheck.Remove(i);
 		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
+		ingredient.ingredientData.isPreserved = true;
+		Debug.Log("Setting preserved " + i.name + " true");
 
 		Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
 		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
@@ -85,6 +90,8 @@ public class CookingPot : MonoBehaviour
 		Vector3 controlPosition = (transform.position + end) / 2;
 		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
         StartCoroutine(MoveIngredient(i, dropTime ,transform.position, end, controlPosition, false));
+		i.GetComponent<InGameIngredient>().ingredientData.isPreserved = false;
+		Debug.Log("Setting preserved " + i.name + " false");
     }
 
 	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink)
@@ -130,6 +137,7 @@ public class CookingPot : MonoBehaviour
 			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
 			p.useEvent += Cook;
 			p.dropEvent += Empty;
+			cookingUI.SetActive(true);
 		}
 	}
 
@@ -150,6 +158,7 @@ public class CookingPot : MonoBehaviour
 			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
 			p.useEvent -= Cook;
 			p.dropEvent -= Empty;
+			cookingUI.SetActive(false);
 		}
 	}
 
@@ -169,9 +178,13 @@ public class CookingPot : MonoBehaviour
 				Add(toCheck[x]);
 			}
 		}
-		if(toCheck.Count <= 0)
+	}
+
+	void LateUpdate()
+	{
+		if(cookingUI.activeInHierarchy)
 		{
-			this.enabled = false;
+			cookingUI.transform.position = cam.WorldToScreenPoint(topOfSlotLocation.transform.position);
 		}
 	}
 }

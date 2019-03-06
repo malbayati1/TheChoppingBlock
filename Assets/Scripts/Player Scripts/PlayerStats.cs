@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
 	void Awake()
 	{
 		health = GetComponent<Health>();
+		movementSpeed.SetBaseValue(movementSpeedInspector);
+        strength.SetBaseValue(strengthInspector);
+        maxHealth.SetBaseValue(maxHealthInspector);
 	}
 
 	//Just used to set stat values in the inspector

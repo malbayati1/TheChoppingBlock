@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: d5b7a5b030163474da4b94ab3b421192, type: 2}
+  effectData:
+  - potency: 4
+    duration: 12
   name: Carrot
   ID: 4
-  effect: {fileID: 11400000, guid: d5b7a5b030163474da4b94ab3b421192, type: 2}
-  potency: 3
-  duration: 10
   rarity: 0
   isPreserved: 0

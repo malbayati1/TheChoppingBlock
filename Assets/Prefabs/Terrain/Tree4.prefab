@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8664086729837040243}
   - component: {fileID: 3019662676657842179}
   - component: {fileID: 6039712121492721754}
+  - component: {fileID: 480243257824480292}
   m_Layer: 0
   m_Name: Tree4
   m_TagString: Untagged
@@ -4699,6 +4700,22 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &480243257824480292
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478754491867099776}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!114 &4544213086310550422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4722,6 +4739,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8664086729837040243}
     m_Modifications:
+    - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
+      propertyPath: m_Name
+      value: Tree4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9481848
@@ -4765,10 +4794,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}
-      propertyPath: m_Name
-      value: Tree4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c16c7372c7dd248b0201c2d4a7411e, type: 3}

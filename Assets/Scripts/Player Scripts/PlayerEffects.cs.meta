@@ -3,7 +3,12 @@ guid: 3d91f0b84830d3f4e84882084fff0627
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - effectTextPrefab: {fileID: 3390008533840222853, guid: 91e296540fbaa1440826aa3ca0a3a00f,
+      type: 3}
+  - effectTextLocation: {instanceID: 0}
+  - effectTextHUD: {instanceID: 0}
+  - stats: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

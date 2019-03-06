@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Regeneration
   m_EditorClassIdentifier: 
   description: Regenerate Health
+  icon: {fileID: 21300000, guid: 8e8d5afe565172f4f95738ccce615f39, type: 3}
   currentDuration: 0
   maxDuration: 0
   potency: 1

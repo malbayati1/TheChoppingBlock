@@ -4,34 +4,39 @@ using UnityEngine;
 
 public class AnimatedMover : MonoBehaviour
 {
-    public float upVelo;
+    public float bounceHeight = 1f;
+    public float airTime = .5f;
     public float groundedCheckRadius;
     public float groundedCheckOffsetDown;
     public LayerMask groundedCheckLM;
 
-    private Rigidbody rb;
+    private bool animating = false;
+
+    //private Rigidbody rb;
 
     // Start is called before the first frame update
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    public void Move(float xInput, float zInput, float yOverride = 0f)
-    {
-        bool isGivingInput = xInput != 0 || zInput != 0;
-
-        if (yOverride != 0f)
+    public void Move()
+    {   
+        transform.localPosition = Vector3.up * transform.localPosition.y;
+        if (!animating)
         {
-            rb.velocity = Vector3.up * yOverride * 10f;
-        }
-        else if (IsGrounded())
-        {
-            //Debug.Log("hmm");
-            //cause a hop upwards
-            rb.velocity = Vector3.up * upVelo;
+            StartCoroutine(Arc(bounceHeight, airTime));
         }  
+    }
+
+    public IEnumerator Arc(float height, float time)
+    {
+        animating = true;        
+        iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.up * height, "isLocal", true, "easeType", "easeOutQuad", "time", time * 2/3));
+        iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.zero, "isLocal", true, "easeType", "easeInQuad", "time", time * 1/3, "delay", time * 2/3));
+        yield return new WaitForSeconds(time);
+        animating = false;
     }
 
     public bool IsGrounded()

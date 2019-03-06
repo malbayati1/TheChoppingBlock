@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Effect : ScriptableObject
 {
 	public string description;
+	public Sprite icon;
     [HideInInspector] public float currentDuration;
-    [HideInInspector] public float maxDuration;
-	[HideInInspector] public int potency;
+	public float maxDuration;
+	public int potency;
 
 	//returns true if it should be destroyed (one shot effects/duration 0)
     public virtual bool OnApply(PlayerEffects p)
@@ -16,6 +18,7 @@ public abstract class Effect : ScriptableObject
 		{
 			return true;
 		}
+		currentDuration = maxDuration;
 		return false;
 	}
     public virtual void OnRemove(PlayerEffects p)

@@ -32,7 +32,7 @@ public class Weapon : HoldableItem
 			modelChild.transform.localRotation = rotationOffset;
 			return;
 		}
-		modelChild.transform.localPosition = new Vector3();
+		modelChild.transform.localPosition = new Vector3(0, 0.5f, 0);
 		modelChild.transform.localRotation = new Quaternion();
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}

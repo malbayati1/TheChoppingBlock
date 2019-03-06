@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
   m_Name: Chili
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: 939e0189cbd89d940b96ff9109012e7e, type: 2}
+  effectData:
+  - potency: 2
+    duration: 5
   name: Chili
   ID: 2
-  effect: {fileID: 11400000, guid: 939e0189cbd89d940b96ff9109012e7e, type: 2}
-  potency: 1
-  duration: 10
   rarity: 0
   isPreserved: 0

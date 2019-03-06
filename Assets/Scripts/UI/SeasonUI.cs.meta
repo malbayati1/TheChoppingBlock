@@ -3,7 +3,11 @@ guid: 4ef36b7be7222da4387177af47141e0f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - summerSprite: {fileID: 21300000, guid: 246fbd0dfccddfe43a743d67afa48775, type: 3}
+  - springSprite: {fileID: 21300006, guid: 246fbd0dfccddfe43a743d67afa48775, type: 3}
+  - fallSprite: {fileID: 21300002, guid: 246fbd0dfccddfe43a743d67afa48775, type: 3}
+  - winterSprite: {fileID: 21300004, guid: 246fbd0dfccddfe43a743d67afa48775, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

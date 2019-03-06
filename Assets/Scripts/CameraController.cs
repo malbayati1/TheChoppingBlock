@@ -23,8 +23,10 @@ public class CameraController : Singleton<CameraController>
     {
         if (toFollow == null)
         {
+			Debug.Log("NULL");
             toFollow = GameObject.FindWithTag("Player");
         }
+		OnValidate();
     }
 
     void OnValidate()

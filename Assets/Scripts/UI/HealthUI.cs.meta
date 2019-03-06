@@ -3,7 +3,14 @@ guid: 230df196787c76240a283cb2530e6a5d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - emptyHealthPrefab: {fileID: 7634182091784812423, guid: dbd19d79243c83f44aa9c69d5b1dca3e,
+      type: 3}
+  - halfHealthPrefab: {fileID: 7634182091784812423, guid: 45a1d3e10470e45449b333b40317c5cb,
+      type: 3}
+  - fullHealthPrefab: {fileID: 7634182091784812423, guid: 173036e3ed80b8f46aa00c690f0ce52a,
+      type: 3}
+  - holder: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

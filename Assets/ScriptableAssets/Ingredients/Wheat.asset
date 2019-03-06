@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
   m_Name: Wheat
   m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: dd323c75ac5b4c3458224d1d4e20e640, type: 2}
+  effectData:
+  - potency: 1
+    duration: 20
   name: Wheat
   ID: 5
-  effect: {fileID: 11400000, guid: db06cd2a7f6a9f14db01c6c2961a85af, type: 2}
-  potency: 1
-  duration: 5
   rarity: 0
   isPreserved: 0
