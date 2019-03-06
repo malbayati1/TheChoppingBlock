@@ -42,6 +42,8 @@ public class PlayerMovement : BaseMovement
         //xInput *= stats.movementSpeed.value;
         //zInput *= stats.movementSpeed.value;
         base.Move(xInput, zInput);
+		//navMeshAgent.Move(new Vector3(xInput, 0, zInput));
+		//mover.Move();
     }
 
 	void SetMoveSpeed(float speed)
