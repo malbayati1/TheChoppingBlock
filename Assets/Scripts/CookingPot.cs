@@ -120,7 +120,6 @@ public class CookingPot : MonoBehaviour
 		GameObject parent = col.gameObject;
 		while(parent.transform.parent != null)
 		{
-			parent = parent.transform.parent.gameObject;
 			if(parent.CompareTag("Ingredient"))
 			{
 				//Debug.Log("adding toCheck " + parent.name);
@@ -140,6 +139,7 @@ public class CookingPot : MonoBehaviour
 				cookingUI.SetActive(true);
 				return;
 			}
+			parent = parent.transform.parent.gameObject;
 		}
 		
 	}
@@ -149,7 +149,6 @@ public class CookingPot : MonoBehaviour
 		GameObject parent = col.gameObject;
 		while(parent.transform.parent != null)
 		{
-			parent = parent.transform.parent.gameObject;
 			if(parent.CompareTag("Ingredient"))
 			{
 				//Debug.Log("removing toCheck " + parent.name);
@@ -164,6 +163,7 @@ public class CookingPot : MonoBehaviour
 				cookingUI.SetActive(false);
 				return;
 			}
+			parent = parent.transform.parent.gameObject;
 		}
 	}
 
