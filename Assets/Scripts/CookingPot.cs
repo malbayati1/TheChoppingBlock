@@ -140,7 +140,7 @@ public class CookingPot : MonoBehaviour
 			{
 				p.useEvent += Cook;
 				p.dropEvent += Empty;
-				cookingUI.SetActive(true);
+				//cookingUI.SetActive(true);
 				enterRadiusEvent();
 				//Debug.Log("enter radius");
 				return;
@@ -166,7 +166,7 @@ public class CookingPot : MonoBehaviour
 			{
 				p.useEvent -= Cook;
 				p.dropEvent -= Empty;
-				cookingUI.SetActive(false);
+				//cookingUI.SetActive(false);
 				leaveRadiusEvent();
 				//Debug.Log("leaving radius");
 				return;
