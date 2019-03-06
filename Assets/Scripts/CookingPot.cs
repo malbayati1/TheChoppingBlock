@@ -120,11 +120,11 @@ public class CookingPot : MonoBehaviour
 		PlayerInteraction p;
 		InGameIngredient igi;
 		GameObject parent = col.gameObject;
-		while(parent.transform.parent != null)
+		do
 		{
 			if(parent.CompareTag("Ingredient"))
 			{
-				if(igi = GetComponent<InGameIngredient>())
+				if(igi = parent.GetComponent<InGameIngredient>())
 				{
 					//Debug.Log("adding toCheck " + parent.name);
 					this.enabled = true;
@@ -146,8 +146,7 @@ public class CookingPot : MonoBehaviour
 					return;
 				}
 			}
-			parent = parent.transform.parent.gameObject;
-		}
+		} while(parent.transform.parent != null && (parent = parent.transform.parent.gameObject));
 		
 	}
 
@@ -156,13 +155,13 @@ public class CookingPot : MonoBehaviour
 		GameObject parent = col.gameObject;
 		PlayerInteraction p;
 		InGameIngredient igi;
-		while(parent.transform.parent != null)
+		do
 		{
 			if(parent.CompareTag("Ingredient"))
 			{
-				if(igi = GetComponent<InGameIngredient>())
+				if(igi = parent.GetComponent<InGameIngredient>())
 				{
-					//Debug.Log("removing toCheck " + parent.name);
+					Debug.Log("removing toCheck " + parent.name);
 					toCheck.Remove(parent);
 					return;
 				}
@@ -177,8 +176,8 @@ public class CookingPot : MonoBehaviour
 					return;
 				}
 			}
-			parent = parent.transform.parent.gameObject;
-		}
+			//parent = parent.transform.parent.gameObject;
+		} while(parent.transform.parent != null && (parent = parent.transform.parent.gameObject));
 	}
 
 	//keeps a running track of items inside of it to make sure that they don't become legal
