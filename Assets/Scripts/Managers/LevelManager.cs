@@ -89,7 +89,8 @@ public class LevelManager : Singleton<LevelManager>
                 break;
         }
         // MA 2/25: Go through the list of ingredients and spawn the ingredients in random places
-        for(int i = 0; i < seasonalIngredients.Count; i++)
+        for(int yikes = 0; yikes < 10; ++yikes)
+        for (int i = 0; i < seasonalIngredients.Count; i++)
         {
             NavMeshHit hit;
             NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 40.0f, NavMesh.AllAreas);

@@ -166,8 +166,8 @@ MonoBehaviour:
   health: {fileID: 0}
   damageModifier: 1
   knockbackModifier: 1
-  preSwarmSpeed: 2
-  swarmSpeed: 5
+  preSwarmSpeed: 6
+  swarmSpeed: 9
   swarmCreated: 0
   partOfSwarm: []
 --- !u!1 &8212301485712613158

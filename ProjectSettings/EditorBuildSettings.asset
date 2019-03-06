@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EricScene 1.unity
     guid: 60efbc856261b204b9e53cd28fa54633
+  - enabled: 1
+    path: Assets/Scenes/PlayTest.unity
+    guid: fe0ab4a8f2d66e848a6e9d87838bf807
   m_configObjects: {}
