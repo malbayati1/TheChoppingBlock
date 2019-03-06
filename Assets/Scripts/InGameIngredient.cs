@@ -25,6 +25,10 @@ public class InGameIngredient : HoldableItem
 			ingredientData.effects[x].potency = ingredientData.effectData[x].potency;
 			ingredientData.effects[x].maxDuration = ingredientData.effectData[x].duration;
 		}
+		if(!gameObject.CompareTag("Ingredient"))
+		{
+			Debug.LogError("THIS INGREDIENT(" +gameObject.name+") IS NOT TAGGED CORRECTLY");
+		}
 	}
 
 	void Update()

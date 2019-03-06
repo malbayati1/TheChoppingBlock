@@ -11,8 +11,12 @@ public class CookingPot : MonoBehaviour
 	public float dropTime;
 	public float spitOutRadius = 4f;
 
+	public delegate void RadiusDelegate();
+	public event RadiusDelegate enterRadiusEvent = delegate { };
+	public event RadiusDelegate leaveRadiusEvent = delegate { };
+
 	//our current ingredients
-    [HideInInspector] public Mixture currentMixture;
+    private Mixture currentMixture;
 
 	private List<GameObject> currentlyInside;
 	[SerializeField]private List<GameObject> toCheck;
@@ -122,29 +126,24 @@ public class CookingPot : MonoBehaviour
 		GameObject parent = col.gameObject;
 		do
 		{
-			if(parent.CompareTag("Ingredient"))
+			if(igi = parent.GetComponent<InGameIngredient>())
 			{
-				if(igi = parent.GetComponent<InGameIngredient>())
+				this.enabled = true;
+				if(!toCheck.Contains(parent))
 				{
 					//Debug.Log("adding toCheck " + parent.name);
-					this.enabled = true;
-					if(!toCheck.Contains(parent))
-					{
-						//Debug.Log("adding toCheck " + parent.name);
-						toCheck.Add(parent);
-					}
-					return;
+					toCheck.Add(parent);
 				}
+				return;
 			}
-			if(parent.CompareTag("Player"))
+			if(p = parent.GetComponent<PlayerInteraction>())
 			{
-				if(p = parent.GetComponent<PlayerInteraction>())
-				{
-					p.useEvent += Cook;
-					p.dropEvent += Empty;
-					cookingUI.SetActive(true);
-					return;
-				}
+				p.useEvent += Cook;
+				p.dropEvent += Empty;
+				cookingUI.SetActive(true);
+				enterRadiusEvent();
+				//Debug.Log("enter radius");
+				return;
 			}
 		} while(parent.transform.parent != null && (parent = parent.transform.parent.gameObject));
 		
@@ -157,26 +156,21 @@ public class CookingPot : MonoBehaviour
 		InGameIngredient igi;
 		do
 		{
-			if(parent.CompareTag("Ingredient"))
+			if(igi = parent.GetComponent<InGameIngredient>())
 			{
-				if(igi = parent.GetComponent<InGameIngredient>())
-				{
-					Debug.Log("removing toCheck " + parent.name);
-					toCheck.Remove(parent);
-					return;
-				}
+				//Debug.Log("removing toCheck " + parent.name);
+				toCheck.Remove(parent);
+				return;
 			}
-			if(parent.CompareTag("Player"))
+			if(p = parent.GetComponent<PlayerInteraction>())
 			{
-				if(p = parent.GetComponent<PlayerInteraction>())
-				{
-					p.useEvent -= Cook;
-					p.dropEvent -= Empty;
-					cookingUI.SetActive(false);
-					return;
-				}
+				p.useEvent -= Cook;
+				p.dropEvent -= Empty;
+				cookingUI.SetActive(false);
+				leaveRadiusEvent();
+				//Debug.Log("leaving radius");
+				return;
 			}
-			//parent = parent.transform.parent.gameObject;
 		} while(parent.transform.parent != null && (parent = parent.transform.parent.gameObject));
 	}
 

@@ -16,6 +16,11 @@ public class PlayerInteraction : MonoBehaviour
     public event InputDelegate useEvent = delegate { };
     public event InputDelegate dropEvent = delegate { };
 
+	public delegate void ItemChangeDelegate(GameObject g);
+	public event ItemChangeDelegate itemPickupEvent = delegate { };
+	public event ItemChangeDelegate itemDropEvent = delegate { };
+	public event ItemChangeDelegate ingredientEatEvent = delegate { };
+
     private GameObject progressBarLocation;
     private GameObject heldItem;
     private HoldableItem heldItemInteraction;
@@ -39,12 +44,14 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (heldItemInteraction.Use(gameObject))
                 {
+					ingredientEatEvent(heldItem);
                     ClearFields();
                 }
             }
             else if (Input.GetButtonDown("Drop"))
             {
                 heldItemInteraction.Drop(gameObject);
+				itemDropEvent(heldItem);
                 ClearFields();
             }
             return;
@@ -127,6 +134,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             heldItem = g;
             heldItemInteraction = i;
+			itemPickupEvent(g);
             return true;
         }
         return false;
