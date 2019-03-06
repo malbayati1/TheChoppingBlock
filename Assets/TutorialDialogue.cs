@@ -5,8 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class TutorialDialogue : MonoBehaviour
 {
-    public float textCrawlSpeedInSeconds = 0.01f;
-    public Sprite gordon, system;
+    public float textCrawlSpeedInSeconds;
     private Text box;
     private List<string> dialouge = new List<string>();
     private List<float> delay = new List<float>();
@@ -22,12 +21,6 @@ public class TutorialDialogue : MonoBehaviour
 
         StartCoroutine(dialogueAdvancer());
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator dialogueAdvancer()
