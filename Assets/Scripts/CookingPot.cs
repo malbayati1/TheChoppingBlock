@@ -121,24 +121,27 @@ public class CookingPot : MonoBehaviour
 		while(parent.transform.parent != null)
 		{
 			parent = parent.transform.parent.gameObject;
-		}
-		if(parent.CompareTag("Ingredient"))
-		{
-			//Debug.Log("adding toCheck " + parent.name);
-			this.enabled = true;
-			if(!toCheck.Contains(parent))
+			if(parent.CompareTag("Ingredient"))
 			{
 				//Debug.Log("adding toCheck " + parent.name);
-				toCheck.Add(parent);
+				this.enabled = true;
+				if(!toCheck.Contains(parent))
+				{
+					//Debug.Log("adding toCheck " + parent.name);
+					toCheck.Add(parent);
+				}
+				return;
+			}
+			if(parent.CompareTag("Player"))
+			{
+				PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
+				p.useEvent += Cook;
+				p.dropEvent += Empty;
+				cookingUI.SetActive(true);
+				return;
 			}
 		}
-		if(parent.CompareTag("Player"))
-		{
-			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
-			p.useEvent += Cook;
-			p.dropEvent += Empty;
-			cookingUI.SetActive(true);
-		}
+		
 	}
 
 	void OnTriggerExit(Collider col)
@@ -147,18 +150,20 @@ public class CookingPot : MonoBehaviour
 		while(parent.transform.parent != null)
 		{
 			parent = parent.transform.parent.gameObject;
-		}
-		if(parent.CompareTag("Ingredient"))
-		{
-			//Debug.Log("removing toCheck " + parent.name);
-			toCheck.Remove(parent);
-		}
-		if(parent.CompareTag("Player"))
-		{
-			PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
-			p.useEvent -= Cook;
-			p.dropEvent -= Empty;
-			cookingUI.SetActive(false);
+			if(parent.CompareTag("Ingredient"))
+			{
+				//Debug.Log("removing toCheck " + parent.name);
+				toCheck.Remove(parent);
+				return;
+			}
+			if(parent.CompareTag("Player"))
+			{
+				PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
+				p.useEvent -= Cook;
+				p.dropEvent -= Empty;
+				cookingUI.SetActive(false);
+				return;
+			}
 		}
 	}
 
