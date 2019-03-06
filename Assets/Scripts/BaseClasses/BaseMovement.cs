@@ -46,8 +46,14 @@ public class BaseMovement : MonoBehaviour
         {
             return;
         }
+
         target.y = transform.position.y;
         transform.LookAt(target, Vector3.up);
+        if (Vector3.Distance(navMeshAgent.destination, target) < 1f)
+        {
+            Debug.Log("DontUpdateMovement");
+            return;
+        }
         navMeshAgent.destination = target;
         mover.Move();
     }
