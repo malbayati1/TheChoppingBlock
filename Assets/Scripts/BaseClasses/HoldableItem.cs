@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HoldableItem : MonoBehaviour, IHoldable
 {
-    private const float PICKUPCOOLDOWN = 3f;
+    private const float PICKUPCOOLDOWN = 1f;
 
     public bool isHeld;
 
