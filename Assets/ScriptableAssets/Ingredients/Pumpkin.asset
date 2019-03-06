@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
+  effects: []
+  effectData: []
   name: Pumpkin
-  ID: 7
-  effect: {fileID: 0}
-  potency: 1
-  duration: 10
+  ID: 10
   rarity: 0
   isPreserved: 0
