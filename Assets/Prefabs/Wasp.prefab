@@ -169,6 +169,7 @@ MonoBehaviour:
   preSwarmSpeed: 6
   swarmSpeed: 9
   swarmCreated: 0
+  framesBetweenUpdates: 10
   partOfSwarm: []
 --- !u!1 &8212301485712613158
 GameObject:
@@ -253,10 +254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8212301485295219623}
     m_Modifications:
-    - target: {fileID: 100072, guid: 592e8b639f09da34b83b63fdb03515aa, type: 3}
-      propertyPath: m_Name
-      value: Wasp
-      objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 592e8b639f09da34b83b63fdb03515aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -312,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 400074, guid: 592e8b639f09da34b83b63fdb03515aa, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 592e8b639f09da34b83b63fdb03515aa, type: 3}
+      propertyPath: m_Name
+      value: Wasp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592e8b639f09da34b83b63fdb03515aa, type: 3}
