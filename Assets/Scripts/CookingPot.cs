@@ -118,19 +118,23 @@ public class CookingPot : MonoBehaviour
 	void OnTriggerEnter(Collider col)
 	{
 		PlayerInteraction p;
+		InGameIngredient igi;
 		GameObject parent = col.gameObject;
 		while(parent.transform.parent != null)
 		{
 			if(parent.CompareTag("Ingredient"))
 			{
-				//Debug.Log("adding toCheck " + parent.name);
-				this.enabled = true;
-				if(!toCheck.Contains(parent))
+				if(igi = GetComponent<InGameIngredient>())
 				{
 					//Debug.Log("adding toCheck " + parent.name);
-					toCheck.Add(parent);
+					this.enabled = true;
+					if(!toCheck.Contains(parent))
+					{
+						//Debug.Log("adding toCheck " + parent.name);
+						toCheck.Add(parent);
+					}
+					return;
 				}
-				return;
 			}
 			if(parent.CompareTag("Player"))
 			{
@@ -151,13 +155,17 @@ public class CookingPot : MonoBehaviour
     {
 		GameObject parent = col.gameObject;
 		PlayerInteraction p;
+		InGameIngredient igi;
 		while(parent.transform.parent != null)
 		{
 			if(parent.CompareTag("Ingredient"))
 			{
-				//Debug.Log("removing toCheck " + parent.name);
-				toCheck.Remove(parent);
-				return;
+				if(igi = GetComponent<InGameIngredient>())
+				{
+					//Debug.Log("removing toCheck " + parent.name);
+					toCheck.Remove(parent);
+					return;
+				}
 			}
 			if(parent.CompareTag("Player"))
 			{
