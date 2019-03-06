@@ -117,6 +117,7 @@ public class CookingPot : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
+		PlayerInteraction p;
 		GameObject parent = col.gameObject;
 		while(parent.transform.parent != null)
 		{
@@ -133,11 +134,13 @@ public class CookingPot : MonoBehaviour
 			}
 			if(parent.CompareTag("Player"))
 			{
-				PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
-				p.useEvent += Cook;
-				p.dropEvent += Empty;
-				cookingUI.SetActive(true);
-				return;
+				if(p = parent.GetComponent<PlayerInteraction>())
+				{
+					p.useEvent += Cook;
+					p.dropEvent += Empty;
+					cookingUI.SetActive(true);
+					return;
+				}
 			}
 			parent = parent.transform.parent.gameObject;
 		}
@@ -147,6 +150,7 @@ public class CookingPot : MonoBehaviour
 	void OnTriggerExit(Collider col)
     {
 		GameObject parent = col.gameObject;
+		PlayerInteraction p;
 		while(parent.transform.parent != null)
 		{
 			if(parent.CompareTag("Ingredient"))
@@ -157,11 +161,13 @@ public class CookingPot : MonoBehaviour
 			}
 			if(parent.CompareTag("Player"))
 			{
-				PlayerInteraction p = parent.GetComponent<PlayerInteraction>();
-				p.useEvent -= Cook;
-				p.dropEvent -= Empty;
-				cookingUI.SetActive(false);
-				return;
+				if(p = parent.GetComponent<PlayerInteraction>())
+				{
+					p.useEvent -= Cook;
+					p.dropEvent -= Empty;
+					cookingUI.SetActive(false);
+					return;
+				}
 			}
 			parent = parent.transform.parent.gameObject;
 		}
