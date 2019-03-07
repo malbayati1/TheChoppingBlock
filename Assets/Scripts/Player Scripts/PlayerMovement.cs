@@ -7,17 +7,14 @@ public class PlayerMovement : BaseMovement
 {
 	public bool doTrail;
 	public Vector3 trailPosition;
-	public GameObject trailPrefab;
-
-    private PlayerStats stats;
-	private GameObject trailHolder;
 
 	private const float UPDATEDISTANCE = 4f;
 
+    private PlayerStats stats;
 	private Vector3 lastPathPosition;
 	private NavMeshPath navMeshPath;
-	private Vector3[] corners;
-	private LineRenderer connectingStrand;
+	private LineRenderer trail;
+	private int endIndex;
 
     protected override void Awake()
     {
@@ -25,7 +22,7 @@ public class PlayerMovement : BaseMovement
         stats = GetComponent<PlayerStats>();
 		navMeshPath = new NavMeshPath();
 		lastPathPosition = Vector3.one * 9999;
-		trailHolder = transform.GetChild(3).gameObject;
+		trail = transform.GetChild(3).gameObject.GetComponent<LineRenderer>();
     }
 
 	void Start()
@@ -55,24 +52,17 @@ public class PlayerMovement : BaseMovement
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
-				Debug.Log(1);
 				UpdatePath(true);
 				return;
 			}
 			else if(Input.GetKey(KeyCode.Space))
 			{
-				Debug.Log(2);
 				UpdatePath(false);
 				return;
 			}
 			else
 			{
-				Debug.Log(3);
-				foreach(Transform child in trailHolder.transform)
-				{
-					Debug.Log("killing " + child.gameObject.name);
-					Destroy(child.gameObject);
-				}
+				trail.positionCount = 0;
 			}
 		}
     }
@@ -100,29 +90,19 @@ public class PlayerMovement : BaseMovement
 	{
 		if(recalc || (lastPathPosition - transform.position).magnitude >= UPDATEDISTANCE)
 		{
+			Debug.Log("setting");
 			NavMesh.CalculatePath(trailPosition, transform.position, NavMesh.AllAreas, navMeshPath);
-			corners = navMeshPath.corners;
 			lastPathPosition = transform.position;
-			foreach(Transform child in trailHolder.transform)
-			{
-				Destroy(child.gameObject);
-			}
-			for(int x = 0; x < corners.Length - 1; ++x)
-			{
-				LineRenderer temp = Instantiate(trailPrefab, Vector3.zero, Quaternion.identity, trailHolder.transform).GetComponent<LineRenderer>();
-				temp.SetPositions(new Vector3[] { corners[x], corners[x + 1] });
-				if(x == corners.Length - 2)
-				{
-					connectingStrand = temp;
-				}
-				
-			}
+			trail.positionCount = navMeshPath.corners.Length;
+			trail.SetPositions(navMeshPath.corners);
+			endIndex = navMeshPath.corners.Length - 1;
 		}
 		else
 		{
-			if(connectingStrand != null)
+			if(endIndex < trail.positionCount)
 			{
-				connectingStrand.SetPosition(1, transform.position);
+				trail.SetPosition(endIndex, transform.position);
+				trail.material.SetTextureOffset("_MainTex", new Vector2(Time.time, 0));
 			}
 		}
 	}
