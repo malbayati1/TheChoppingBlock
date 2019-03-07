@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6662,7 +6662,7 @@ PrefabInstance:
     - target: {fileID: 4000268747280595582, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.41
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 4000268747280595582, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
         type: 3}
@@ -6729,11 +6729,6 @@ PrefabInstance:
       propertyPath: progressBarText
       value: 
       objectReference: {fileID: 1567821930}
-    - target: {fileID: 4000268748433319815, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4000268747280595578, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
         type: 3}
       propertyPath: movementSpeedInspector
@@ -6746,6 +6741,18 @@ PrefabInstance:
     - target: {fileID: 1628764847, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}
       propertyPath: m_AutoRepath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628764837, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}
+      propertyPath: trailPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628764837, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}
+      propertyPath: trailPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628764837, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}
+      propertyPath: trailPosition.z
+      value: -1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}

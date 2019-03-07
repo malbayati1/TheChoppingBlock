@@ -63,7 +63,7 @@ public class ButtonUI : MonoBehaviour
 		}
 		else
 		{
-			text.text = "???";
+			text.text = "None";
 		}
 	}
 
