@@ -43,15 +43,9 @@ public class SwarmEnemySpawner : MonoBehaviour
 		}
 		int index = emptyIndices[Random.Range(0, emptyIndices.Count)];
 		NavMeshHit hit;
-		if(NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 1.0f, NavMesh.AllAreas))
-		{ 
-			activeEnemies[index] = Instantiate(enemyPrefab, hit.position, Quaternion.identity);
-		}
-		else
-		{
-			NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 300.0f, NavMesh.AllAreas);
-			activeEnemies[index] = Instantiate(enemyPrefab, hit.position, Quaternion.identity);
-		}
+		while(!NavMesh.SamplePosition(spawnLocations[index] + new Vector3(Random.Range(-20f, 20f), 0, Random.Range(-20f, 20f)),
+				out hit, 300.0f, NavMesh.AllAreas));
+		activeEnemies[index] = Instantiate(enemyPrefab, hit.position, Quaternion.identity);
 		
 	}
 

@@ -15,7 +15,7 @@ public class SwarmingEnemy : Unit
 
 	public List<SwarmingEnemy> partOfSwarm;
 
-	private const int SWARMAMOUNT = 5;
+	private const int SWARMAMOUNT = 4;
 	private const int SWARMRADIUS = 3;
 
 	private static SwarmingEnemy swarmLeader;
