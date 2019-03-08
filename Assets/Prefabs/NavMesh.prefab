@@ -205,6 +205,16 @@ PrefabInstance:
       propertyPath: cookingUI
       value: 
       objectReference: {fileID: 1972071227603251290}
+    - target: {fileID: 859363606920771877, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 859363606920771878, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14bfb1447dff39f499e1e86a78f70fe5, type: 3}
 --- !u!4 &2379179269939675207 stripped

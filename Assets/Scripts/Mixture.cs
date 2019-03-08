@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Mixture : ScriptableObject
 {
+	public const int MAXINGREDIENTS = 3;
+
     public List<Ingredient> ingredients = new List<Ingredient>();
 	public GameObject result;
 
@@ -16,8 +18,13 @@ public class Mixture : ScriptableObject
     {
         ingredients.Sort(delegate (Ingredient in1, Ingredient in2) { return in1.ID - in2.ID; });
     }
+	
     public bool AddIngredient(InGameIngredient i)
     {
+		if(ingredients.Count == MAXINGREDIENTS)
+		{
+			return false;
+		}
 		ingredients.Add(i.ingredientData);
         return true;
         //checks if the recipe is valid, if so add to the array, otherwise return false

@@ -30,6 +30,7 @@ public class House : MonoBehaviour
 	{
 		if((inHouse && ratio == 0) || (!inHouse && ratio == 1))
 		{
+			this.enabled = false;
 			return;
 		}
 		if(inHouse)
@@ -51,10 +52,12 @@ public class House : MonoBehaviour
     public void Enter()
 	{
 		inHouse = true;
+		this.enabled = true;
 	}
 
 	public void Exit()
 	{
 		inHouse = false;
+		this.enabled = true;
 	}
 }

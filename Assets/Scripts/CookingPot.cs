@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CookingPot : MonoBehaviour
 {
@@ -15,11 +16,16 @@ public class CookingPot : MonoBehaviour
 	public event RadiusDelegate enterRadiusEvent = delegate { };
 	public event RadiusDelegate leaveRadiusEvent = delegate { };
 
+	public delegate void MixtureChange();
+	public event MixtureChange ingredientAdded = delegate { };
+	public event MixtureChange ingredientRemoved = delegate { };
+
 	//our current ingredients
     private Mixture currentMixture;
 
 	private List<GameObject> currentlyInside;
-	[SerializeField]private List<GameObject> toCheck;
+	private List<GameObject> toCheck;
+	private List<GameObject> slots;
 
 	private Camera cam;
 
@@ -29,6 +35,11 @@ public class CookingPot : MonoBehaviour
 		toCheck = new List<GameObject>();
 		currentlyInside = new List<GameObject>();
 		cam = Camera.main;
+		slots = new List<GameObject>(Mixture.MAXINGREDIENTS);
+		foreach(Transform child in transform.GetChild(0))
+		{
+			slots.Add(child.gameObject);
+		}
 	}
 
 	//call when you want the pot to combine ingredient
@@ -53,25 +64,37 @@ public class CookingPot : MonoBehaviour
 
     public void Add(GameObject i)
     {
-		toCheck.Remove(i);
 		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
-		ingredient.ingredientData.isPreserved = true;
-		Debug.Log("Setting preserved " + i.name + " true");
-
-		Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
-		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
-        StartCoroutine(MoveIngredient(i, addTime, i.transform.position, topOfSlotLocation.transform.position, controlPosition, true));
-        
-        if(ingredient != null && currentMixture.AddIngredient(ingredient))
+		if(ingredient != null && currentMixture.AddIngredient(ingredient))
         {
+			toCheck.Remove(i);
+			ingredient.ingredientData.isPreserved = true;
+			Debug.Log("Setting preserved " + i.name + " true");
+
+			Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
+			controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
+			StartCoroutine(MoveIngredient(i, addTime, i.transform.position, topOfSlotLocation.transform.position, controlPosition, true, GetEmptySlot()));
+        
 			Debug.Log("Successfully added " + ingredient.name);
 			currentlyInside.Add(i);
         }
         else
         {
-            DropItem(i);
+            //DropItem(i);
         }
     }
+
+	public GameObject GetEmptySlot()
+	{
+		for(int x = 0; x < slots.Count; ++x)
+		{
+			if(slots[x].transform.childCount == 0)
+			{
+				return slots[x];
+			}
+		}
+		return null;
+	}
 
 	public void Empty()
     {
@@ -98,8 +121,9 @@ public class CookingPot : MonoBehaviour
 		Debug.Log("Setting preserved " + i.name + " false");
     }
 
-	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink)
+	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink, GameObject slot = null)
 	{		
+		Debug.Log(slot);
 		i.GetComponent<InGameIngredient>().isHeld = true;
 		float timer = 0;
 		float t;
@@ -113,7 +137,20 @@ public class CookingPot : MonoBehaviour
 			i.transform.localScale = Vector3.one * ((shrink) ?  1 - t : 1);
 			yield return null;
 		}
-		i.transform.position = new Vector3(i.transform.position.x, 0, i.transform.position.z);
+		NavMeshHit hit;
+		NavMesh.SamplePosition(new Vector3(i.transform.position.x, 0, i.transform.position.z), out hit, 40f, NavMesh.AllAreas);
+		if(slot != null)
+		{
+			i.transform.SetParent(slot.transform, true);
+			i.transform.position = Vector3.zero;
+			i.transform.localPosition = Vector3.zero;
+			i.transform.localScale = Vector3.one;
+		}
+		else
+		{
+			i.transform.SetParent(null);
+			i.transform.position = hit.position;
+		}
 		i.GetComponent<InGameIngredient>().isHeld = false;
 	}
 
