@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyToSpawnPrefab: {fileID: 2879231923488143871, guid: ae46c6f61d7493f45acaf2a4dc868798,
     type: 3}
-  timeBetweenSpawns: 5
-  numSpawnsAllowedActive: 2
+  timeBetweenSpawns: 10
+  numSpawnsAllowedActive: 1
   spawnLocations:
   - {x: 0, y: 0, z: -88}
   - {x: 0, y: 0, z: 88}
