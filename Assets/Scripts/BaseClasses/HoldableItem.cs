@@ -43,10 +43,15 @@ public class HoldableItem : MonoBehaviour, IHoldable
         {
             if (col.transform.parent.GetComponent<PlayerInteraction>().TryToPickUp(gameObject, this))
             {
-                canBePickedUp = false;
-                isHeld = true;
-                heldBy = col.transform.parent.gameObject;
+                GetPickedUp(col);
             }
         }
+    }
+
+    protected virtual void GetPickedUp(Collider col)
+    {
+        canBePickedUp = false;
+        isHeld = true;
+        heldBy = col.transform.parent.gameObject;
     }
 }

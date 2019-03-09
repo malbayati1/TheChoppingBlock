@@ -6,8 +6,16 @@ using UnityEngine;
 
 public class Weapon : HoldableItem
 {
-	public Vector3 heldPositionOffset = new Vector3(0f, 0f, -.5f);
-	public Vector3 heldRotationOffset = new Vector3(-90f, 180f, 0f);
+	public Vector3 heldPositionOffset = new Vector3(.5f, .5f, -.5f);
+	public Vector3 heldRotationOffset = new Vector3(0f, 180f, 0f);
+
+	public Vector3 swungRotationOffset = new Vector3(-30, 30, 90);
+	public Vector3 swungPositionOffset = new Vector3(.75f, .75f, -.75f);
+
+	[HideInInspector]
+	public bool canHit = false;
+
+	private bool swinging = false;
 
 	public float knockbackModifier = 1f;
 
@@ -26,20 +34,44 @@ public class Weapon : HoldableItem
 	{
 		if(isHeld)
 		{
-			modelChild.transform.localPosition = heldPositionOffset;
-			Quaternion rotationOffset = new Quaternion();
-			rotationOffset.eulerAngles = heldRotationOffset;
-			modelChild.transform.localRotation = rotationOffset;
 			return;
 		}
-		modelChild.transform.localPosition = new Vector3(0, 0.5f, 0);
-		modelChild.transform.localRotation = new Quaternion();
+		modelChild.localPosition = new Vector3(0, 0.5f, 0);
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
 	}
 
     public override bool Use(GameObject user)
 	{
+		if (!swinging)
+			StartCoroutine(Swing());
+
 		return false;
+	}
+	
+	protected IEnumerator Swing()
+	{
+		swinging = true;
+
+		canHit = true;
+
+		Debug.Log("Swing");
+
+
+		iTween.MoveTo(modelChild.gameObject, iTween.Hash("position", swungPositionOffset, "easetype", "easeInQuad", "time", .25f, "isLocal", true));
+
+		iTween.MoveTo(modelChild.gameObject, iTween.Hash("position", heldPositionOffset, "easetype", "easeOutQuad", "time", .15f, "delay", .25f, "isLocal", true));
+
+
+		iTween.RotateTo(modelChild.gameObject, iTween.Hash("rotation", swungRotationOffset, "easetype", "easeInQuad", "time", .25f, "isLocal", true));
+
+		iTween.RotateTo(modelChild.gameObject, iTween.Hash("rotation", heldRotationOffset, "easetype", "easeOutQuad", "time", .15f, "delay", .25f, "isLocal", true));
+
+		yield return new WaitForSeconds(.5f);
+
+		canHit = false;
+
+		swinging = false;
+		
 	}
 
     public override void Drop(GameObject from)
@@ -51,7 +83,7 @@ public class Weapon : HoldableItem
     {
 		base.OnTriggerEnter(col);
 
-		if (isHeld  && col.gameObject.CompareTag("Enemy"))
+		if (isHeld && canHit && col.gameObject.CompareTag("Enemy"))
 		{
 			Unit unit = col.transform.parent.gameObject.GetComponent<Unit>();
 			if (unit != null)
@@ -64,5 +96,14 @@ public class Weapon : HoldableItem
 				unit.GetHit(damage, direction, knockback);
 			}
 		}
+	}
+
+	protected override void GetPickedUp(Collider col)
+	{
+		base.GetPickedUp(col);
+		
+		iTween.MoveTo(modelChild.gameObject, iTween.Hash("position", heldPositionOffset, "easetype", "easeOutQuad", "time", .02f, "isLocal", true));
+
+		iTween.RotateTo(modelChild.gameObject, iTween.Hash("rotation", heldRotationOffset, "easetype", "easeOutQuad", "time", .02f, "isLocal", true));
 	}
 }
