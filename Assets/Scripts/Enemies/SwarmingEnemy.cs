@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SwarmingEnemy : Unit
+public class SwarmingEnemy : BaseEnemy
 {
-    public int damageModifier = 1;
-    public int knockbackModifier = 1;
 	public float preSwarmSpeed;
 	public float swarmSpeed;
 	public bool swarmCreated;
