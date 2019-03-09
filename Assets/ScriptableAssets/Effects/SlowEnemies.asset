@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 118dd91e08dbbc149ab611b8541d2510, type: 3}
-  m_Name: GreenBean
+  m_Script: {fileID: 11500000, guid: 24c8f67f178478e4d9cdbc01c9783bf8, type: 3}
+  m_Name: SlowEnemies
   m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 11400000, guid: 3a8e045d82fa3ea4baf7fc3972c60145, type: 2}
-  effectData:
-  - potency: 1
-    duration: 30
-  name: GreenBean
-  ID: 8
-  rarity: 0
-  isPreserved: 0
+  description: Slow Enemies
+  icon: {fileID: 21300000, guid: 1b23287a363f4cf42a231dbcda2b1d34, type: 3}
+  currentDuration: 0
+  maxDuration: 0
+  potency: 0
