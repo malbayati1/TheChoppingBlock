@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
+	public float roofFadeSpeed;
+
 	private GameObject roof;
 
 	private List<Material> roofMats;
@@ -35,12 +37,12 @@ public class House : MonoBehaviour
 		}
 		if(inHouse)
 		{
-			ratio -= Time.deltaTime;
+			ratio -= Time.deltaTime * roofFadeSpeed;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		else
 		{
-			ratio += Time.deltaTime;
+			ratio += Time.deltaTime * roofFadeSpeed;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		foreach(Material m in roofMats)
