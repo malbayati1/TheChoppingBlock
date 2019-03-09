@@ -44,10 +44,10 @@ public class HealthUI : MonoBehaviour
 		}
 	}
 
-	void UpdateUI(float value)
+	void UpdateUI(float f)
 	{
 		//Debug.Log("update float " + value);
-		UpdateUI((int)value);
+		UpdateUI((int)f);
 	}
 
 	void UpdateUI(int value)

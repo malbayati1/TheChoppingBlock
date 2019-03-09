@@ -11,7 +11,7 @@ public class HurtBox : MonoBehaviour
     {
 		if (col.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("Hey!");
+			//Debug.Log("Hey!");
 			Unit unit = col.transform.parent.gameObject.GetComponent<Unit>();
 			if (unit != null)
 			{
