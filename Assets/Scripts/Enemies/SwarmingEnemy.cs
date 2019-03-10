@@ -9,8 +9,6 @@ public class SwarmingEnemy : BaseEnemy
 	public float swarmSpeed;
 	public bool swarmCreated;
 
-    public int framesBetweenUpdates = 1;
-
 	public List<SwarmingEnemy> partOfSwarm;
 
 	private const int SWARMAMOUNT = 4;
@@ -18,7 +16,6 @@ public class SwarmingEnemy : BaseEnemy
 
 	private static SwarmingEnemy swarmLeader;
 
-    private GameObject player;
 	private bool waiting;
 	private Vector3 spawnPoint;
 

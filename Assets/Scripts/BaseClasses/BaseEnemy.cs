@@ -7,7 +7,7 @@ public class BaseEnemy : Unit
     public int damageModifier = 1;
     public int knockbackModifier = 1;
     public int framesBetweenUpdates = 1;
-    private GameObject player;
+    protected GameObject player;
 
     void Start()
     {

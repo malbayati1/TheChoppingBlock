@@ -15,6 +15,15 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    [SerializeField]
+    private AudioType _buzzAudio;
+
+    public AudioClip buzzAudio {
+        get
+        {
+            return _buzzAudio.GetClip();
+        }
+    }
 
     void Start()
     {
