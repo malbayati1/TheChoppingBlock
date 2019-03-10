@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class House : MonoBehaviour
 {
 	public float roofFadeSpeed;
+
+	public GameObject doorObstacle;
 
 	private GameObject roof;
 
@@ -55,11 +58,13 @@ public class House : MonoBehaviour
 	{
 		inHouse = true;
 		this.enabled = true;
+		doorObstacle.SetActive(true);
 	}
 
 	public void Exit()
 	{
 		inHouse = false;
 		this.enabled = true;
+		doorObstacle.SetActive(false);
 	}
 }
