@@ -58,12 +58,29 @@ public class BaseMovement : MonoBehaviour
         impulse *= 2f;
         //navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
         float time = unit.hitImmunityCoolDown;
-        //mover.Move(0f, 0f, impulse.y);
-        iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + new Vector3(impulse.x, 0f, impulse.z), "easeType", "easeOutExpo", "time", time));
+
+        Vector3 destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, new Vector3(impulse.x, 0f, impulse.z), out hit))
+        {
+            destination = hit.point;
+            destination.y = 0;
+        }
+
+        NavMeshHit navMeshHit;
+
+        if (NavMesh.SamplePosition(destination, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
+        {
+			destination = navMeshHit.position;
+        }
+
+        iTween.MoveTo(gameObject, iTween.Hash("position", destination, "easeType", "easeOutExpo", "time", time));
         
         StartCoroutine(mover.Arc(impulse.y, time));
 
-        StartCoroutine(loseControlForSeconds(time));
+        StartCoroutine(loseControlForSeconds(time * 1.5f));
     }
 
     protected IEnumerator loseControlForSeconds(float delay)
