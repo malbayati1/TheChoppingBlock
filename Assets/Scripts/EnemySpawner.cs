@@ -48,6 +48,8 @@ public class EnemySpawner : MonoBehaviour
             timeSinceLastSpawn = 0f;
         }
 
-        timeSinceLastSpawn += Time.deltaTime;
+        //If statement to prevent enemies from spawning the moment one of them dies
+        if (activeEnemies.Count < numSpawnsAllowedActive)
+            timeSinceLastSpawn += Time.deltaTime;
     }
 }
