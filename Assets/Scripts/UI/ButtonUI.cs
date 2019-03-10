@@ -32,6 +32,8 @@ public class ButtonUI : MonoBehaviour
 		cookingPot = GameObject.FindWithTag("CookingPot").GetComponent<CookingPot>();
 		cookingPot.enterRadiusEvent += EnterPotRadius;
 		cookingPot.leaveRadiusEvent += LeavePotRadius;
+		cookingPot.ingredientAdded += UpdateText;
+		cookingPot.ingredientRemoved += UpdateText;
 	}
 
 	void OnDisable()
@@ -45,30 +47,45 @@ public class ButtonUI : MonoBehaviour
 
 	void UpdateText()
 	{
+		Debug.Log("updating");
 		if(bHoldingIngredient && bInPotRadius)
 		{
+			Debug.Log("1");
 			text.text = inPotRadiusHoldingIngredient;
 		}
 		else if(bHoldingIngredient)
 		{
+			Debug.Log("2");
 			text.text = holdingIngredient;
 		}
 		else if(bHoldingKnife)
 		{
+			Debug.Log("3");
 			text.text = holdingKnife;
 		}
 		else if(bInPotRadius)
 		{
-			text.text = inPotRadius;
+			if(cookingPot.IsNotEmpty())
+			{
+				Debug.Log("4");
+				text.text = inPotRadius;
+			}
+			else
+			{
+				Debug.Log("5");
+				text.text = "None";
+			}
 		}
 		else
 		{
+			Debug.Log("6");
 			text.text = "None";
 		}
 	}
 
 	void PickUpItem(GameObject g)
 	{
+		Debug.Log("detecting pickup");
 		if(g.GetComponent<Weapon>() == null)
 		{
 			bHoldingIngredient = true;
@@ -82,6 +99,7 @@ public class ButtonUI : MonoBehaviour
 
 	void DropItem(GameObject g)
 	{
+		Debug.Log("detecting drop");
 		if(g.GetComponent<Weapon>() == null)
 		{
 			bHoldingIngredient = false;
@@ -95,12 +113,14 @@ public class ButtonUI : MonoBehaviour
 
 	void EnterPotRadius()
 	{
+		Debug.Log("detecting enter");
 		bInPotRadius = true;
 		UpdateText();
 	}
 
 	void LeavePotRadius()
 	{
+		Debug.Log("detecting exit");
 		bInPotRadius = false;
 		UpdateText();
 	}
