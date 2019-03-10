@@ -11,7 +11,8 @@ public class BaseMovement : MonoBehaviour
 
     protected NavMeshAgent navMeshAgent;
 
-    protected AnimatedMover mover;
+    [HideInInspector]
+    public AnimatedMover mover;
 
     protected Unit unit;
 

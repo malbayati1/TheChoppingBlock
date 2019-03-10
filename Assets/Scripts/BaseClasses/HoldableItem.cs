@@ -19,7 +19,7 @@ public class HoldableItem : MonoBehaviour, IHoldable
 
     public virtual bool Use(GameObject user)
     {
-			return true;
+		return true;
     }
 
     public virtual void Drop(GameObject droppedBy)

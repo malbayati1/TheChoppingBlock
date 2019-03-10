@@ -19,9 +19,10 @@ public class SwarmingEnemy : BaseEnemy
 	private bool waiting;
 	private Vector3 spawnPoint;
 
-    void Start()
+    protected override void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        base.Start();
+
 		swarmCreated = false;
 		if(swarmLeader == null)
 		{

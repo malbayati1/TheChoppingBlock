@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523e96e9352654445a5ebddd9f6815f9, type: 3}
+  m_Name: DullImpactAudio
+  m_EditorClassIdentifier: 
+  currentIndex: 0
+  audioClips:
+  - {fileID: 8300000, guid: 1fdc2bacd9c60f54ea89e3588b262007, type: 3}
+  - {fileID: 8300000, guid: 4714f5b997adc3e4ba53ee4378f87231, type: 3}
+  - {fileID: 8300000, guid: 7ff19b226c0d63b4a8134924811e821f, type: 3}
+  - {fileID: 8300000, guid: 46ffaefe4924a9049ac487628347f37c, type: 3}
+  - {fileID: 8300000, guid: 31b6f9bd3a9bf124dbd7d36e73ba563d, type: 3}
+  - {fileID: 8300000, guid: f5f4f21d5a53f364d9411e3aadef6b43, type: 3}
+  - {fileID: 8300000, guid: 2d6a69a1690e71d4ba46a0860e075d3a, type: 3}

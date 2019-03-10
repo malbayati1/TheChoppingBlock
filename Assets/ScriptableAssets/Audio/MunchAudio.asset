@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523e96e9352654445a5ebddd9f6815f9, type: 3}
+  m_Name: MunchAudio
+  m_EditorClassIdentifier: 
+  currentIndex: 0
+  audioClips:
+  - {fileID: 8300000, guid: c917eb127c0f8aa449f6ec55c293ee92, type: 3}
+  - {fileID: 8300000, guid: 81036e8e363a02a458e59f33eb86c176, type: 3}
+  - {fileID: 8300000, guid: 77c99fdf77a95e440a4ad1f1d620d4dd, type: 3}
+  - {fileID: 8300000, guid: ce4073af9a4ef72469e26a6275419eca, type: 3}

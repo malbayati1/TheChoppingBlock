@@ -12,6 +12,8 @@ public class PlayerInteraction : MonoBehaviour
     public Text progressBarText;
     public float interactionTime;
 
+    public AudioSource audioSource;
+
     public delegate void InputDelegate();
     public event InputDelegate useEvent = delegate { };
     public event InputDelegate dropEvent = delegate { };
@@ -47,6 +49,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (heldItemInteraction.Use(gameObject))
                 {
+                    audioSource.clip = AudioManager.instance.munchAudio;
+                    audioSource.Play();
 					ingredientEatEvent(heldItem);
                     ClearFields();
                 }
