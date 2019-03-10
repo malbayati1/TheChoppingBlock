@@ -4367,6 +4367,7 @@ GameObject:
   - component: {fileID: 473303242}
   - component: {fileID: 473303241}
   - component: {fileID: 473303240}
+  - component: {fileID: 473303244}
   m_Layer: 0
   m_Name: MANAGER
   m_TagString: Untagged
@@ -4454,6 +4455,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &473303244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473303239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c21830cbd3bd3e4291dab789466ae28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stepAudio: {fileID: 11400000, guid: 6115db6c68c094e4caef643700de2b71, type: 2}
 --- !u!1001 &498616595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19063,6 +19077,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 136605212569611623}
     m_Modifications:
+    - target: {fileID: 859363606920771879, guid: 14bfb1447dff39f499e1e86a78f70fe5,
+        type: 3}
+      propertyPath: m_Name
+      value: CookingPot
+      objectReference: {fileID: 0}
     - target: {fileID: 859363606920771931, guid: 14bfb1447dff39f499e1e86a78f70fe5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19117,11 +19136,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 859363606920771879, guid: 14bfb1447dff39f499e1e86a78f70fe5,
-        type: 3}
-      propertyPath: m_Name
-      value: CookingPot
       objectReference: {fileID: 0}
     - target: {fileID: 859363607561262660, guid: 14bfb1447dff39f499e1e86a78f70fe5,
         type: 3}

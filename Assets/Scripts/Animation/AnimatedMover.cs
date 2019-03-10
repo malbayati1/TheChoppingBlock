@@ -10,6 +10,8 @@ public class AnimatedMover : MonoBehaviour
     public float groundedCheckOffsetDown;
     public LayerMask groundedCheckLM;
 
+    private AudioSource audioSource;
+
     private bool animating = false;
 
     //private Rigidbody rb;
@@ -18,6 +20,7 @@ public class AnimatedMover : MonoBehaviour
     void Awake()
     {
         //rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,11 @@ public class AnimatedMover : MonoBehaviour
         iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.up * height, "isLocal", true, "easeType", "easeOutQuad", "time", time * 2/3));
         iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.zero, "isLocal", true, "easeType", "easeInQuad", "time", time * 1/3, "delay", time * 2/3));
         yield return new WaitForSeconds(time);
+
+        audioSource.clip = AudioManager.instance.stepAudio;
+
+        audioSource.Play();
+
         animating = false;
     }
 
