@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class TutorialDialogue : MonoBehaviour
 {
     public float textCrawlSpeedInSeconds;
+	public GameObject door;
+
     private Text box;
     private List<string> dialouge = new List<string>();
     private List<float> delay = new List<float>();
@@ -69,9 +71,9 @@ public class TutorialDialogue : MonoBehaviour
     private IEnumerator moveDoor()
     {
         Debug.Log("asrdthgsfgd");
-        GameObject door = GameObject.Find("Cube (6)");
+        //GameObject door = GameObject.Find("Cube (6)");
         //GameObject handle = GameObject.Find("Cube(9)");
-        while(door.transform.localPosition.x < 0.3f)
+        while(door.transform.localPosition.x < 3f)
         {
             door.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
             //handle.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
