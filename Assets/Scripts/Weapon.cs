@@ -107,7 +107,7 @@ public class Weapon : HoldableItem
 
 				unit.GetHit(damage, direction, knockback);
 
-				impactAudioSource.clip = AudioManager.instance.dullImpactAudio;
+				impactAudioSource.clip = AudioManager.instance.juicyImpactAudio;
 				impactAudioSource.Play();
 			}
 		}
