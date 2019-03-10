@@ -4469,6 +4469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stepAudio: {fileID: 11400000, guid: 6115db6c68c094e4caef643700de2b71, type: 2}
   _buzzAudio: {fileID: 11400000, guid: b01e4f532e8d2904c8bbbe4362d0849d, type: 2}
+  _cookAudio: {fileID: 11400000, guid: 3188961c6124daf499fde3023274a039, type: 2}
+  _addIngredientAudio: {fileID: 11400000, guid: c9ac5178ef18f3a46a5bf1e94aaf28b0,
+    type: 2}
 --- !u!1001 &498616595
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,6 +25,26 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    [SerializeField]
+    private AudioType _cookAudio;
+
+    public AudioClip cookAudio {
+        get
+        {
+            return _cookAudio.GetClip();
+        }
+    }
+
+    [SerializeField]
+    private AudioType _addIngredientAudio;
+
+    public AudioClip addIngredientAudio {
+        get
+        {
+            return _addIngredientAudio.GetClip();
+        }
+    }
+
     void Start()
     {
     }

@@ -16,6 +16,9 @@ public class PlayerInteraction : MonoBehaviour
     public event InputDelegate useEvent = delegate { };
     public event InputDelegate dropEvent = delegate { };
 
+    public event InputDelegate startChannelEvent = delegate { };
+    public event InputDelegate stopChannelEvent = delegate { };
+
 	public delegate void ItemChangeDelegate(GameObject g);
 	public event ItemChangeDelegate itemPickupEvent = delegate { };
 	public event ItemChangeDelegate itemDropEvent = delegate { };
@@ -81,6 +84,9 @@ public class PlayerInteraction : MonoBehaviour
         float timer = 0f;
         progressBar.SetActive(true);
         UpdateText(button);
+
+        startChannelEvent();
+
         while (timer <= interactionTime)
         {
             timer += Time.deltaTime;
@@ -88,12 +94,14 @@ public class PlayerInteraction : MonoBehaviour
             {
                 progressBar.SetActive(false);
                 performingAction = false;
+                stopChannelEvent();
                 yield break;
             }
             progressBarImage.fillAmount = timer / interactionTime;
             progressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarLocation.transform.position);
             yield return new WaitForFixedUpdate();
         }
+        stopChannelEvent();
         f();
         progressBar.SetActive(false);
         performingAction = false;
