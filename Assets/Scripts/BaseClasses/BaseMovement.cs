@@ -59,11 +59,13 @@ public class BaseMovement : MonoBehaviour
         //navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
         float time = unit.hitImmunityCoolDown / 2;
 
-        Vector3 destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+        Vector3 offset = new Vector3(impulse.x, 0f, impulse.z);
+
+        Vector3 destination = transform.position + offset;
 
         RaycastHit hit;
 		NavMeshHit navMeshHit;
-        if (Physics.Raycast(transform.position, new Vector3(impulse.x, 0f, impulse.z), out hit))
+        if (Physics.Raycast(transform.position, offset, out hit, offset.magnitude))
         {
 			if (NavMesh.SamplePosition(hit.point, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
 			{
