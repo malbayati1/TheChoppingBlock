@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5384223014106457006}
   - component: {fileID: 5384223014106457007}
   - component: {fileID: 5384223014106457003}
+  - component: {fileID: 313764080580274170}
   - component: {fileID: 5384223014106457002}
   m_Layer: 0
   m_Name: MANAGER
@@ -135,6 +136,30 @@ MonoBehaviour:
   _summerStartAudio: {fileID: 11400000, guid: fcf12717797012f4498e2f8c845c7a3b, type: 2}
   _fallStartAudio: {fileID: 11400000, guid: ef7578b04353b204ab1f251892c12019, type: 2}
   _winterStartAudio: {fileID: 11400000, guid: 5d1827cd67092b842b1b7452c90ea473, type: 2}
+--- !u!114 &313764080580274170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384223014106456992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbd628b3ab0d2e4c9c83aefc42be35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  springSpawnPrefabs:
+  - {fileID: 2954571142262698988, guid: c44940fe6657fa14b921df390ac794b8, type: 3}
+  - {fileID: 8223810283010784868, guid: d52909be4b570dc49a00e7aa00c97dd4, type: 3}
+  - {fileID: 8223810283010784868, guid: d52909be4b570dc49a00e7aa00c97dd4, type: 3}
+  summerSpawnPrefabs:
+  - {fileID: 8223810283010784868, guid: d52909be4b570dc49a00e7aa00c97dd4, type: 3}
+  fallSpawnPrefabs:
+  - {fileID: 2954571142262698988, guid: c44940fe6657fa14b921df390ac794b8, type: 3}
+  - {fileID: 2954571142262698988, guid: c44940fe6657fa14b921df390ac794b8, type: 3}
+  - {fileID: 8223810283010784868, guid: d52909be4b570dc49a00e7aa00c97dd4, type: 3}
+  winterSpawnPrefabs:
+  - {fileID: 2954571142262698988, guid: c44940fe6657fa14b921df390ac794b8, type: 3}
 --- !u!82 &5384223014106457002
 AudioSource:
   m_ObjectHideFlags: 0
