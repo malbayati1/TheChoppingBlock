@@ -57,24 +57,35 @@ public class BaseMovement : MonoBehaviour
     {
         impulse *= 2f;
         //navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
-        float time = unit.hitImmunityCoolDown;
+        float time = unit.hitImmunityCoolDown / 2;
 
-        Vector3 destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
+        Vector3 offset = new Vector3(impulse.x, 0f, impulse.z);
+
+        Vector3 destination = transform.position + offset;
 
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, new Vector3(impulse.x, 0f, impulse.z), out hit))
+		NavMeshHit navMeshHit;
+        if (Physics.Raycast(transform.position, offset, out hit, offset.magnitude))
         {
-            destination = hit.point;
-            destination.y = 0;
+			if (NavMesh.SamplePosition(hit.point, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
+			{
+				destination = navMeshHit.position;
+			}
+			else
+			{
+            	destination = hit.point;
+            	destination.y = 0;
+			}
         }
+		else
+		{
+			if (NavMesh.SamplePosition(destination, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
+			{
+				destination = navMeshHit.position;
+			}
+		}
 
-        NavMeshHit navMeshHit;
-
-        if (NavMesh.SamplePosition(destination, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
-        {
-			destination = navMeshHit.position;
-        }
+        
 
         iTween.MoveTo(gameObject, iTween.Hash("position", destination, "easeType", "easeOutExpo", "time", time));
         
