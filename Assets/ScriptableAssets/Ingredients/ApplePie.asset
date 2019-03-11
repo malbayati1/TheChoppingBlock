@@ -17,7 +17,7 @@ MonoBehaviour:
   effectData:
   - potency: 8
     duration: 0
-  name: ApplePie
+  name: Apple Pie
   ID: 3
   rarity: 2
   isPreserved: 0
