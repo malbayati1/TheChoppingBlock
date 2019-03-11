@@ -50,12 +50,21 @@ public class TutorialDialogue : MonoBehaviour
     {
         StartCoroutine(textCrawl(dialouge[0]));
         yield return new WaitForSeconds(delay[0]);
-        StartCoroutine(textCrawl(dialouge[1]));
-        yield return new WaitForSeconds(delay[1]);
-        StartCoroutine(textCrawl(dialouge[2]));
-        yield return new WaitForSeconds(delay[2]);
-        StartCoroutine(textCrawl(dialouge[3]));
-        yield return new WaitForSeconds(delay[3]);
+        if (!finishedMakingPie)
+        {
+            StartCoroutine(textCrawl(dialouge[1]));
+            yield return new WaitForSeconds(delay[1]);
+            if (!finishedMakingPie)
+            {
+                StartCoroutine(textCrawl(dialouge[2]));
+                yield return new WaitForSeconds(delay[2]);
+                if (!finishedMakingPie)
+                {
+                    StartCoroutine(textCrawl(dialouge[3]));
+                    yield return new WaitForSeconds(delay[3]);
+                }
+            }
+        }
         while (!finishedMakingPie)
         {
             yield return new WaitForEndOfFrame();
