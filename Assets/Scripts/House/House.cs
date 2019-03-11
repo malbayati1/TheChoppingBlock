@@ -6,6 +6,7 @@ public class House : MonoBehaviour
 {
 	public float roofFadeSpeed;
 
+	private GameObject doorObstacle;
 	private GameObject roof;
 
 	private List<Material> roofMats;
@@ -19,6 +20,7 @@ public class House : MonoBehaviour
 		inHouse = true;
 		ratio = 0;
 		roof = transform.GetChild(1).gameObject;
+		doorObstacle = transform.GetChild(3).gameObject;
 		roofMats = new List<Material>();
 		foreach(Transform child in roof.transform)
 		{
@@ -55,11 +57,13 @@ public class House : MonoBehaviour
 	{
 		inHouse = true;
 		this.enabled = true;
+		doorObstacle.SetActive(true);
 	}
 
 	public void Exit()
 	{
 		inHouse = false;
 		this.enabled = true;
+		doorObstacle.SetActive(false);
 	}
 }

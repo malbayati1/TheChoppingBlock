@@ -25,9 +25,17 @@ public class Weapon : HoldableItem
 
 	private Transform modelChild;
 
+	private AudioSource audioSource;
+	private AudioSource impactAudioSource;
+
 	void Awake()
 	{
 		modelChild = transform.GetChild(0);
+
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.spatialBlend = 1;
+		impactAudioSource = gameObject.AddComponent<AudioSource>();
+		impactAudioSource.spatialBlend = 1;
 	}
 
 	void Update()
@@ -54,7 +62,8 @@ public class Weapon : HoldableItem
 
 		canHit = true;
 
-		Debug.Log("Swing");
+		audioSource.clip = AudioManager.instance.swingAudio;
+		audioSource.Play();
 
 
 		iTween.MoveTo(modelChild.gameObject, iTween.Hash("position", swungPositionOffset, "easetype", "easeInQuad", "time", .25f, "isLocal", true));
@@ -77,6 +86,9 @@ public class Weapon : HoldableItem
     public override void Drop(GameObject from)
 	{
 		base.Drop(from);
+
+		audioSource.clip = AudioManager.instance.dropKnifeAudio;
+		audioSource.Play();
 	}
 
 	protected override void OnTriggerEnter(Collider col)
@@ -94,6 +106,9 @@ public class Weapon : HoldableItem
 				Vector3 direction = transform.forward.normalized;
 
 				unit.GetHit(damage, direction, knockback);
+
+				impactAudioSource.clip = AudioManager.instance.juicyImpactAudio;
+				impactAudioSource.Play();
 			}
 		}
 	}
@@ -105,5 +120,8 @@ public class Weapon : HoldableItem
 		iTween.MoveTo(modelChild.gameObject, iTween.Hash("position", heldPositionOffset, "easetype", "easeOutQuad", "time", .02f, "isLocal", true));
 
 		iTween.RotateTo(modelChild.gameObject, iTween.Hash("rotation", heldRotationOffset, "easetype", "easeOutQuad", "time", .02f, "isLocal", true));
+	
+		audioSource.clip = AudioManager.instance.pickUpKnifeAudio;
+		audioSource.Play();
 	}
 }
