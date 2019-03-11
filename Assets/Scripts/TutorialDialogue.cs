@@ -32,7 +32,9 @@ public class TutorialDialogue : MonoBehaviour
         dialouge.Add("YO.           \nNEW HIRE.");
         delay.Add(4);
         dialouge.Add("Make yourself useful\nand get a pie going!");
-        delay.Add(1);
+        delay.Add(10);
+        dialouge.Add("You do know how to make a pie, right?\nYou just need one apple and one thing of wheat.\nThrow em in the pot and hold [K] to cook em.");
+        delay.Add(5);
         dialouge.Add("Not half bad...\nPut that in the back left\n of the freezer.");
         delay.Add(10);
 
@@ -52,8 +54,8 @@ public class TutorialDialogue : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        StartCoroutine(textCrawl(dialouge[2]));
-        yield return new WaitForSeconds(delay[2]);
+        StartCoroutine(textCrawl(dialouge[3]));
+        yield return new WaitForSeconds(delay[3]);
         
         Debug.Log("End of Dialogue.");
         yield return null;
