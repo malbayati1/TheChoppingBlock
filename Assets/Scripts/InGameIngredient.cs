@@ -10,8 +10,6 @@ public class InGameIngredient : HoldableItem
 
 	private float rotationDegreesPerSecond = 180f;
 
-	private AudioSource audioSource;
-
 	void Awake()
 	{
 		ingredientData = Object.Instantiate(ingredientData) as Ingredient;
@@ -31,9 +29,6 @@ public class InGameIngredient : HoldableItem
 		{
 			Debug.LogError("THIS INGREDIENT(" +gameObject.name+") IS NOT TAGGED CORRECTLY");
 		}
-
-		audioSource = gameObject.AddComponent<AudioSource>();
-		audioSource.spatialBlend = 1;
 	}
 
 	void Update()
@@ -43,14 +38,6 @@ public class InGameIngredient : HoldableItem
 			return;
 		}
 		transform.RotateAround(transform.position, Vector3.up, rotationDegreesPerSecond * Time.deltaTime);
-	}
-
-	protected override void GetPickedUp(Collider col)
-	{
-		base.GetPickedUp(col);
-
-		audioSource.clip = AudioManager.instance.pickUpIngredientAudio;
-        audioSource.Play();
 	}
 
     public override bool Use(GameObject user)
@@ -73,8 +60,5 @@ public class InGameIngredient : HoldableItem
     public override void Drop(GameObject from)
 	{
 		base.Drop(from);
-
-		audioSource.clip = AudioManager.instance.dropIngredientAudio;
-        audioSource.Play();
 	}
 }

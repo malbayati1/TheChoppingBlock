@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour
 
     [HideInInspector] public Health health;
 
-    public bool canBeHit = true;
+    protected bool canBeHit = true;
 
     protected BaseMovement movement;
 

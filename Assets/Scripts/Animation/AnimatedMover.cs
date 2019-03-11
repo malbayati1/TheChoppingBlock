@@ -10,8 +10,6 @@ public class AnimatedMover : MonoBehaviour
     public float groundedCheckOffsetDown;
     public LayerMask groundedCheckLM;
 
-    protected AudioSource audioSource;
-
     private bool animating = false;
 
     //private Rigidbody rb;
@@ -20,7 +18,6 @@ public class AnimatedMover : MonoBehaviour
     void Awake()
     {
         //rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,22 +30,13 @@ public class AnimatedMover : MonoBehaviour
         }  
     }
 
-    public virtual IEnumerator Arc(float height, float time)
+    public IEnumerator Arc(float height, float time)
     {
-        animating = true;       
-
-        Animate(height, time); 
-        yield return new WaitForSeconds(time);
-
-        PlayAudio();
-
-        animating = false;
-    }
-
-    protected virtual void Animate(float height, float time)
-    {
+        animating = true;        
         iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.up * height, "isLocal", true, "easeType", "easeOutQuad", "time", time * 2/3));
         iTween.MoveTo(gameObject, iTween.Hash("position",  Vector3.zero, "isLocal", true, "easeType", "easeInQuad", "time", time * 1/3, "delay", time * 2/3));
+        yield return new WaitForSeconds(time);
+        animating = false;
     }
 
     public bool IsGrounded()
@@ -57,12 +45,5 @@ public class AnimatedMover : MonoBehaviour
                 transform.position + Vector3.down * groundedCheckOffsetDown,
                 groundedCheckRadius,
                 groundedCheckLM).Length > 0;
-    }
-
-    protected virtual void PlayAudio()
-    {
-        audioSource.clip = AudioManager.instance.stepAudio;
-
-        audioSource.Play();
     }
 }

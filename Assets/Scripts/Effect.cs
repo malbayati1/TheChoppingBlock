@@ -32,6 +32,7 @@ public abstract class Effect : ScriptableObject
         currentDuration -= deltaTime;
         if(currentDuration <= 0)
         {
+            OnRemove(p);
             return true;
         }
 		return false;

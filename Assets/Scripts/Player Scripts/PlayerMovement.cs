@@ -22,7 +22,7 @@ public class PlayerMovement : BaseMovement
         stats = GetComponent<PlayerStats>();
 		navMeshPath = new NavMeshPath();
 		lastPathPosition = Vector3.one * 9999;
-		trail = transform.GetChild(4).gameObject.GetComponent<LineRenderer>();
+		trail = transform.GetChild(3).gameObject.GetComponent<LineRenderer>();
     }
 
 	void Start()

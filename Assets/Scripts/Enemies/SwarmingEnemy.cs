@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SwarmingEnemy : BaseEnemy
+public class SwarmingEnemy : Unit
 {
+    public int damageModifier = 1;
+    public int knockbackModifier = 1;
 	public float preSwarmSpeed;
 	public float swarmSpeed;
 	public bool swarmCreated;
+
+    public int framesBetweenUpdates = 1;
 
 	public List<SwarmingEnemy> partOfSwarm;
 
@@ -16,13 +20,13 @@ public class SwarmingEnemy : BaseEnemy
 
 	private static SwarmingEnemy swarmLeader;
 
+    private GameObject player;
 	private bool waiting;
 	private Vector3 spawnPoint;
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
-
+        player = GameObject.FindWithTag("Player");
 		swarmCreated = false;
 		if(swarmLeader == null)
 		{

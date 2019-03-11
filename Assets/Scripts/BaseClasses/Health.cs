@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthChangeEventData
-{
-	public int delta;
-	public bool cancelled;
-	public HealthChangeEventData(int d)
-	{
-		delta = d;
-		cancelled = false;
-	}
-}
-
 public class Health : MonoBehaviour
 {
     [HideInInspector] public int health;
@@ -32,13 +21,10 @@ public class Health : MonoBehaviour
         }
     }
 
-	public delegate void HealthChangeEffectabledDelegate(HealthChangeEventData hced);
-	public delegate void HealthChangeNotifyDelegate(int delta);
-	public event HealthChangeEffectabledDelegate preHealEvent = delegate {};
-	public event HealthChangeEffectabledDelegate preDamageEvent = delegate {};
-	public event HealthChangeNotifyDelegate postDamageEvent = delegate {};
-	public event HealthChangeNotifyDelegate postHealEvent = delegate {};
-	public event HealthChangeNotifyDelegate changeEvent = delegate {};
+	public delegate void HealthChangeDelegate(int delta);
+	public event HealthChangeDelegate healEvent = delegate {};
+	public event HealthChangeDelegate damageEvent = delegate {};
+	public event HealthChangeDelegate changeEvent = delegate {};
 
     // Might be null- determines whether to get maxhealth from playerstats
     private PlayerStats playerStats;
@@ -65,7 +51,7 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	void ValidateHealth(float value) //needs to take a value to subscribe to the stat change event
+	void ValidateHealth(float value) //needs to take a value to subscribe to the stat cahgne event
 	{
 		if(health > maxHealth)
 		{
@@ -75,12 +61,11 @@ public class Health : MonoBehaviour
 
     public virtual void Damage(int amount)
     {
-		HealthChangeEventData hced = new HealthChangeEventData(-amount);
-		preDamageEvent(hced);
-		int delta = (hced.cancelled) ? 0 : hced.delta;
-        health += delta;
-		postDamageEvent(delta);
-		changeEvent(delta);
+		Debug.Log("taking " + amount + " damage!");
+        health -= amount;
+		Debug.Log("HP:"+health+"/"+maxHealth);
+		damageEvent(amount);
+		changeEvent(-amount);
 
         if (health <= 0)
         {
@@ -90,12 +75,9 @@ public class Health : MonoBehaviour
 
     public virtual void Heal(int amount)
     {
-        HealthChangeEventData hced = new HealthChangeEventData(amount);
-		preHealEvent(hced);
-		int delta = (hced.cancelled) ? 0 : hced.delta;
-        health += delta;
-		postHealEvent(delta);
-		changeEvent(delta);
+        health += amount;
+		healEvent(amount);
+		changeEvent(amount);
 
         if (health > maxHealth)
         {

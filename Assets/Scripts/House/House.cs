@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class House : MonoBehaviour
 {
+<<<<<<< HEAD
 	public float roofFadeSpeed;
 
+=======
+>>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 	private GameObject roof;
 
 	private List<Material> roofMats;
@@ -37,12 +40,12 @@ public class House : MonoBehaviour
 		}
 		if(inHouse)
 		{
-			ratio -= Time.deltaTime * roofFadeSpeed;
+			ratio -= Time.deltaTime;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		else
 		{
-			ratio += Time.deltaTime * roofFadeSpeed;
+			ratio += Time.deltaTime;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		foreach(Material m in roofMats)
