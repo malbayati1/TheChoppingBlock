@@ -195,6 +195,36 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    [SerializeField]
+    private AudioType _teleportStartAudio;
+
+    public AudioClip teleportStartAudio {
+        get
+        {
+            return _teleportStartAudio.GetClip();
+        }
+    }
+
+    [SerializeField]
+    private AudioType _teleportMidAudio;
+
+    public AudioClip teleportMidAudio {
+        get
+        {
+            return _teleportMidAudio.GetClip();
+        }
+    }
+
+    [SerializeField]
+    private AudioType _teleportEndAudio;
+
+    public AudioClip teleportEndAudio {
+        get
+        {
+            return _teleportEndAudio.GetClip();
+        }
+    }
+
     private AudioSource seasonAudioSource;
 
     private AudioSource bgMusicSource;

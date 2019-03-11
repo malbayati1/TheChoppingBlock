@@ -11,6 +11,8 @@ public class TutorialTeleporter : MonoBehaviour
     private bool startedOnce = false;
     private ParticleSystem ps;
 
+    public AudioSource scaryAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,23 @@ public class TutorialTeleporter : MonoBehaviour
 
     private IEnumerator teleportPlayer(float delay)
     {
+        scaryAudioSource.clip = AudioManager.instance.teleportStartAudio;
+        scaryAudioSource.Play();
+
+        bool secondAudioStarted = false;
+
         float cursor = delay;
         while(cursor > 0)
         {
             cursor -= Time.deltaTime;
+
+            if (cursor < 2.5f && !secondAudioStarted)
+            {
+                secondAudioStarted = true;
+                scaryAudioSource.clip = AudioManager.instance.teleportEndAudio;
+                scaryAudioSource.Play();
+            }
+
             yield return new WaitForEndOfFrame();
         }
         SceneManager.LoadScene("PlayTest", LoadSceneMode.Single);

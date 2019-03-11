@@ -10,11 +10,12 @@ public class AudioType : ScriptableObject
 
     public AudioClip GetClip()
 	{
-		if (currentIndex >= audioClips.Count)
+		/*/if (currentIndex >= audioClips.Count)
 		{
 			currentIndex = 0;
 		}
 
-		return audioClips[currentIndex++];
+		return audioClips[currentIndex++];*/
+		return audioClips[(++currentIndex) % audioClips.Count];
 	}
 }
