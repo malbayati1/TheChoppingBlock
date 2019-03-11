@@ -16,7 +16,6 @@ public class SwarmingEnemy : BaseEnemy
 
 	private static SwarmingEnemy swarmLeader;
 
-	private bool waiting;
 	private Vector3 spawnPoint;
 
     protected override void Start()
@@ -29,38 +28,55 @@ public class SwarmingEnemy : BaseEnemy
 			swarmLeader = this;
 		}
 		GetComponent<NavMeshAgent>().speed = preSwarmSpeed;
-		waiting = false;
 		spawnPoint = transform.position;
     }
+
+	void OnDisable()
+	{
+		if(this == swarmLeader)
+		{
+			Object[] otherWasps = GameObject.FindObjectsOfType(typeof(SwarmingEnemy));
+			SwarmingEnemy se;
+			foreach(Object o in otherWasps)
+			{
+				se = (SwarmingEnemy)o;
+				if(se != this)
+				{
+					foreach(SwarmingEnemy temp in partOfSwarm)
+					{
+						if(temp != null)
+						{
+							se.partOfSwarm.Add(temp);
+						}
+					}
+					swarmLeader = se;
+					se.enabled = true;
+					break;
+				}
+			}
+		}	
+	}
     
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (Time.frameCount % framesBetweenUpdates != 0)
-            return;
 		if(!swarmCreated)
 		{
 			if(swarmLeader != null)
 			{
-				if(!waiting)
-				{
-					movement.Move(swarmLeader.transform.position);
-				}
-				else
-				{
-					movement.Move(transform.position);
-				}
+				movement.Move(swarmLeader.transform.position);
 				CheckIfSwarmCreated();
-				if(swarmCreated)
-				{
-					Debug.Log("setting speed");
-					GetComponent<NavMeshAgent>().speed = swarmSpeed;
-				}
 			}
 			else
 			{
-				swarmLeader = this;
-				movement.Move(spawnPoint);
+				if(this == swarmLeader)
+				{
+					movement.Move(spawnPoint);
+				}
+				else
+				{
+					swarmLeader = this;
+				}
 			}
 		}
 		else
@@ -78,18 +94,23 @@ public class SwarmingEnemy : BaseEnemy
 				foreach(SwarmingEnemy se in partOfSwarm)
 				{
 					se.swarmCreated = true;
-					GetComponent<NavMeshAgent>().speed = swarmSpeed;
+					se.gameObject.GetComponent<NavMeshAgent>().speed = swarmSpeed;
+					se.enabled = true;
 				}
 				swarmCreated = true;
+				GetComponent<NavMeshAgent>().speed = swarmSpeed;
 			}
 		}
 		else
 		{
-			if(!waiting && (transform.position - swarmLeader.transform.position).magnitude <= SWARMRADIUS)
+			if((transform.position - swarmLeader.transform.position).magnitude <= SWARMRADIUS)
 			{
-				waiting = true;
 				swarmLeader.partOfSwarm.Add(this);
 				swarmCreated = swarmLeader.swarmCreated;
+				if(!swarmCreated)
+				{
+					this.enabled = false;
+				}
 			}
 		}
 	}
