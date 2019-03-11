@@ -34,7 +34,9 @@ public class TutorialDialogue : MonoBehaviour
         dialouge.Add("YO.           \nNEW HIRE.");
         delay.Add(4);
         dialouge.Add("Make yourself useful\nand get a pie going!");
-        delay.Add(1);
+        delay.Add(4);
+		dialouge.Add("You can make a pie with\none wheat and one\napple!");
+		delay.Add(1);
         dialouge.Add("Nice, knerd.\nNow put it in the freezer.");
         delay.Add(10);
 
@@ -46,14 +48,16 @@ public class TutorialDialogue : MonoBehaviour
     {
         StartCoroutine(textCrawl(dialouge[0]));
         yield return new WaitForSeconds(delay[0]);
-        StartCoroutine(textCrawl(dialouge[1]));
+        if(delay[1] != 0) StartCoroutine(textCrawl(dialouge[1]));
         yield return new WaitForSeconds(delay[1]);
+		if(delay[2] != 0) StartCoroutine(textCrawl(dialouge[2]));
+		yield return new WaitForSeconds(delay[2]);
         while (!finishedMakingPie)
         {
             yield return new WaitForEndOfFrame();
         }
-        StartCoroutine(textCrawl(dialouge[2]));
-        yield return new WaitForSeconds(delay[2]);
+        StartCoroutine(textCrawl(dialouge[3]));
+        yield return new WaitForSeconds(delay[3]);
         SceneManager.LoadScene("PlayTest", LoadSceneMode.Single);
         Debug.Log("End of Dialogue.");
         yield return null;
@@ -87,6 +91,7 @@ public class TutorialDialogue : MonoBehaviour
         if(toTest.ID == 3)
         {
             finishedMakingPie = true;
+			delay[0] = delay[1] = delay[2] = 0;
             StartCoroutine(moveDoor());
         }
     }
