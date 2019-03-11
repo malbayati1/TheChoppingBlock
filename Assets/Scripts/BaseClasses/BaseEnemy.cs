@@ -6,7 +6,6 @@ public class BaseEnemy : Unit
 {
     public int damageModifier = 1;
     public int knockbackModifier = 1;
-    public int framesBetweenUpdates = 1;
     protected GameObject player;
 
     protected AudioSource damageAudioSource;
@@ -20,11 +19,8 @@ public class BaseEnemy : Unit
     }
     
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        if (Time.frameCount % framesBetweenUpdates != 0)
-            return;
-        //transform.LookAt(player.transform, Vector3.up);
         movement.Move(player.transform.position);
     }
 
