@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Text))]
 public class TutorialDialogue : MonoBehaviour
 {
@@ -35,7 +34,7 @@ public class TutorialDialogue : MonoBehaviour
         delay.Add(4);
         dialouge.Add("Make yourself useful\nand get a pie going!");
         delay.Add(1);
-        dialouge.Add("Nice, knerd.\nNow put it in the freezer.");
+        dialouge.Add("Not half bad...\nPut that in the back left\n of the freezer.");
         delay.Add(10);
 
         StartCoroutine(dialogueAdvancer());
@@ -54,7 +53,7 @@ public class TutorialDialogue : MonoBehaviour
         }
         StartCoroutine(textCrawl(dialouge[2]));
         yield return new WaitForSeconds(delay[2]);
-        SceneManager.LoadScene("PlayTest", LoadSceneMode.Single);
+        
         Debug.Log("End of Dialogue.");
         yield return null;
     }
