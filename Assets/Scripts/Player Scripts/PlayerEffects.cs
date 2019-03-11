@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerEffects : MonoBehaviour
 {
-	public GameObject effectTextPrefab;
-	public GameObject effectTextLocation;
-	public GameObject effectTextHUD;
-
 	public delegate void EffectAddedDelegate(Effect e);
 	public event EffectAddedDelegate effectAddedEvent = delegate { };
 
@@ -42,15 +38,10 @@ public class PlayerEffects : MonoBehaviour
 	//Adds an effect and applies any immediate effects
 	public void AddEffect(Effect e)
 	{
-		GameObject effectText = Instantiate(effectTextPrefab, Vector3.zero, Quaternion.identity, effectTextHUD.transform);
-		EffectTextUI text = effectText.GetComponent<EffectTextUI>();
-		text.effectTextBaseLocation = effectTextLocation.transform.position;
-		text.axis = CameraController.instance.gameObject.transform.up;
-		text.SetText(e.description);
 		if(!e.OnApply(this))
 		{
 			effects.Add(e);
-			effectAddedEvent(e);
 		}
+		effectAddedEvent(e);
 	}
 }
