@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8106566207621316445}
   - component: {fileID: 3748359323274921549}
   - component: {fileID: 1214271314605883074}
+  - component: {fileID: 2774450118528627973}
   m_Layer: 0
-  m_Name: potato (1)
+  m_Name: SweetPotato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8707635448661156277}
   m_LocalRotation: {x: 0.10968254, y: 0.021737624, z: -0.19318648, w: 0.9747699}
-  m_LocalPosition: {x: 2.739, y: 0.32, z: 6.36}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.6, z: 0.16666667}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &2774450118528627973
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707635448661156277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
