@@ -90,7 +90,7 @@ public class CookingPot : MonoBehaviour
 		cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
 		cookingAudioSource.Play();
 
-		Debug.Log("trying to cook");
+		//Debug.Log("trying to cook");
 		GameObject spawn = RecipeManager.instance.GetResult(currentMixture);
 		spawn.transform.position = transform.position + Vector3.up * 2;
 		spawn.GetComponent<InGameIngredient>().isHeld = true;
@@ -114,13 +114,13 @@ public class CookingPot : MonoBehaviour
 
 			toCheck.Remove(i);
 			ingredient.ingredientData.isPreserved = true;
-			Debug.Log("Setting preserved " + i.name + " true");
+			//Debug.Log("Setting preserved " + i.name + " true");
 
 			Vector3 controlPosition = ((i.transform.position + topOfSlotLocation.transform.position) / 2 + topOfSlotLocation.transform.position) / 2;
 			controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
 			StartCoroutine(MoveIngredient(i, addTime, i.transform.position, topOfSlotLocation.transform.position, controlPosition, true, GetEmptySlot()));
         
-			Debug.Log("Successfully added " + ingredient.name);
+			//Debug.Log("Successfully added " + ingredient.name);
 			currentlyInside.Add(i);
 			ingredientAdded();
         }
@@ -168,13 +168,13 @@ public class CookingPot : MonoBehaviour
 		i.GetComponent<InGameIngredient>().ingredientData.isPreserved = false;
 		currentMixture.ingredients.Remove(i.GetComponent<InGameIngredient>().ingredientData);
 		ingredientRemoved();
-		Debug.Log("Setting preserved " + i.name + " false");
+		//Debug.Log("Setting preserved " + i.name + " false");
 		ingredientRemoved();
     }
 
 	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink, GameObject slot = null)
 	{		
-		Debug.Log(slot);
+		//Debug.Log(slot);
 		i.GetComponent<InGameIngredient>().isHeld = true;
 		float timer = 0;
 		float t;

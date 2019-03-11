@@ -16,6 +16,20 @@ MonoBehaviour:
   summerMat: {fileID: 2100000, guid: 6309c799868c7cd49beded533bfd25f5, type: 2}
   fallMat: {fileID: 2100000, guid: d10f46c02a08cc94c98b9d7a15192c71, type: 2}
   winterMat: {fileID: 2100000, guid: 0b0ee7a0175bb8546807a362dac75c29, type: 2}
+--- !u!64 &2107229603472519358
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86332299815295011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 3df1d06c108b2994b9d25af8b44becae, type: 3}
 --- !u!1 &2828967122521285546
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6606394052413522235}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 100006, guid: 3df1d06c108b2994b9d25af8b44becae, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 3df1d06c108b2994b9d25af8b44becae, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 3df1d06c108b2994b9d25af8b44becae, type: 3}
       propertyPath: m_LocalPosition.x

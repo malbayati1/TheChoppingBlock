@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class House : MonoBehaviour
 {
 	public float roofFadeSpeed;
 
-	public GameObject doorObstacle;
-
+	private GameObject doorObstacle;
 	private GameObject roof;
 
 	private List<Material> roofMats;
@@ -22,6 +20,7 @@ public class House : MonoBehaviour
 		inHouse = true;
 		ratio = 0;
 		roof = transform.GetChild(1).gameObject;
+		doorObstacle = transform.GetChild(3).gameObject;
 		roofMats = new List<Material>();
 		foreach(Transform child in roof.transform)
 		{

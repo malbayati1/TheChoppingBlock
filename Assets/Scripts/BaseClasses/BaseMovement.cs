@@ -16,11 +16,14 @@ public class BaseMovement : MonoBehaviour
 
     protected Unit unit;
 
+	protected LayerMask terrain;
+
     protected virtual void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         mover = GetComponentInChildren<AnimatedMover>();
         unit = GetComponent<Unit>();
+		terrain = ~LayerMask.NameToLayer("Terrain");
     }
 
     public virtual void Move(float xInput, float zInput)
@@ -65,7 +68,7 @@ public class BaseMovement : MonoBehaviour
 
         RaycastHit hit;
 		NavMeshHit navMeshHit;
-        if (Physics.Raycast(transform.position, offset, out hit, offset.magnitude))
+        if (Physics.Raycast(transform.position, offset, out hit, offset.magnitude, terrain))
         {
 			if (NavMesh.SamplePosition(hit.point, out navMeshHit, 5.0f, NavMesh.AllAreas)) 
 			{

@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &6155251569880684062
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985795718974356420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 89dd16eb00d42984a995f07a88a79675, type: 3}
 --- !u!1 &8664252129271929599
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +24,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7301096219303898460}
   - component: {fileID: 4828381969235829688}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tree3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,6 +81,10 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 89dd16eb00d42984a995f07a88a79675, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 89dd16eb00d42984a995f07a88a79675, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3760721
@@ -113,6 +131,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89dd16eb00d42984a995f07a88a79675, type: 3}
+--- !u!1 &2985795718974356420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 89dd16eb00d42984a995f07a88a79675,
+    type: 3}
+  m_PrefabInstance: {fileID: 2985795718974324068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2985795718974711780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 89dd16eb00d42984a995f07a88a79675,
