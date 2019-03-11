@@ -29,7 +29,7 @@ public class EffectIconUI : MonoBehaviour
 	void Update()
 	{
 		timer.text = string.Format("{0:0.00}/{1}", representing.currentDuration, representing.maxDuration);
-		if(representing.currentDuration <= 0)
+		if(representing.currentDuration <= 0 || representing == null)
 		{
 			Destroy(gameObject);
 		}

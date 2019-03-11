@@ -8,6 +8,8 @@ public class CookingPot : MonoBehaviour
 	public GameObject topOfSlotLocation;
 	public GameObject cookingUI;
 
+	public AudioSource cookingAudioSource;
+
 	public float addTime;
 	public float dropTime;
 	public float spitOutRadius = 4f;
@@ -21,13 +23,16 @@ public class CookingPot : MonoBehaviour
 	public event MixtureChange ingredientRemoved = delegate { };
 
 	//our current ingredients
-    private Mixture currentMixture;
+    [SerializeField]private Mixture currentMixture;
 
 	private List<GameObject> currentlyInside;
 	private List<GameObject> toCheck;
 	private List<GameObject> slots;
 
 	private Camera cam;
+
+	private PerformableAction playerCook;
+	private PerformableAction playerEmpty;
 
 	void Awake()
 	{
@@ -40,6 +45,38 @@ public class CookingPot : MonoBehaviour
 		{
 			slots.Add(child.gameObject);
 		}
+		playerCook = new PerformableAction(IsNotEmpty, 30, Cook);
+		playerEmpty = new PerformableAction(IsNotEmpty, 30, Empty);
+	}
+
+	public void StartCooking()
+	{
+		cookingAudioSource.clip = AudioManager.instance.cookAudio;
+		cookingAudioSource.loop = true;
+		cookingAudioSource.Play();
+
+		StartCoroutine(FailsafeStopCookingSound());
+	}
+
+	private IEnumerator FailsafeStopCookingSound()
+	{
+		yield return new WaitForSeconds(1.5f);
+
+		if (cookingAudioSource.loop)
+		{
+			StopCooking();
+		}
+	}
+
+	public void StopCooking()
+	{
+		cookingAudioSource.loop = false;
+		cookingAudioSource.Stop();
+	}
+
+	public bool IsNotEmpty()
+	{
+		return currentMixture.ingredients.Count != 0;
 	}
 
 	//call when you want the pot to combine ingredient
@@ -49,12 +86,17 @@ public class CookingPot : MonoBehaviour
 		{
 			return;
 		}
+
+		cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+		cookingAudioSource.Play();
+
 		Debug.Log("trying to cook");
 		GameObject spawn = RecipeManager.instance.GetResult(currentMixture);
 		spawn.transform.position = transform.position + Vector3.up * 2;
 		spawn.GetComponent<InGameIngredient>().isHeld = true;
 		DropItem(spawn);
 		currentMixture = ScriptableObject.CreateInstance("Mixture") as Mixture;
+		ingredientRemoved();
 		foreach(GameObject g in currentlyInside)
 		{
 			Destroy(g);
@@ -67,6 +109,9 @@ public class CookingPot : MonoBehaviour
 		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
 		if(ingredient != null && currentMixture.AddIngredient(ingredient))
         {
+			cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+			cookingAudioSource.Play();
+
 			toCheck.Remove(i);
 			ingredient.ingredientData.isPreserved = true;
 			Debug.Log("Setting preserved " + i.name + " true");
@@ -77,6 +122,7 @@ public class CookingPot : MonoBehaviour
         
 			Debug.Log("Successfully added " + ingredient.name);
 			currentlyInside.Add(i);
+			ingredientAdded();
         }
         else
         {
@@ -98,11 +144,13 @@ public class CookingPot : MonoBehaviour
 
 	public void Empty()
     {
+		cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+		cookingAudioSource.Play();
         for(int x = currentlyInside.Count - 1; x >= 0; --x)
         {
             DropItem(currentlyInside[x]);
         }
-        currentMixture.ingredients = new List<Ingredient>();
+		currentMixture.ingredients = new List<Ingredient>();
 		currentlyInside = new List<GameObject>();
     }
 
@@ -118,7 +166,10 @@ public class CookingPot : MonoBehaviour
 		controlPosition.Set(controlPosition.x, controlPosition.y + 6f, controlPosition.z);
         StartCoroutine(MoveIngredient(i, dropTime ,transform.position, end, controlPosition, false));
 		i.GetComponent<InGameIngredient>().ingredientData.isPreserved = false;
+		currentMixture.ingredients.Remove(i.GetComponent<InGameIngredient>().ingredientData);
+		ingredientRemoved();
 		Debug.Log("Setting preserved " + i.name + " false");
+		ingredientRemoved();
     }
 
 	private IEnumerator MoveIngredient(GameObject i, float moveTime, Vector3 startPosition, Vector3 endPosition, Vector3 controlPosition, bool shrink, GameObject slot = null)
@@ -144,7 +195,7 @@ public class CookingPot : MonoBehaviour
 			i.transform.SetParent(slot.transform, true);
 			i.transform.position = Vector3.zero;
 			i.transform.localPosition = Vector3.zero;
-			i.transform.localScale = Vector3.one;
+			i.transform.localScale = Vector3.one * 0.5f;
 		}
 		else
 		{
@@ -175,8 +226,10 @@ public class CookingPot : MonoBehaviour
 			}
 			if(p = parent.GetComponent<PlayerInteraction>())
 			{
-				p.useEvent += Cook;
-				p.dropEvent += Empty;
+				p.useActionList.AddAction(playerCook);
+				p.dropActionList.AddAction(playerEmpty);
+				p.startChannelEvent += StartCooking;
+				p.stopChannelEvent += StopCooking;
 				//cookingUI.SetActive(true);
 				enterRadiusEvent();
 				//Debug.Log("enter radius");
@@ -201,8 +254,10 @@ public class CookingPot : MonoBehaviour
 			}
 			if(p = parent.GetComponent<PlayerInteraction>())
 			{
-				p.useEvent -= Cook;
-				p.dropEvent -= Empty;
+				p.useActionList.RemoveAction(playerCook);
+				p.dropActionList.RemoveAction(playerEmpty);
+				p.startChannelEvent -= StartCooking;
+				p.stopChannelEvent -= StopCooking;
 				//cookingUI.SetActive(false);
 				leaveRadiusEvent();
 				//Debug.Log("leaving radius");

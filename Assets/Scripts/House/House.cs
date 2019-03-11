@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class House : MonoBehaviour
 {
+	public float roofFadeSpeed;
+
+	public GameObject doorObstacle;
+
 	private GameObject roof;
 
 	private List<Material> roofMats;
@@ -35,12 +40,12 @@ public class House : MonoBehaviour
 		}
 		if(inHouse)
 		{
-			ratio -= Time.deltaTime;
+			ratio -= Time.deltaTime * roofFadeSpeed;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		else
 		{
-			ratio += Time.deltaTime;
+			ratio += Time.deltaTime * roofFadeSpeed;
 			ratio = Mathf.Clamp(ratio, 0, 1);
 		}
 		foreach(Material m in roofMats)
@@ -53,11 +58,13 @@ public class House : MonoBehaviour
 	{
 		inHouse = true;
 		this.enabled = true;
+		doorObstacle.SetActive(true);
 	}
 
 	public void Exit()
 	{
 		inHouse = false;
 		this.enabled = true;
+		doorObstacle.SetActive(false);
 	}
 }

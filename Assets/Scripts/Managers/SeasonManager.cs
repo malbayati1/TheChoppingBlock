@@ -18,6 +18,8 @@ public class SeasonManager : Singleton<SeasonManager>
     private float resetTimer;   //Keeps track of the original timer
     private Season currentSeason;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         currentSeason = Season.Spring;
@@ -46,6 +48,8 @@ public class SeasonManager : Singleton<SeasonManager>
 		}
         seasonChangeEvent(currentSeason);
     }
+
+
 
 	public Season GetCurrentSeason()
 	{

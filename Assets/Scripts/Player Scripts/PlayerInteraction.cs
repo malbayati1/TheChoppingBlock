@@ -12,9 +12,16 @@ public class PlayerInteraction : MonoBehaviour
     public Text progressBarText;
     public float interactionTime;
 
+    public AudioSource audioSource;
+
     public delegate void InputDelegate();
-    public event InputDelegate useEvent = delegate { };
-    public event InputDelegate dropEvent = delegate { };
+	public ActionList useActionList;
+	public ActionList dropActionList;
+    //public event InputDelegate useEvent = delegate { };
+    //public event InputDelegate dropEvent = delegate { };
+
+    public event InputDelegate startChannelEvent = delegate { };
+    public event InputDelegate stopChannelEvent = delegate { };
 
 	public delegate void ItemChangeDelegate(GameObject g);
 	public event ItemChangeDelegate itemPickupEvent = delegate { };
@@ -33,6 +40,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Error progressBar couldn't be found");
         }
+		useActionList = new ActionList();
+		dropActionList = new ActionList();
     }
 
     void Update()
@@ -44,6 +53,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (heldItemInteraction.Use(gameObject))
                 {
+                    audioSource.clip = AudioManager.instance.munchAudio;
+                    audioSource.Play();
 					ingredientEatEvent(heldItem);
                     ClearFields();
                 }
@@ -63,24 +74,28 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (Input.GetButtonDown("Use"))
         {
-            StartCoroutine(PerformAction("Use", useEvent));
+            StartCoroutine(PerformAction("Use", useActionList));
         }
         if (Input.GetButtonDown("Drop"))
         {
-            StartCoroutine(PerformAction("Drop", dropEvent));
+            StartCoroutine(PerformAction("Drop", dropActionList));
         }
     }
 
-    IEnumerator PerformAction(string button, InputDelegate f)
+    IEnumerator PerformAction(string button, ActionList al)
     {
-        if (f.GetInvocationList().Length <= 1)
-        {
-            yield break;
-        }
-        performingAction = true;
-        float timer = 0f;
-        progressBar.SetActive(true);
-        UpdateText(button);
+		bool? performable = al.GetAction()?.IsPerformable?.Invoke();//return true/false if the list isn't empty and the delegate is set, returns null otherwise
+        if ( (performable.HasValue) ? !performable.Value : true) 	//return true/false if performable isn't null, return true if it is
+        {															// 	if(al.GetAction() == null || al.GetAction().IsPerformable == null) 
+            yield break;											// 	{	
+        }															// 		performable = true;
+        performingAction = true;									//	}
+        float timer = 0f;											// 	else 
+        progressBar.SetActive(true);								// 	{
+        UpdateText(button);											// 		performable = al.GetAction().IsPerformable.Invoke();
+																	//	}
+        startChannelEvent();										
+																	
         while (timer <= interactionTime)
         {
             timer += Time.deltaTime;
@@ -88,13 +103,15 @@ public class PlayerInteraction : MonoBehaviour
             {
                 progressBar.SetActive(false);
                 performingAction = false;
+                stopChannelEvent();
                 yield break;
             }
             progressBarImage.fillAmount = timer / interactionTime;
             progressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarLocation.transform.position);
-            yield return new WaitForFixedUpdate();
+            yield return null;
         }
-        f();
+        stopChannelEvent();
+        al.GetAction().Action();
         progressBar.SetActive(false);
         performingAction = false;
     }
