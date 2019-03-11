@@ -56,18 +56,12 @@ public class InGameIngredient : HoldableItem
     public override bool Use(GameObject user)
 	{
 		PlayerEffects pe = user.GetComponent<PlayerEffects>();
-		StartCoroutine(AddEffects(pe));
-		return true;
-	}
-
-	IEnumerator AddEffects(PlayerEffects pe)
-	{
 		foreach(Effect e in ingredientData.effects)
 		{
 			pe.AddEffect(e);
-			yield return new WaitForSeconds(0.2f);
 		}
 		Destroy(gameObject);
+		return true;
 	}
 
     public override void Drop(GameObject from)

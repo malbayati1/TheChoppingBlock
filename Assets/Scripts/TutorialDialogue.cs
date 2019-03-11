@@ -32,8 +32,14 @@ public class TutorialDialogue : MonoBehaviour
         dialouge.Add("YO.           \nNEW HIRE.");
         delay.Add(4);
         dialouge.Add("Make yourself useful\nand get a pie going!");
-        delay.Add(1);
-        dialouge.Add("Not half bad...\nPut that in the back left\n of the freezer.");
+        delay.Add(5);
+        dialouge.Add("You can make a pie, right?\n               \nIt's 1 apple and 1 wheat.");
+        delay.Add(4);
+        dialouge.Add("Throw em both in a pot\nusing [K] and then hold [J] \nto cook em.");
+        delay.Add(3);
+        dialouge.Add("Well Done.\n        \nI knew you'd do fine.");
+        delay.Add(3);
+        dialouge.Add("Ok! Now,\nput that pie in the back left\n of the freezer.");
         delay.Add(10);
 
         StartCoroutine(dialogueAdvancer());
@@ -44,17 +50,30 @@ public class TutorialDialogue : MonoBehaviour
     {
         StartCoroutine(textCrawl(dialouge[0]));
         yield return new WaitForSeconds(delay[0]);
-        StartCoroutine(textCrawl(dialouge[1]));
-        yield return new WaitForSeconds(delay[1]);
-		StartCoroutine(textCrawl(dialouge[2]));
-		yield return new WaitForSeconds(delay[2]);
+        if (!finishedMakingPie)
+        {
+            StartCoroutine(textCrawl(dialouge[1]));
+            yield return new WaitForSeconds(delay[1]);
+            if (!finishedMakingPie)
+            {
+                StartCoroutine(textCrawl(dialouge[2]));
+                yield return new WaitForSeconds(delay[2]);
+                if (!finishedMakingPie)
+                {
+                    StartCoroutine(textCrawl(dialouge[3]));
+                    yield return new WaitForSeconds(delay[3]);
+                }
+            }
+        }
         while (!finishedMakingPie)
         {
             yield return new WaitForEndOfFrame();
         }
-        StartCoroutine(textCrawl(dialouge[2]));
-        yield return new WaitForSeconds(delay[2]);
-        
+        StartCoroutine(textCrawl(dialouge[4]));
+        yield return new WaitForSeconds(delay[4]);
+        StartCoroutine(textCrawl(dialouge[5]));
+        yield return new WaitForSeconds(delay[5]);
+
         Debug.Log("End of Dialogue.");
         yield return null;
     }
@@ -70,24 +89,18 @@ public class TutorialDialogue : MonoBehaviour
     }
     private IEnumerator moveDoor()
     {
-        Debug.Log("asrdthgsfgd");
-        //GameObject door = GameObject.Find("Cube (6)");
-        //GameObject handle = GameObject.Find("Cube(9)");
         while(door.transform.localPosition.x < 3f)
         {
             door.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
-            //handle.transform.position += new Vector3(1 * Time.deltaTime, 0, 0);
             yield return new WaitForEndOfFrame();
         }
     }
 
     public void checkFinishPie(Ingredient toTest)
     {
-        Debug.Log(toTest.ID);
         if(toTest.ID == 3)
         {
             finishedMakingPie = true;
-			delay[0] = delay[1] = delay[2] = 0;
             StartCoroutine(moveDoor());
         }
     }

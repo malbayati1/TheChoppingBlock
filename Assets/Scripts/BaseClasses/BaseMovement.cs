@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class BaseMovement : MonoBehaviour
 {
+	private const float UPDATEDISTANCE = 4f;
+
     protected bool canMove = true;
 
 	protected Vector3 movementDirection;
@@ -25,6 +27,15 @@ public class BaseMovement : MonoBehaviour
         unit = GetComponent<Unit>();
 		terrain = ~LayerMask.NameToLayer("Terrain");
     }
+
+	protected virtual void Update()
+	{
+		if (!canMove)
+        {
+            return;
+        }
+		mover.Move();
+	}
 
     public virtual void Move(float xInput, float zInput)
     {
@@ -52,8 +63,20 @@ public class BaseMovement : MonoBehaviour
         }
         target.y = transform.position.y;
         transform.LookAt(target, Vector3.up);
-        navMeshAgent.destination = target;
-        mover.Move();
+
+		float destToTargetDist = (navMeshAgent.destination - target).magnitude;
+		float selfToTargetDist = (transform.position - target).magnitude;
+		if( destToTargetDist >= UPDATEDISTANCE || ( selfToTargetDist >= float.Epsilon && selfToTargetDist <= UPDATEDISTANCE) )
+		{
+			//Debug.Log("setting");
+        	navMeshAgent.destination = target;
+		}
+		if(navMeshAgent.pathPending && navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial)
+		{
+			//Debug.Log("no path?");
+			navMeshAgent.Move((target - transform.position).normalized * navMeshAgent.speed * Time.deltaTime);
+		}
+		
     }
 
     public void Push(Vector3 impulse)

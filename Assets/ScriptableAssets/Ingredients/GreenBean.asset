@@ -17,7 +17,7 @@ MonoBehaviour:
   effectData:
   - potency: 1
     duration: 30
-  name: GreenBean
+  name: Green Bean
   ID: 8
   rarity: 0
   isPreserved: 0

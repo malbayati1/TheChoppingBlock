@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2366539758025083734}
   - component: {fileID: 2366539758025083735}
   m_Layer: 0
-  m_Name: Goop
+  m_Name: exampleGenericFood
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 762a331f95decf84a80249107cf5fc0f, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: e6f7b36782a60fb499908cec813ac043, type: 2}
+      objectReference: {fileID: 2100000, guid: 4feb1971cd2eaf446b03dffc359312de, type: 2}
     - target: {fileID: 2300002, guid: 762a331f95decf84a80249107cf5fc0f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

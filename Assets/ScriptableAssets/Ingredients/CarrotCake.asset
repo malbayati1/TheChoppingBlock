@@ -20,7 +20,7 @@ MonoBehaviour:
     duration: 60
   - potency: 5
     duration: 0
-  name: CarrotCake
+  name: Carrot Cake
   ID: 6
   rarity: 0
   isPreserved: 0

@@ -45,7 +45,7 @@ public class CookingPot : MonoBehaviour
 		{
 			slots.Add(child.gameObject);
 		}
-		playerCook = new PerformableAction(IsNotEmpty, 30, Cook);
+		playerCook = new PerformableAction(CanCook, 30, Cook);
 		playerEmpty = new PerformableAction(IsNotEmpty, 30, Empty);
 	}
 
@@ -77,6 +77,11 @@ public class CookingPot : MonoBehaviour
 	public bool IsNotEmpty()
 	{
 		return currentMixture.ingredients.Count != 0;
+	}
+
+	public bool CanCook()
+	{
+		return currentMixture.ingredients.Count >= 2;
 	}
 
 	//call when you want the pot to combine ingredient

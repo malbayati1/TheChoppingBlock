@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Effect : ScriptableObject
+public class Effect : ScriptableObject
 {
 	public string description;
 	public Sprite icon;
