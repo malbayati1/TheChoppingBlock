@@ -6,8 +6,7 @@ public class House : MonoBehaviour
 {
 	public float roofFadeSpeed;
 
-	public GameObject doorObstacle;
-
+	private GameObject doorObstacle;
 	private GameObject roof;
 
 	private List<Material> roofMats;
