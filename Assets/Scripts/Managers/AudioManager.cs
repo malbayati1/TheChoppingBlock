@@ -208,16 +208,22 @@ public class AudioManager : Singleton<AudioManager>
         seasonAudioSource = gameObject.AddComponent<AudioSource>();
 
         bgMusicVolume = bgMusicSource.volume;
-
-        SeasonManager.instance.seasonChangeEvent += PlaySeasonStinger;
     }
 
     void OnEnable()
     {
+		if(SeasonManager.instance)
+		{
+			SeasonManager.instance.seasonChangeEvent += PlaySeasonStinger;
+		}
     }
 
     void OnDisable()
     {
+		if(SeasonManager.instance)
+		{
+			SeasonManager.instance.seasonChangeEvent -= PlaySeasonStinger;
+		}
     }
 
 
