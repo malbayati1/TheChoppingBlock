@@ -8,6 +8,8 @@ public class CookingPot : MonoBehaviour
 	public GameObject topOfSlotLocation;
 	public GameObject cookingUI;
 
+	public AudioSource cookingAudioSource;
+
 	public float addTime;
 	public float dropTime;
 	public float spitOutRadius = 4f;
@@ -42,7 +44,6 @@ public class CookingPot : MonoBehaviour
 		}
 	}
 
-<<<<<<< HEAD
 	public void StartCooking()
 	{
 		cookingAudioSource.clip = AudioManager.instance.cookAudio;
@@ -68,8 +69,6 @@ public class CookingPot : MonoBehaviour
 		cookingAudioSource.Stop();
 	}
 
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 	//call when you want the pot to combine ingredient
     public void Cook()
     {
@@ -77,6 +76,10 @@ public class CookingPot : MonoBehaviour
 		{
 			return;
 		}
+
+		cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+		cookingAudioSource.Play();
+
 		Debug.Log("trying to cook");
 		GameObject spawn = RecipeManager.instance.GetResult(currentMixture);
 		spawn.transform.position = transform.position + Vector3.up * 2;
@@ -95,6 +98,9 @@ public class CookingPot : MonoBehaviour
 		InGameIngredient ingredient = i.GetComponent<InGameIngredient>();
 		if(ingredient != null && currentMixture.AddIngredient(ingredient))
         {
+			cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+			cookingAudioSource.Play();
+
 			toCheck.Remove(i);
 			ingredient.ingredientData.isPreserved = true;
 			Debug.Log("Setting preserved " + i.name + " true");
@@ -126,6 +132,8 @@ public class CookingPot : MonoBehaviour
 
 	public void Empty()
     {
+		cookingAudioSource.clip = AudioManager.instance.addIngredientAudio;
+		cookingAudioSource.Play();
         for(int x = currentlyInside.Count - 1; x >= 0; --x)
         {
             DropItem(currentlyInside[x]);
@@ -205,11 +213,8 @@ public class CookingPot : MonoBehaviour
 			{
 				p.useEvent += Cook;
 				p.dropEvent += Empty;
-<<<<<<< HEAD
 				p.startChannelEvent += StartCooking;
 				p.stopChannelEvent += StopCooking;
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 				//cookingUI.SetActive(true);
 				enterRadiusEvent();
 				//Debug.Log("enter radius");
@@ -236,11 +241,8 @@ public class CookingPot : MonoBehaviour
 			{
 				p.useEvent -= Cook;
 				p.dropEvent -= Empty;
-<<<<<<< HEAD
 				p.startChannelEvent -= StartCooking;
 				p.stopChannelEvent -= StopCooking;
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 				//cookingUI.SetActive(false);
 				leaveRadiusEvent();
 				//Debug.Log("leaving radius");

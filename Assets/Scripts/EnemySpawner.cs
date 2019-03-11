@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int numSpawnsAllowedActive;
 
-		[SerializeField]
+    [SerializeField]
     public List<Vector3> spawnLocations;
 
     private List<GameObject> activeEnemies;
@@ -42,12 +42,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 return; //Don't keep trying in case nothing is close
             }
-						GameObject newEnemy = GameObject.Instantiate(enemyToSpawnPrefab);
-						newEnemy.transform.position = location;
+            GameObject newEnemy = GameObject.Instantiate(enemyToSpawnPrefab);
+            newEnemy.transform.position = location;
             activeEnemies.Add(newEnemy);
             timeSinceLastSpawn = 0f;
         }
 
-        timeSinceLastSpawn += Time.deltaTime;
+        //If statement to prevent enemies from spawning the moment one of them dies
+        if (activeEnemies.Count < numSpawnsAllowedActive)
+            timeSinceLastSpawn += Time.deltaTime;
     }
 }

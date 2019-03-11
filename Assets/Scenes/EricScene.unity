@@ -335,11 +335,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 6
-=======
-  m_RootOrder: 4
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &211868569
 PrefabInstance:
@@ -541,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 6107030148361112692, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6107030148361112692, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
         type: 3}
@@ -561,7 +557,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30, type: 3}
 --- !u!1001 &313232002
-<<<<<<< HEAD
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -631,93 +626,79 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06e7d098066c1f341b472e7c5e0ca24c, type: 3}
 --- !u!1001 &324662961
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 835349202066927855, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143871, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_Name
-<<<<<<< HEAD
       value: Spider
       objectReference: {fileID: 0}
     - target: {fileID: 2879231923488143871, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_IsActive
       value: 0
-=======
-      value: Knife
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
       value: 1.716684
-=======
-      value: 4.56
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.25000006
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20.32
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 18
-=======
-      value: 11
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 835349202066927849, guid: 06e7d098066c1f341b472e7c5e0ca24c,
+    - target: {fileID: 2879231923488143864, guid: ae46c6f61d7493f45acaf2a4dc868798,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 06e7d098066c1f341b472e7c5e0ca24c, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ae46c6f61d7493f45acaf2a4dc868798, type: 3}
 --- !u!4 &357448525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2774186606134649275, guid: f195a9d7b42e05f419dfdb918f464395,
@@ -805,11 +786,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 4
-=======
-  m_RootOrder: 2
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
   m_LocalEulerAnglesHint: {x: 18.13, y: -90, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -915,159 +892,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 562f3ac99dafce44baccf29c07eaf138, type: 3}
 --- !u!1001 &755461541
-<<<<<<< HEAD
-=======
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8273986920659512314, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_Name
-      value: Pumpkin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273986920659512263, guid: 04aba7a56411bae4e896887df7f55aa1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04aba7a56411bae4e896887df7f55aa1, type: 3}
---- !u!1 &761237477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8212550186657596213, guid: 3ec4913693b48f949848163a8b662759,
-    type: 3}
-  m_PrefabInstance: {fileID: 8212550185899052240}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &810831496
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 9011066733101674542, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_Name
-      value: Chili
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.2186866
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.25000006
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.6615963
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9011066733101674515, guid: e902a6c7284411d4d9ed0497dc758ce9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e902a6c7284411d4d9ed0497dc758ce9, type: 3}
---- !u!4 &826699568 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
-    type: 3}
-  m_PrefabInstance: {fileID: 569994920}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &939461664
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1215,89 +1039,7 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
     type: 3}
-<<<<<<< HEAD
   m_PrefabInstance: {fileID: 569994920}
-=======
-  m_PrefabInstance: {fileID: 939461664}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &981278469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 981278472}
-  - component: {fileID: 981278471}
-  - component: {fileID: 981278470}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &981278470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981278469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &981278471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981278469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &981278472
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981278469}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1011041074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4000268747280595574, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
-    type: 3}
-  m_PrefabInstance: {fileID: 223565559}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1119095361 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8212550184784152209, guid: 3ec4913693b48f949848163a8b662759,
-    type: 3}
-  m_PrefabInstance: {fileID: 8212550185899052240}
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &916288077
 PrefabInstance:
@@ -1349,11 +1091,7 @@ PrefabInstance:
     - target: {fileID: 5310907438776378461, guid: a73b409abb614854e899f24a0c232e77,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 17
-=======
-      value: 1
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
     - target: {fileID: 5310907438776378461, guid: a73b409abb614854e899f24a0c232e77,
         type: 3}
@@ -1371,7 +1109,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: a73b409abb614854e899f24a0c232e77, type: 3}
 --- !u!1001 &939461664
 PrefabInstance:
@@ -1458,22 +1195,11 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 562f3ac99dafce44baccf29c07eaf138, type: 3}
 --- !u!4 &939461665 stripped
-=======
-  m_SourcePrefab: {fileID: 100100000, guid: bbe0e97eae1b38540a59652d01ee6d8b, type: 3}
---- !u!1 &1216560657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4000268747112577166, guid: 0b8ce69d5244bcc448b9c7bcc7ee0b30,
-    type: 3}
-  m_PrefabInstance: {fileID: 223565559}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1341708309 stripped
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 Transform:
   m_CorrespondingSourceObject: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
     type: 3}
   m_PrefabInstance: {fileID: 939461664}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &981278469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,8 +1449,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae46c6f61d7493f45acaf2a4dc868798, type: 3}
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 --- !u!1001 &1540091210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1844,11 +1568,7 @@ Transform:
   - {fileID: 1952856641}
   - {fileID: 939461665}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 8
-=======
-  m_RootOrder: 6
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1658057836
 PrefabInstance:
@@ -2137,79 +1857,74 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2026005601
+--- !u!1001 &1980563412
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2354926060666394459, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487651, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_Name
-      value: Carrot
+      value: House
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.21
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.4
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 1
-=======
-      value: 12
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120518611117093835, guid: 4c3755d97c3f14342833ece5ef3dedc1,
+    - target: {fileID: 2754268769588487650, guid: dc7a55ce03dd2214c9b7b36c508292a5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: dc7a55ce03dd2214c9b7b36c508292a5, type: 3}
 --- !u!1001 &2026005601
 PrefabInstance:
@@ -2279,8 +1994,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
   m_SourcePrefab: {fileID: 100100000, guid: 4c3755d97c3f14342833ece5ef3dedc1, type: 3}
 --- !u!4 &2060510060 stripped
 Transform:
@@ -2303,11 +2016,7 @@ PrefabInstance:
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
       value: -3.53
-=======
-      value: 0
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
@@ -2317,11 +2026,7 @@ PrefabInstance:
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
       value: -6.2599998
-=======
-      value: -8.48
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
@@ -2346,11 +2051,7 @@ PrefabInstance:
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 14
-=======
-      value: 13
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
     - target: {fileID: 4638074616080610057, guid: dec0f171edd78f34f82bab1520a91ed0,
         type: 3}
@@ -2498,11 +2199,7 @@ PrefabInstance:
     - target: {fileID: 8223810283010785178, guid: d52909be4b570dc49a00e7aa00c97dd4,
         type: 3}
       propertyPath: m_RootOrder
-<<<<<<< HEAD
       value: 11
-=======
-      value: 10
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
       objectReference: {fileID: 0}
     - target: {fileID: 8223810283010785178, guid: d52909be4b570dc49a00e7aa00c97dd4,
         type: 3}

@@ -32,6 +32,8 @@ public class PlayerEffects : MonoBehaviour
 			if(effects[x].Tick(Time.deltaTime, this))
 			{
 				Debug.Log("removing at index " + x);
+				effects[x].OnRemove(this);
+				Destroy(effects[x]);
 				effects.RemoveAt(x);
 			}
 		}

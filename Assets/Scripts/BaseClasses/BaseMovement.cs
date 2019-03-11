@@ -11,7 +11,8 @@ public class BaseMovement : MonoBehaviour
 
     protected NavMeshAgent navMeshAgent;
 
-    protected AnimatedMover mover;
+    [HideInInspector]
+    public AnimatedMover mover;
 
     protected Unit unit;
 
@@ -57,7 +58,6 @@ public class BaseMovement : MonoBehaviour
         impulse *= 2f;
         //navMeshAgent.destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
         float time = unit.hitImmunityCoolDown;
-<<<<<<< HEAD
 
         Vector3 destination = transform.position + new Vector3(impulse.x, 0f, impulse.z);
 
@@ -77,14 +77,10 @@ public class BaseMovement : MonoBehaviour
         }
 
         iTween.MoveTo(gameObject, iTween.Hash("position", destination, "easeType", "easeOutExpo", "time", time));
-=======
-        //mover.Move(0f, 0f, impulse.y);
-        iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + new Vector3(impulse.x, 0f, impulse.z), "easeType", "easeOutExpo", "time", time));
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
         
         StartCoroutine(mover.Arc(impulse.y, time));
 
-        StartCoroutine(loseControlForSeconds(time));
+        StartCoroutine(loseControlForSeconds(time * 1.5f));
     }
 
     protected IEnumerator loseControlForSeconds(float delay)

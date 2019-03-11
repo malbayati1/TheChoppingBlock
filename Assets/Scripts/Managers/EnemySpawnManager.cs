@@ -35,6 +35,22 @@ public class EnemySpawnManager : Singleton<EnemySpawnManager>
         {
             AddSpawners();
         }
+        else if (s == Season.Summer)
+        {
+            List<SpiderEnemy> spidersToKill = new List<SpiderEnemy>(FindObjectsOfType<SpiderEnemy>());
+            for (int i = spidersToKill.Count - 1; i >= 0; i--)
+            {
+                Destroy(spidersToKill[i].gameObject);
+            }
+        }
+        else if (s == Season.Winter)
+        {
+            List<SwarmingEnemy> beesToKill = new List<SwarmingEnemy>(FindObjectsOfType<SwarmingEnemy>());
+            for (int i = beesToKill.Count - 1; i >= 0; i--)
+            {
+                Destroy(beesToKill[i].gameObject);
+            }
+        }
 
         for (int i = 0; i < 4; i++)
         {

@@ -12,15 +12,14 @@ public class PlayerInteraction : MonoBehaviour
     public Text progressBarText;
     public float interactionTime;
 
+    public AudioSource audioSource;
+
     public delegate void InputDelegate();
     public event InputDelegate useEvent = delegate { };
     public event InputDelegate dropEvent = delegate { };
-<<<<<<< HEAD
 
     public event InputDelegate startChannelEvent = delegate { };
     public event InputDelegate stopChannelEvent = delegate { };
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
 
 	public delegate void ItemChangeDelegate(GameObject g);
 	public event ItemChangeDelegate itemPickupEvent = delegate { };
@@ -50,6 +49,8 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (heldItemInteraction.Use(gameObject))
                 {
+                    audioSource.clip = AudioManager.instance.munchAudio;
+                    audioSource.Play();
 					ingredientEatEvent(heldItem);
                     ClearFields();
                 }
@@ -87,12 +88,9 @@ public class PlayerInteraction : MonoBehaviour
         float timer = 0f;
         progressBar.SetActive(true);
         UpdateText(button);
-<<<<<<< HEAD
 
         startChannelEvent();
 
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
         while (timer <= interactionTime)
         {
             timer += Time.deltaTime;
@@ -100,16 +98,14 @@ public class PlayerInteraction : MonoBehaviour
             {
                 progressBar.SetActive(false);
                 performingAction = false;
+                stopChannelEvent();
                 yield break;
             }
             progressBarImage.fillAmount = timer / interactionTime;
             progressBar.transform.position = Camera.main.WorldToScreenPoint(progressBarLocation.transform.position);
             yield return new WaitForFixedUpdate();
         }
-<<<<<<< HEAD
         stopChannelEvent();
-=======
->>>>>>> parent of cb7a23a... Merge branch 'master' of https://github.com/malbayati1/TheChoppingBlock
         f();
         progressBar.SetActive(false);
         performingAction = false;

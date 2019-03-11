@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2879231921651049014}
   - component: {fileID: 2879231921651049012}
   - component: {fileID: 2879231921651049015}
+  - component: {fileID: 5892950258121310724}
   m_Layer: 0
   m_Name: SpiderBody
   m_TagString: Enemy
@@ -65,6 +66,111 @@ MonoBehaviour:
   groundedCheckLM:
     serializedVersion: 2
     m_Bits: 4096
+--- !u!82 &5892950258121310724
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879231921651048969}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.24710083
+      value: 0.8340454
+      inSlope: -4.0016
+      outSlope: -4.0016
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.27435303
+      inSlope: -1.0004
+      outSlope: -1.0004
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.2501
+      outSlope: -0.2501
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2879231923409309367
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +259,7 @@ GameObject:
   - component: {fileID: 2879231923488143869}
   - component: {fileID: 2879231923488143867}
   - component: {fileID: 2879231923488143866}
-  - component: {fileID: 2879231923488143868}
+  - component: {fileID: 2296916561912545227}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Enemy
@@ -225,7 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054c1ce7447d4be45acf7b7b5a70d994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2879231923488143868
+  mover: {fileID: 0}
+--- !u!114 &2296916561912545227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,7 +341,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2879231923488143871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 110b468ed62e73b408eff981ab758297, type: 3}
+  m_Script: {fileID: 11500000, guid: fb6e2000a9a090040af1c31602267ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackBase: {x: 2, y: 1.2}
@@ -250,6 +357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2879231921651049014}
     m_Modifications:
+    - target: {fileID: 100120, guid: 59c97e4528b4682429fafa32bdca4979, type: 3}
+      propertyPath: m_Name
+      value: Spider
+      objectReference: {fileID: 0}
     - target: {fileID: 400120, guid: 59c97e4528b4682429fafa32bdca4979, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -305,10 +416,6 @@ PrefabInstance:
     - target: {fileID: 400120, guid: 59c97e4528b4682429fafa32bdca4979, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100120, guid: 59c97e4528b4682429fafa32bdca4979, type: 3}
-      propertyPath: m_Name
-      value: Spider
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 59c97e4528b4682429fafa32bdca4979, type: 3}
       propertyPath: m_Bones.Array.data[0]
