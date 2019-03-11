@@ -38,7 +38,6 @@ public class TutorialTeleporter : MonoBehaviour
         float cursor = delay;
         while(cursor > 0)
         {
-            Debug.Log(cursor);
             cursor -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
