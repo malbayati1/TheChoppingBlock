@@ -9,7 +9,7 @@ public enum Rarity { Common, Uncommon, Rare };
 
 public class LevelManager : Singleton<LevelManager>
 {
-    private GameObject navMesh;
+	private GameObject navMesh;
     public List<GameObject> summerIngredients;
     public List<GameObject> springIngredients;
     public List<GameObject> fallIngredients;
@@ -20,11 +20,13 @@ public class LevelManager : Singleton<LevelManager>
     public float[] rarityTable = new float[Enum.GetNames(typeof(Rarity)).Length];
 
     [SerializeField]private List<GameObject> spawnedObjects;
+	private LayerMask terrain;
 
     void Start()
     {
         floor = GameObject.Find("NavMesh");
         spawnedObjects = new List<GameObject>();
+		terrain = 1 << LayerMask.NameToLayer("Terrain");
         SpawnIngredients(SeasonManager.instance.GetCurrentSeason());
     }
 
@@ -93,27 +95,34 @@ public class LevelManager : Singleton<LevelManager>
         for (int i = 0; i < seasonalIngredients.Count; i++)
         {
             NavMeshHit hit;
-			while(!NavMesh.SamplePosition(new Vector3(Random.Range(-140f, 140f), 0, Random.Range(-140f, 140f)), out hit, 4.0f, NavMesh.AllAreas))
-			{ }
+			Vector3 temp = new Vector3(Random.Range(-55, 55f), 0, Random.Range(-55f, 55f));
+			NavMesh.SamplePosition(temp, out hit, 20.0f, NavMesh.AllAreas);
+			//Debug.DrawLine(hit.position + Vector3.down * 50, hit.position + Vector3.up * 100, Color.red, 200);
+			//RaycastHit t = new RaycastHit();
+			if(!hit.hit || Physics.Linecast(hit.position + Vector3.down * 50, hit.position + Vector3.up * 50, terrain))
+			{
+				//Debug.Log("failed at " + t.collider.gameObject);
+				continue;
+			}
             
             Vector3 spawnPosition = hit.position;   // Position to the nearest point on the mesh of the specified point
-            if (spawnPosition.magnitude < 5)    // if spawning in position of pot, readjust x and z
+            if (spawnPosition.magnitude < 10)    // if spawning in position of pot, readjust x and z
             {
                 if(spawnPosition.x < 0)
                 {
-                    spawnPosition.x -= 5.5f - spawnPosition.magnitude;
+                    spawnPosition.x -= 8.5f;
                 }
                 else
                 {
-                    spawnPosition.x += 5.5f - spawnPosition.magnitude;
+                    spawnPosition.x += 8.5f;
                 }
                 if(spawnPosition.z < 0)
                 {
-                    spawnPosition.z -= 5.5f - spawnPosition.magnitude;
+                    spawnPosition.z -= 8.5f;
                 }
                 else
                 {
-                    spawnPosition.z += 5.5f - spawnPosition.magnitude;
+                    spawnPosition.z += 8.5f;
                 }
             }
             
