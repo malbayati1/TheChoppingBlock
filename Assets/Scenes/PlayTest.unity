@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -105,7 +105,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 1
-    cellSize: 0.063
+    cellSize: 0.025
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -6492,7 +6492,7 @@ PrefabInstance:
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.3
+      value: -34.96
       objectReference: {fileID: 0}
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
@@ -6502,7 +6502,7 @@ PrefabInstance:
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 19.54
       objectReference: {fileID: 0}
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
@@ -6937,7 +6937,7 @@ Transform:
   - {fileID: 1517799683}
   - {fileID: 1316779536}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &813741804
 PrefabInstance:
@@ -15127,7 +15127,7 @@ PrefabInstance:
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28
+      value: -28.31
       objectReference: {fileID: 0}
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
@@ -15137,7 +15137,7 @@ PrefabInstance:
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.6
+      value: 22.36
       objectReference: {fileID: 0}
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
@@ -15592,7 +15592,7 @@ PrefabInstance:
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.51
+      value: -44.86
       objectReference: {fileID: 0}
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
@@ -15602,7 +15602,7 @@ PrefabInstance:
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.59
+      value: 10.24
       objectReference: {fileID: 0}
     - target: {fileID: 6391973665990315312, guid: 562f3ac99dafce44baccf29c07eaf138,
         type: 3}
@@ -16132,7 +16132,7 @@ PrefabInstance:
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.1
+      value: -43.4
       objectReference: {fileID: 0}
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
@@ -16142,7 +16142,7 @@ PrefabInstance:
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.1
+      value: 27.07
       objectReference: {fileID: 0}
     - target: {fileID: 5947387170607267168, guid: e1dea015655bee94485167d556e9839b,
         type: 3}
@@ -18583,7 +18583,7 @@ Transform:
   - {fileID: 3092170110428509833}
   - {fileID: 546761630}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2379179269377781944
 MeshRenderer:
