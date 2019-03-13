@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2954571142262698514}
-  - component: {fileID: 2954571142262698515}
+  - component: {fileID: 2238061571290850491}
   m_Layer: 0
   m_Name: SpiderSpawner
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2954571142262698515
+--- !u!114 &2238061571290850491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,19 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2954571142262698988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f87c6cf2fc2c0544a5bdca7f9876753, type: 3}
+  m_Script: {fileID: 11500000, guid: a9bddc0e65181a64db5216cde4f830ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawnPrefab: {fileID: 2879231923488143871, guid: ae46c6f61d7493f45acaf2a4dc868798,
-    type: 3}
+  enemyType: 0
   timeBetweenSpawns: 10
   numSpawnsAllowedActive: 1
-  spawnLocations:
-  - {x: 0, y: 0, z: -88}
-  - {x: 0, y: 0, z: 88}
-  - {x: 88, y: 0, z: 0}
-  - {x: -88, y: 0, z: 0}
-  - {x: -72, y: 0, z: 72}
-  - {x: 72, y: 0, z: -72}
-  - {x: 72, y: 0, z: 72}
-  - {x: -72, y: 0, z: -72}
