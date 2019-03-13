@@ -21,7 +21,7 @@ public class ButtonUI : MonoBehaviour
 
 	void Start()
 	{
-		text = transform.GetChild(2).gameObject.GetComponent<Text>();
+		text = transform.GetChild(1).gameObject.GetComponent<Text>();
 		UpdateText();
 	}
 
