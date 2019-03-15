@@ -75,13 +75,13 @@ public class ButtonUI : MonoBehaviour
 			else
 			{
 				if(DEBUG) Debug.Log("5");
-				text.text = "None";
+				text.text = "NONE";
 			}
 		}
 		else
 		{
 			if(DEBUG) Debug.Log("6");
-			text.text = "None";
+			text.text = "NONE";
 		}
 	}
 
