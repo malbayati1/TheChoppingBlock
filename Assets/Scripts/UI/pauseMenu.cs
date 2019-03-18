@@ -10,6 +10,7 @@ public class pauseMenu : MonoBehaviour
     private void Awake()
     {
         isPauseMenueActive = false;
+        Time.timeScale = 1;
     }
 
     private void Update()
