@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class pauseMenu : MonoBehaviour
 {
-    private bool pauseMenuActive = false;
+    private bool isPauseMenueActive = false;
     [SerializeField] private GameObject pausedMenu;
+    private void Awake()
+    {
+        isPauseMenueActive = false;
+    }
 
     private void Update()
     {
@@ -18,8 +22,8 @@ public class pauseMenu : MonoBehaviour
 
     public void pauseGame()
     {
-        pauseMenuActive = !pauseMenuActive;
-        if (pauseMenuActive)
+        isPauseMenueActive = !isPauseMenueActive;
+        if (isPauseMenueActive)
         {
             Time.timeScale = 0;
         }
@@ -27,6 +31,6 @@ public class pauseMenu : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-        pausedMenu.SetActive(pauseMenuActive);
+        pausedMenu.SetActive(isPauseMenueActive);
     }
 }
