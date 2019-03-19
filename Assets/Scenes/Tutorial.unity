@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4406225, g: 0.48926288, b: 0.5694002, a: 1}
+  m_IndirectSpecularColor: {r: 0.44062236, g: 0.48926294, b: 0.56940067, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -10397,6 +10397,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5384223014106457007, guid: 886a9c3f5e5480245818b2d6cdcbcdd8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5384223014106457003, guid: 886a9c3f5e5480245818b2d6cdcbcdd8,
         type: 3}
       propertyPath: _teleportStartAudio
@@ -10423,6 +10428,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5384223014106457005, guid: 886a9c3f5e5480245818b2d6cdcbcdd8, type: 3}
     - {fileID: 313764080580274170, guid: 886a9c3f5e5480245818b2d6cdcbcdd8, type: 3}
+    - {fileID: 5384223014106457007, guid: 886a9c3f5e5480245818b2d6cdcbcdd8, type: 3}
+    - {fileID: 5384223014042364777, guid: 886a9c3f5e5480245818b2d6cdcbcdd8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 886a9c3f5e5480245818b2d6cdcbcdd8, type: 3}
 --- !u!4 &1496758269 stripped
 Transform:
@@ -12153,6 +12160,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2779051266013100924, guid: 3ec4913693b48f949848163a8b662759,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779051266013100924, guid: 3ec4913693b48f949848163a8b662759,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4492846475725345323, guid: 3ec4913693b48f949848163a8b662759,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12167,16 +12184,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Tutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 2779051266013100924, guid: 3ec4913693b48f949848163a8b662759,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 2779051266013100924, guid: 3ec4913693b48f949848163a8b662759,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec4913693b48f949848163a8b662759, type: 3}
