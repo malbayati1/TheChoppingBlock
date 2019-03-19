@@ -17,6 +17,7 @@ public class SeasonManager : Singleton<SeasonManager>
                             //Used to see how long player lasts. May need to change to mintues
     private float resetTimer;   //Keeps track of the original timer
     private Season currentSeason;
+    private int seasonCount; // MA 3/19: Keeps count of how many seasons have gone by
 
     private AudioSource audioSource;
 
@@ -24,6 +25,7 @@ public class SeasonManager : Singleton<SeasonManager>
     {
         currentSeason = Season.Spring;
         resetTimer = seasonTimer;
+        seasonCount = 0;
     }
 
     // Muhammad 2/21/2019: Changed the timer
@@ -35,6 +37,7 @@ public class SeasonManager : Singleton<SeasonManager>
         if(seasonTimer <= 0)
         {
             seasonTimer = resetTimer;
+            ++seasonCount;
             ChangeSeason();
         }
     }
@@ -55,4 +58,9 @@ public class SeasonManager : Singleton<SeasonManager>
 	{
 		return currentSeason;
 	}
+
+    public int getSeasonCount()
+    {
+        return seasonCount;
+    }
 }
