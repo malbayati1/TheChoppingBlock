@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5384223014106457003}
   - component: {fileID: 313764080580274170}
   - component: {fileID: 5384223014106457002}
+  - component: {fileID: 5384223014042364777}
   m_Layer: 0
   m_Name: MANAGER
   m_TagString: Untagged
@@ -252,6 +253,8 @@ MonoBehaviour:
   _summerStartAudio: {fileID: 11400000, guid: fcf12717797012f4498e2f8c845c7a3b, type: 2}
   _fallStartAudio: {fileID: 11400000, guid: ef7578b04353b204ab1f251892c12019, type: 2}
   _winterStartAudio: {fileID: 11400000, guid: 5d1827cd67092b842b1b7452c90ea473, type: 2}
+  _almostSeasonChangeAudio: {fileID: 11400000, guid: 4177dc0d4e7b2704694867382854f825,
+    type: 2}
   _teleportStartAudio: {fileID: 0}
   _teleportMidAudio: {fileID: 0}
   _teleportEndAudio: {fileID: 0}
@@ -381,6 +384,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5384223014042364777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384223014106456992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b591d298c85b24ac0b5ea5cd5e73d181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  deathMenu: {fileID: 0}
+  levelmanager: {fileID: 5384223014106457007}
+  score: {fileID: 0}
 --- !u!1 &5679980467730509661
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,11 +471,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaspSpawnPoint (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
@@ -618,11 +632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspSpawnPoint (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -702,11 +711,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaspSpawnPoint (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
@@ -1027,11 +1031,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaspSpawnPoint (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
@@ -1433,11 +1432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspSpawnPoint (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1598,11 +1592,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspSpawnPoint (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1683,11 +1672,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspSpawnPoint (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1767,11 +1751,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaspSpawnPoint (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
@@ -1933,11 +1912,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaspSpawnPoint (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2017,11 +1991,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaspSpawnPoint (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473616140795999127, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6473616140795999128, guid: cbc8eb97d9938ec40ac4e6405c5dc78f,
         type: 3}

@@ -196,6 +196,16 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     [SerializeField]
+    private AudioType _almostSeasonChangeAudio;
+
+    public AudioClip almostSeasonChangeAudio {
+        get
+        {
+            return _almostSeasonChangeAudio.GetClip();
+        }
+    }
+
+    [SerializeField]
     private AudioType _teleportStartAudio;
 
     public AudioClip teleportStartAudio {
@@ -245,6 +255,7 @@ public class AudioManager : Singleton<AudioManager>
 		if(SeasonManager.instance)
 		{
 			SeasonManager.instance.seasonChangeEvent += PlaySeasonStinger;
+            SeasonManager.instance.almostSeasonChangeEvent += PlayAlmostSeasonChangeStinger;
 		}
     }
 
@@ -253,9 +264,9 @@ public class AudioManager : Singleton<AudioManager>
 		if(SeasonManager.instance)
 		{
 			SeasonManager.instance.seasonChangeEvent -= PlaySeasonStinger;
+             SeasonManager.instance.almostSeasonChangeEvent -= PlayAlmostSeasonChangeStinger;
 		}
     }
-
 
     private void PlaySeasonStinger(Season s)
     {
@@ -291,5 +302,11 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         bgMusicSource.volume = bgMusicVolume;
+    }
+
+    private void PlayAlmostSeasonChangeStinger()
+    {
+        seasonAudioSource.clip = AudioManager.instance.almostSeasonChangeAudio;
+        seasonAudioSource.Play();
     }
 }

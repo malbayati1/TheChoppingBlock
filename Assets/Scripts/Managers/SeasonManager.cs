@@ -11,7 +11,9 @@ public class SeasonManager : Singleton<SeasonManager>
                                 //right away
 
     public delegate void SeasonChangeDelegate(Season s);
+    public delegate void AlmostSeasonChangeDelegate();
     public event SeasonChangeDelegate seasonChangeEvent = delegate {};
+    public event AlmostSeasonChangeDelegate almostSeasonChangeEvent = delegate {};
 
     private float timer;    //MA 2/21: timer will continue until the game ends.
                             //Used to see how long player lasts. May need to change to mintues
@@ -19,7 +21,7 @@ public class SeasonManager : Singleton<SeasonManager>
     private Season currentSeason;
     private int seasonCount; // MA 3/19: Keeps count of how many seasons have gone by
 
-    private AudioSource audioSource;
+    private bool almostSeasonChangeEventDone = false;
 
     void Start()
     {
@@ -39,6 +41,12 @@ public class SeasonManager : Singleton<SeasonManager>
             seasonTimer = resetTimer;
             ++seasonCount;
             ChangeSeason();
+            almostSeasonChangeEventDone = false;
+        }
+        else if (seasonTimer <= 3f && !almostSeasonChangeEventDone)
+        {
+            almostSeasonChangeEvent();
+            almostSeasonChangeEventDone = true;
         }
     }
 
