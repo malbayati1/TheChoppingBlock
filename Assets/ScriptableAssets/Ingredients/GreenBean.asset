@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GreenBean
   m_EditorClassIdentifier: 
   effects:
-  - {fileID: 11400000, guid: 3a8e045d82fa3ea4baf7fc3972c60145, type: 2}
+  - {fileID: 11400000, guid: d5b7a5b030163474da4b94ab3b421192, type: 2}
   effectData:
-  - potency: 1
-    duration: 30
+  - potency: 4
+    duration: 12
   name: Green Bean
   ID: 8
   rarity: 0

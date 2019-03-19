@@ -56,14 +56,14 @@ public class House : MonoBehaviour
     public void Enter()
 	{
 		inHouse = true;
-		this.enabled = true;
-		doorObstacle.SetActive(true);
+		//this.enabled = true;
+		//doorObstacle.SetActive(true);
 	}
 
 	public void Exit()
 	{
 		inHouse = false;
-		this.enabled = true;
+		//this.enabled = true;
 		doorObstacle.SetActive(false);
 	}
 }
