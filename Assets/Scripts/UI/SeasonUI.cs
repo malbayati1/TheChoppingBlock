@@ -45,22 +45,22 @@ public class SeasonUI : SeasonalObject
 
 	protected override void Spring()
 	{
-		UpdateUI(springSprite, "Spring");
+		UpdateUI(springSprite, "SPRING");
 	}
 
 	protected override void Summer()
 	{
-		UpdateUI(summerSprite, "Summer");
+		UpdateUI(summerSprite, "SUMMER");
 	}
 
 	protected override void Fall()
 	{
-		UpdateUI(fallSprite, "Fall");
+		UpdateUI(fallSprite, "FALL");
 	}
 
 	protected override void Winter()
 	{
-		UpdateUI(winterSprite, "Winter");
+		UpdateUI(winterSprite, "WINTER");
 	}
 
 	void UpdateUI(Sprite s, string t)

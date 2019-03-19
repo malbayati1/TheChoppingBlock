@@ -21,7 +21,7 @@ public class ButtonUI : MonoBehaviour
 
 	void Start()
 	{
-		text = transform.GetChild(2).gameObject.GetComponent<Text>();
+		text = transform.GetChild(1).gameObject.GetComponent<Text>();
 		UpdateText();
 	}
 
@@ -75,13 +75,13 @@ public class ButtonUI : MonoBehaviour
 			else
 			{
 				if(DEBUG) Debug.Log("5");
-				text.text = "None";
+				text.text = "NONE";
 			}
 		}
 		else
 		{
 			if(DEBUG) Debug.Log("6");
-			text.text = "None";
+			text.text = "NONE";
 		}
 	}
 

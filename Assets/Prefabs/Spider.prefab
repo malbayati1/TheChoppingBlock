@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2879231923488143871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.674578, y: 0.297, z: 2.333581}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2879231921651049014}
@@ -347,9 +347,9 @@ MonoBehaviour:
   knockbackBase: {x: 2, y: 1.2}
   hitImmunityCoolDown: 0.5
   health: {fileID: 0}
+  canBeHit: 1
   damageModifier: 1
   knockbackModifier: 1
-  framesBetweenUpdates: 10
 --- !u!1001 &2879231921695684220
 PrefabInstance:
   m_ObjectHideFlags: 0

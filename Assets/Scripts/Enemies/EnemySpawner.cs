@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyToSpawnPrefab;
+    public EnemyType enemyType;
 
     public float timeBetweenSpawns;
 
     public int numSpawnsAllowedActive;
-
-    [SerializeField]
-    public List<Vector3> spawnLocations;
 
     private List<GameObject> activeEnemies;
 
@@ -35,17 +32,14 @@ public class EnemySpawner : MonoBehaviour
 
         activeEnemies = livingSpawns;
 
-        if (timeSinceLastSpawn > timeBetweenSpawns && activeEnemies.Count < numSpawnsAllowedActive && spawnLocations.Count > 0)
+        if (timeSinceLastSpawn > timeBetweenSpawns && activeEnemies.Count < numSpawnsAllowedActive)
         {
-            Vector3 location = spawnLocations[Random.Range(0, spawnLocations.Count)];
-            if (Vector3.Distance(location, GameObject.FindWithTag("Player").transform.position) < 5f)
+            GameObject newEnemy = EnemySpawnManager.instance.SpawnEnemy(enemyType);
+            if (newEnemy != null)
             {
-                return; //Don't keep trying in case nothing is close
+                activeEnemies.Add(newEnemy);
+                timeSinceLastSpawn = 0f;
             }
-            GameObject newEnemy = GameObject.Instantiate(enemyToSpawnPrefab);
-            newEnemy.transform.position = location;
-            activeEnemies.Add(newEnemy);
-            timeSinceLastSpawn = 0f;
         }
 
         //If statement to prevent enemies from spawning the moment one of them dies

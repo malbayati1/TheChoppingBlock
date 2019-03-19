@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType{
+    Spider,
+    Wasp
+}
+
 public class EnemySpawnManager : Singleton<EnemySpawnManager>
 {
     public List<GameObject> springSpawnPrefabs;
@@ -9,9 +14,35 @@ public class EnemySpawnManager : Singleton<EnemySpawnManager>
     public List<GameObject> fallSpawnPrefabs;
     public List<GameObject> winterSpawnPrefabs;
 
+    [HideInInspector]
+    public List<EnemySpawnPoint> spiderSpawnPoints;
+
+    [HideInInspector]
+    public List<EnemySpawnPoint> waspSpawnPoints;
+
+    public GameObject spiderPrefab;
+    public GameObject waspPrefab;
+
     void Start()
     {
         UpdateSpawnersAtSeasonStart(Season.Spring);
+
+        spiderSpawnPoints = new List<EnemySpawnPoint>();
+
+        waspSpawnPoints = new List<EnemySpawnPoint>();
+
+        foreach (EnemySpawnPoint eSP in transform.GetChild(4).GetComponentsInChildren<EnemySpawnPoint>())
+        {
+            switch(eSP.enemyType)
+            {
+                case EnemyType.Spider:
+                    spiderSpawnPoints.Add(eSP);
+                    break;
+                case EnemyType.Wasp:
+                    waspSpawnPoints.Add(eSP);
+                    break;
+            }
+        }
     }
 
     private void AddSpawners()
@@ -62,6 +93,27 @@ public class EnemySpawnManager : Singleton<EnemySpawnManager>
             {
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+        }
+    }
+
+    public GameObject SpawnEnemy(EnemyType enemy)
+    {
+        switch(enemy)
+        {
+            case EnemyType.Spider:
+                if (spiderSpawnPoints.Count == 0)
+                {
+                    return null;
+                }
+                return spiderSpawnPoints[Random.Range(0,spiderSpawnPoints.Count)].SpawnEnemy(spiderPrefab);
+            case EnemyType.Wasp:
+                if (waspSpawnPoints.Count == 0)
+                {
+                    return null;
+                }
+                return waspSpawnPoints[Random.Range(0,waspSpawnPoints.Count)].SpawnEnemy(waspPrefab);
+            default:
+                return null;
         }
     }
 
