@@ -3080,7 +3080,7 @@ PrefabInstance:
     - target: {fileID: 7018738094527776375, guid: f84ff1a256efe4463a339fcdbc5cc41d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Ttitle
+      value: Title
       objectReference: {fileID: 0}
     - target: {fileID: 7018738094901789218, guid: f84ff1a256efe4463a339fcdbc5cc41d,
         type: 3}
